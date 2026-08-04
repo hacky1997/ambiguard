@@ -19,7 +19,7 @@ lint:
 	ruff format --check app/ eval/ tests/
 
 typecheck:
-	mypy app/gate/ --strict
+	mypy app/gate/ app/graph/ --strict
 
 # --- Evaluation ---
 

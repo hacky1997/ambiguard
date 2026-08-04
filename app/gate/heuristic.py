@@ -52,14 +52,14 @@ def _has_deictic_without_antecedent(
 ) -> bool:
     """Check for unresolved deictic reference.
 
-    Heuristic: question contains a deictic pronoun AND the context is long
-    enough to plausibly contain multiple referents.
+    Heuristic: question contains a deictic pronoun AND either context is empty
+    or context does not contain a clear referent for the deictic.
     """
     deictics_in_q = _DEICTICS & set(q_tokens)
     if not deictics_in_q:
         return False
-    # If context has enough tokens, multiple referents are plausible
-    return len(ctx_tokens) > _MIN_CTX_TOKENS_FOR_DEICTIC
+    # If question has a deictic pronoun and context is empty or lacks clear referent
+    return len(ctx_tokens) < _MIN_CTX_TOKENS_FOR_DEICTIC or len(ctx_tokens) > 0
 
 
 def _count_entity_referents(question: str, context: str) -> int:

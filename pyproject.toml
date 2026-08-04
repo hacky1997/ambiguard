@@ -12,6 +12,8 @@ dependencies = [
     "pydantic>=2.0",
     "pydantic-settings>=2.0",
     "numpy>=1.24",
+    "langgraph>=0.1",
+    "langchain-core>=0.2",
 ]
 
 [project.optional-dependencies]
