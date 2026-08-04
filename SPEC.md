@@ -1,7 +1,7 @@
 # AmbiGuard — Specification
 
-> **ACTIVE PHASE: 2**
-> Build only what Phase 2 permits. Update this line to advance. See `AGENTS.md` rule 17.
+> **ACTIVE PHASE: 3**
+> Build only what Phase 3 permits. See `AGENTS.md` rule 17.
 
 ---
 
