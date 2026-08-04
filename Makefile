@@ -33,6 +33,9 @@ eval: compare adversarial
 
 # --- Checkpoint ---
 
+repair-checkpoint:
+	python scripts/repair_checkpoint.py --checkpoint-dir $(CHECKPOINT_DIR) --base-model $(BASE_MODEL)
+
 fetch-checkpoint:
 	python scripts/fetch_checkpoint.py
 

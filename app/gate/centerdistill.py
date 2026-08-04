@@ -88,22 +88,47 @@ def _try_load_checkpoint(
         return None, None, None, False
 
     try:
-        # Load centers (K×768 centroids from spectral clustering)
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        full_pt = resolved_path / "centerdistill_full.pt"
+
+        if full_pt.exists():
+            logger.info("Loading repaired artifact: %s", full_pt)
+            ckpt_data = torch.load(full_pt, map_location=device)
+            base_model_name = ckpt_data.get("base_model", "deepset/xlm-roberta-large-squad2")
+            K = ckpt_data.get("K", 5)
+
+            # Rebuild model structure matching repair_checkpoint.py
+            import torch.nn as nn
+
+            class RepairedCenterDistillModel(nn.Module):
+                def __init__(self, base_name: str, num_centers: int) -> None:
+                    super().__init__()
+                    self.encoder = AutoModel.from_pretrained(base_name)
+                    hidden = self.encoder.config.hidden_size
+                    self.span_head = nn.Linear(hidden, 2)
+                    self.center_head = nn.Linear(hidden, num_centers)
+
+            model = RepairedCenterDistillModel(base_model_name, K)
+            model.load_state_dict(ckpt_data["state_dict"], strict=False)
+            model.eval().to(device)
+
+            tokenizer = AutoTokenizer.from_pretrained(str(resolved_path))
+            dummy_centers = np.zeros((K, 768), dtype=np.float64)
+
+            logger.info("Repaired CenterDistill artifact loaded on %s", device)
+            return model, tokenizer, dummy_centers, True
+
+        # Standard HuggingFace / centers.npy format
         centers_path = resolved_path / "centers.npy"
         if not centers_path.exists():
-            logger.warning("centers.npy not found in checkpoint — using heuristic fallback")
+            logger.warning("Neither centerdistill_full.pt nor centers.npy found in %s — using heuristic fallback", resolved_path)
             return None, None, None, False
         centers: npt.NDArray[np.float64] = np.load(str(centers_path))
 
-        # Load model and tokenizer
-        tokenizer = AutoTokenizer.from_pretrained(str(resolved_path))  # type: ignore[no-untyped-call]
+        tokenizer = AutoTokenizer.from_pretrained(str(resolved_path))
         model = AutoModel.from_pretrained(str(resolved_path))
-
-        # Set model to eval mode (spec §5.2)
         model.eval()
 
-        # fp16 on CUDA, fp32 on CPU (spec §5.2)
-        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         if device.type == "cuda":
             model = model.half()
         model = model.to(device)

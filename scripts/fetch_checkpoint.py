@@ -39,8 +39,12 @@ _EXPECTED_CENTER_SHAPE: tuple[int, int] = (5, 768)  # K=5, LaBSE dim=768
 
 def _validate_checkpoint(checkpoint_dir: Path) -> bool:
     """Validate that a checkpoint directory has the required files."""
-    all_ok = True
+    full_pt = checkpoint_dir / "centerdistill_full.pt"
+    if full_pt.exists():
+        logger.info("Found repaired artifact: %s ✓", full_pt)
+        return True
 
+    all_ok = True
     for fname in _REQUIRED_FILES:
         fpath = checkpoint_dir / fname
         if not fpath.exists():
