@@ -1,0 +1,29 @@
+{
+  "source_checkpoint": "/Users/sayak/centerdistill",
+  "source_step": 0,
+  "available_steps": [
+    112
+  ],
+  "base_model": "deepset/xlm-roberta-large-squad2",
+  "K": 5,
+  "center_head_keys": [
+    "center_head.bias",
+    "center_head.weight"
+  ],
+  "center_head_weight_norm": 1.273538,
+  "thresholds": {
+    "tau_conf": 0.44,
+    "tau_ent": 1.51,
+    "tau_multi": 0.24
+  },
+  "entropy_units": "nats",
+  "artifact_sha256": "20952a3a24cfd4015d7fcdbc490e488285af55e311e75d20c6b76e5e8beb0648",
+  "smoke_test_distribution": [
+    0.240273,
+    0.207473,
+    0.168271,
+    0.17371,
+    0.210273
+  ],
+  "note": "Extracted from a Trainer checkpoint because the top-level model.safetensors was overwritten with a span-only HF QA model and does not contain the center head."
+}

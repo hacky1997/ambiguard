@@ -1,0 +1,4 @@
+# Ignore binary weights in checkpoints directory
+*.pt
+*.safetensors
+*.bin
