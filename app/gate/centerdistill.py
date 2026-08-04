@@ -104,8 +104,9 @@ def _try_load_checkpoint(
                 def __init__(self, base_name: str, num_centers: int) -> None:
                     super().__init__()
                     try:
+                        from transformers import AutoConfig, AutoModel
                         config = AutoConfig.from_pretrained(base_name)
-                        self.encoder = AutoModel.from_config(config)
+                        self.encoder = AutoModel.from_config(config)  # type: ignore[no-untyped-call]
                     except Exception:
                         self.encoder = AutoModel.from_pretrained(base_name)
 
