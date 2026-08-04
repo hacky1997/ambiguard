@@ -112,7 +112,7 @@ def _try_load_checkpoint(
             model.load_state_dict(ckpt_data["state_dict"], strict=False)
             model.eval().to(device)
 
-            tokenizer = AutoTokenizer.from_pretrained(str(resolved_path))
+            tokenizer = AutoTokenizer.from_pretrained(str(resolved_path))  # type: ignore[no-untyped-call]
             dummy_centers = np.zeros((K, 768), dtype=np.float64)
 
             logger.info("Repaired CenterDistill artifact loaded on %s", device)
@@ -125,7 +125,7 @@ def _try_load_checkpoint(
             return None, None, None, False
         centers: npt.NDArray[np.float64] = np.load(str(centers_path))
 
-        tokenizer = AutoTokenizer.from_pretrained(str(resolved_path))
+        tokenizer = AutoTokenizer.from_pretrained(str(resolved_path))  # type: ignore[no-untyped-call]
         model = AutoModel.from_pretrained(str(resolved_path))
         model.eval()
 
