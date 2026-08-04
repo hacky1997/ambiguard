@@ -1,9 +1,13 @@
-.PHONY: dev test compare adversarial eval lint typecheck clean
+.PHONY: dev test compare adversarial eval data lint typecheck clean
 
-# --- Development ---
+# --- Development & Data ---
 
 dev:
 	pip install -e ".[dev]"
+
+data:
+	python scripts/prepare_eval_data.py
+	python scripts/prepare_adversarial_data.py
 
 # --- Testing ---
 

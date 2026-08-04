@@ -1,0 +1,7149 @@
+{
+  "timestamp": "2026-08-04T08:41:19Z",
+  "dataset": "eval/datasets/golden_gate.jsonl",
+  "n_samples": 120,
+  "arms": [
+    {
+      "arm_name": "CenterDistill (heuristic fallback)",
+      "behaviour_accuracy": 0.292,
+      "ci_95_lower": 0.208,
+      "ci_95_upper": 0.375,
+      "worst_cluster_f1": 0.0,
+      "p50_latency_ms": 0.0,
+      "p95_latency_ms": 0.0,
+      "cost_per_1k_usd": 0.0,
+      "deterministic": true,
+      "fallback_used": true,
+      "n_samples": 120
+    },
+    {
+      "arm_name": "LLM judge (mock-v1)",
+      "behaviour_accuracy": 0.35,
+      "ci_95_lower": 0.267,
+      "ci_95_upper": 0.433,
+      "worst_cluster_f1": 3.2,
+      "p50_latency_ms": 0.0,
+      "p95_latency_ms": 0.0,
+      "cost_per_1k_usd": 0.0,
+      "deterministic": true,
+      "fallback_used": false,
+      "n_samples": 120
+    },
+    {
+      "arm_name": "Majority class (ANSWER)",
+      "behaviour_accuracy": 0.5,
+      "ci_95_lower": 0.408,
+      "ci_95_upper": 0.592,
+      "worst_cluster_f1": 0.0,
+      "p50_latency_ms": 0.0,
+      "p95_latency_ms": 0.0,
+      "cost_per_1k_usd": 0.0,
+      "deterministic": true,
+      "fallback_used": false,
+      "n_samples": 120
+    },
+    {
+      "arm_name": "Confidence threshold (τ=0.44)",
+      "behaviour_accuracy": 0.25,
+      "ci_95_lower": 0.175,
+      "ci_95_upper": 0.325,
+      "worst_cluster_f1": 0.0,
+      "p50_latency_ms": 0.0,
+      "p95_latency_ms": 0.0,
+      "cost_per_1k_usd": 0.0,
+      "deterministic": true,
+      "fallback_used": true,
+      "n_samples": 120
+    }
+  ],
+  "per_row_details": {
+    "CenterDistill (heuristic fallback)": [
+      {
+        "id": "gate_0001",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.15,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0002",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0003",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.03,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0004",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.04,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0005",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0006",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0007",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.25,
+            0.22,
+            0.2,
+            0.18,
+            0.15
+          ],
+          "max_prob": 0.25,
+          "entropy": 1.5948009887347723,
+          "second_mass": 0.22,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0008",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.03,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0009",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.25,
+            0.22,
+            0.2,
+            0.18,
+            0.15
+          ],
+          "max_prob": 0.25,
+          "entropy": 1.5948009887347723,
+          "second_mass": 0.22,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0010",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0011",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0012",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.03,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0013",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0014",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0015",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0016",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0017",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0018",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0019",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0020",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0021",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.25,
+            0.22,
+            0.2,
+            0.18,
+            0.15
+          ],
+          "max_prob": 0.25,
+          "entropy": 1.5948009887347723,
+          "second_mass": 0.22,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0022",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0023",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0024",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.25,
+            0.22,
+            0.2,
+            0.18,
+            0.15
+          ],
+          "max_prob": 0.25,
+          "entropy": 1.5948009887347723,
+          "second_mass": 0.22,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0025",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0026",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0027",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0028",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0029",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0030",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0031",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0032",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0033",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0034",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.25,
+            0.22,
+            0.2,
+            0.18,
+            0.15
+          ],
+          "max_prob": 0.25,
+          "entropy": 1.5948009887347723,
+          "second_mass": 0.22,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0035",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0036",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0037",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.03,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0038",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.05,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0039",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0040",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.03,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0041",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0042",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0043",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.04,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0044",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0045",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0046",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0047",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0048",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0049",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.25,
+            0.22,
+            0.2,
+            0.18,
+            0.15
+          ],
+          "max_prob": 0.25,
+          "entropy": 1.5948009887347723,
+          "second_mass": 0.22,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0050",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.25,
+            0.22,
+            0.2,
+            0.18,
+            0.15
+          ],
+          "max_prob": 0.25,
+          "entropy": 1.5948009887347723,
+          "second_mass": 0.22,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0051",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.25,
+            0.22,
+            0.2,
+            0.18,
+            0.15
+          ],
+          "max_prob": 0.25,
+          "entropy": 1.5948009887347723,
+          "second_mass": 0.22,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0052",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0053",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0054",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.25,
+            0.22,
+            0.2,
+            0.18,
+            0.15
+          ],
+          "max_prob": 0.25,
+          "entropy": 1.5948009887347723,
+          "second_mass": 0.22,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0055",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.03,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0056",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0057",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0058",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0059",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0060",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0061",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0062",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0063",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0064",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0065",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0066",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0067",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0068",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0069",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0070",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0071",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0072",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.25,
+            0.22,
+            0.2,
+            0.18,
+            0.15
+          ],
+          "max_prob": 0.25,
+          "entropy": 1.5948009887347723,
+          "second_mass": 0.22,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0073",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0074",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0075",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0076",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0077",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0078",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0079",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0080",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0081",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0082",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.03,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0083",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0084",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0085",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0086",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0087",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.25,
+            0.22,
+            0.2,
+            0.18,
+            0.15
+          ],
+          "max_prob": 0.25,
+          "entropy": 1.5948009887347723,
+          "second_mass": 0.22,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0088",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0089",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0090",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0091",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0092",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0093",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0094",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0095",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0096",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0097",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0098",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0099",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0100",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0101",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0102",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0103",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0104",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.05,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0105",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.07,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0106",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0107",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0108",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0109",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0110",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.03,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0111",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0112",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.25,
+            0.22,
+            0.2,
+            0.18,
+            0.15
+          ],
+          "max_prob": 0.25,
+          "entropy": 1.5948009887347723,
+          "second_mass": 0.22,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0113",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0114",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.25,
+            0.22,
+            0.2,
+            0.18,
+            0.15
+          ],
+          "max_prob": 0.25,
+          "entropy": 1.5948009887347723,
+          "second_mass": 0.22,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0115",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.03,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0116",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0117",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0118",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0119",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.05,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      },
+      {
+        "id": "gate_0120",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "center_distribution": [
+            0.3,
+            0.28,
+            0.2,
+            0.12,
+            0.1
+          ],
+          "max_prob": 0.3,
+          "entropy": 1.5241999466556249,
+          "second_mass": 0.28,
+          "fallback_used": true
+        }
+      }
+    ],
+    "LLM judge (mock-v1)": [
+      {
+        "id": "gate_0001",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0002",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0003",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0004",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0005",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0006",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0007",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0008",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0009",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0010",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0011",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0012",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0013",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0014",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0015",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0016",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0017",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0018",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0019",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0020",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0021",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0022",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0023",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0024",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0025",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0026",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0027",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0028",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0029",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0030",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0031",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0032",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0033",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0034",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0035",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0036",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0037",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0038",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0039",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0040",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0041",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0042",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0043",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0044",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0045",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0046",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0047",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0048",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0049",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0050",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0051",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0052",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0053",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0054",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0055",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0056",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0057",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0058",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0059",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0060",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0061",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0062",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0063",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0064",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0065",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0066",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0067",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0068",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0069",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0070",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0071",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0072",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0073",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0074",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0075",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0076",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0077",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0078",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0079",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0080",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0081",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0082",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0083",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0084",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0085",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.03,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0086",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0087",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0088",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0089",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0090",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0091",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0092",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0093",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0094",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0095",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0096",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0097",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0098",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0099",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0100",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0101",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0102",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0103",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0104",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0105",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0106",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0107",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0108",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0109",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0110",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0111",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0112",
+        "prediction": "ALTERNATIVES",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0113",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0114",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0115",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0116",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ANSWER",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0117",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0118",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "CLARIFY",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0119",
+        "prediction": "ALTERNATIVES",
+        "gold": "ALTERNATIVES",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      },
+      {
+        "id": "gate_0120",
+        "prediction": "ALTERNATIVES",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "model": "mock-v1",
+          "raw_response": "ALTERNATIVES",
+          "deterministic": true
+        }
+      }
+    ],
+    "Majority class (ANSWER)": [
+      {
+        "id": "gate_0001",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0002",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0003",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0004",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0005",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0006",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0007",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0008",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0009",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0010",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0011",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0012",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0013",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0014",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0015",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0016",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0017",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0018",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0019",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0020",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0021",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0022",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0023",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0024",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0025",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0026",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0027",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0028",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0029",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0030",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0031",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0032",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0033",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0034",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0035",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0036",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0037",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0038",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0039",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0040",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0041",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0042",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0043",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0044",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0045",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0046",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0047",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0048",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0049",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0050",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0051",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0052",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0053",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0054",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0055",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0056",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0057",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0058",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0059",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0060",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0061",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0062",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0063",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0064",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0065",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0066",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0067",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0068",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0069",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0070",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0071",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0072",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0073",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0074",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0075",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0076",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0077",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0078",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0079",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0080",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0081",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0082",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0083",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0084",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0085",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0086",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0087",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0088",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0089",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0090",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0091",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0092",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0093",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0094",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0095",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0096",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0097",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0098",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0099",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0100",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0101",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0102",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0103",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0104",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0105",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0106",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0107",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0108",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0109",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0110",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0111",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0112",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0113",
+        "prediction": "ANSWER",
+        "gold": "ANSWER",
+        "correct": true,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0114",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0115",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0116",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0117",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0118",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0119",
+        "prediction": "ANSWER",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      },
+      {
+        "id": "gate_0120",
+        "prediction": "ANSWER",
+        "gold": "CLARIFY",
+        "correct": false,
+        "latency_ms": 0.0,
+        "cost_usd": 0.0,
+        "metadata": {
+          "majority_label": "ANSWER"
+        }
+      }
+    ],
+    "Confidence threshold (τ=0.44)": [
+      {
+        "id": "gate_0001",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.05,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0002",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0003",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.03,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0004",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.04,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0005",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0006",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0007",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.25,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "CLARIFY"
+        }
+      },
+      {
+        "id": "gate_0008",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.03,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0009",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.25,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "CLARIFY"
+        }
+      },
+      {
+        "id": "gate_0010",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0011",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0012",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0013",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0014",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.03,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0015",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0016",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0017",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.04,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0018",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0019",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0020",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0021",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.25,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "CLARIFY"
+        }
+      },
+      {
+        "id": "gate_0022",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0023",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0024",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.25,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "CLARIFY"
+        }
+      },
+      {
+        "id": "gate_0025",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0026",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0027",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0028",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0029",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0030",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0031",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0032",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0033",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0034",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.25,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "CLARIFY"
+        }
+      },
+      {
+        "id": "gate_0035",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0036",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0037",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.03,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0038",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0039",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0040",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.03,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0041",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0042",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0043",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0044",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0045",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0046",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0047",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0048",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0049",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.25,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "CLARIFY"
+        }
+      },
+      {
+        "id": "gate_0050",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.25,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "CLARIFY"
+        }
+      },
+      {
+        "id": "gate_0051",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.25,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "CLARIFY"
+        }
+      },
+      {
+        "id": "gate_0052",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0053",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0054",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.25,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "CLARIFY"
+        }
+      },
+      {
+        "id": "gate_0055",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0056",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0057",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0058",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0059",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0060",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0061",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0062",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0063",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0064",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0065",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0066",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0067",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0068",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0069",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0070",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0071",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0072",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.25,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "CLARIFY"
+        }
+      },
+      {
+        "id": "gate_0073",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0074",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0075",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0076",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0077",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0078",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0079",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0080",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0081",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0082",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.03,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0083",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0084",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0085",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0086",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0087",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.25,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "CLARIFY"
+        }
+      },
+      {
+        "id": "gate_0088",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0089",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0090",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0091",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0092",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0093",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0094",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0095",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0096",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0097",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0098",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0099",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0100",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0101",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.03,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0102",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0103",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0104",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0105",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.07,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0106",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0107",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0108",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0109",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0110",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0111",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0112",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.25,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "CLARIFY"
+        }
+      },
+      {
+        "id": "gate_0113",
+        "prediction": "CLARIFY",
+        "gold": "ANSWER",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0114",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.25,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "CLARIFY"
+        }
+      },
+      {
+        "id": "gate_0115",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.03,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0116",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0117",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0118",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0119",
+        "prediction": "CLARIFY",
+        "gold": "ALTERNATIVES",
+        "correct": false,
+        "latency_ms": 0.01,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      },
+      {
+        "id": "gate_0120",
+        "prediction": "CLARIFY",
+        "gold": "CLARIFY",
+        "correct": true,
+        "latency_ms": 0.02,
+        "cost_usd": 0.0,
+        "metadata": {
+          "max_prob": 0.3,
+          "confidence_threshold": 0.44,
+          "fallback_used": true,
+          "original_behaviour": "ALTERNATIVES"
+        }
+      }
+    ]
+  }
+}

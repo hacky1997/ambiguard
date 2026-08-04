@@ -5,7 +5,7 @@
 
 ---
 
-## ACTIVE PHASE: 1 — Comparison harness
+## ACTIVE PHASE: 2 — Agents
 
 **Rationale:** the project's central claim is that a learned gate beats LLM self-assessment on accuracy,
 latency, cost, and manipulability. That claim must be tested before any system is built around it.

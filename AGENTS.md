@@ -1,70 +1,67 @@
-# AGENTS.md — always-in-context rules
+# AGENTS.md
 
-These rules apply to every task in this repo. They are short on purpose: they are the constraints that,
-when forgotten, produce code that **runs, looks correct, and is silently wrong**.
+Binding rules for all work in this repo. These are the constraints that, when violated, produce code that
+runs, looks correct, and is wrong.
 
-## Non-negotiable
+## Correctness
 
-1. **Entropy is computed in NATS.** `-(p * np.log(p)).sum()`. Never `log2`.
-   `tau_ent = 1.51` is a nats threshold. Using log2 misroutes every query by a factor of `ln 2`,
-   raises no error, and produces plausible output. There is a contract test for this — do not delete it.
+1. **Entropy in nats.** `-(p * np.log(p)).sum()`. Never `log2`. `tau_ent` is a nats threshold; using log2
+   misroutes every query, raises no error, and produces plausible output. A contract test asserts this.
 
-2. **Threshold evaluation order is ANSWER → ALTERNATIVES → CLARIFY.**
+2. **Threshold order is fixed:**
    ```
    if max_prob > tau_conf:        ANSWER
    elif second_mass > tau_multi:  ALTERNATIVES
    elif entropy > tau_ent:        CLARIFY
-   else:                          ANSWER      # conservative default
+   else:                          ANSWER
    ```
-   Reordering changes results. Do not "simplify" this.
+   Do not reorder or "simplify".
 
-3. **The app must boot with a completely empty `.env`.** Every external dependency degrades gracefully:
-   no checkpoint → heuristic gate; no API key → mock LLM provider; no Qdrant → in-memory retrieval.
-   If a reviewer clones this repo and it fails to start, the project has failed.
+3. **Boots with an empty `.env`.** No checkpoint → heuristic gate. No API key → mock provider. No vector DB
+   → in-memory retrieval. A clone that fails to start is a failed project.
 
-4. **Never present heuristic-fallback numbers as CenterDistill results.** Not in logs, not in the README,
-   not in any results table. When `fallback_used=True`, every downstream surface must say so.
+4. **Heuristic-gate output is never reported as CenterDistill output.** When `fallback_used=True`, every
+   surface says so.
 
-5. **Never fabricate evaluation numbers.** Every value in a results table must trace to a committed
-   `eval/results/*.json` produced by an actual run. If a script has not been executed, the table stays empty.
+## Evidence
 
-6. **Do not generate the golden dataset with an LLM.** `eval/datasets/golden_gate.jsonl` is hand-authored by
-   the human. Evaluating a router against LLM-authored labels is circular. If those files are missing,
-   stop and say so — do not fill them in.
+5. **Never fabricate a number.** Every value in any results table must come from a committed
+   `eval/results/*.json` produced by an actual run. No script run → table stays empty. Do not fill in
+   plausible-looking placeholders.
+
+6. **Ground truth is external human annotation or deterministic derivation. Never an LLM, never the teacher.**
+   - Never label ambiguity by prompting an LLM. The comparison pits the gate against an LLM judge; LLM
+     labels hand that arm the win by construction.
+   - Never evaluate against MLQA behaviour labels. They are teacher-induced and the same teacher trained
+     the student — that measures distillation fidelity, not correctness. MLQA is permitted only as an
+     adapter sanity check, reported as *teacher-agreement*, never as accuracy.
+   - Every dataset row carries `source`, `source_id`, `annotation_provenance`. A row without provenance is
+     a bug.
+
+7. **Do not invent dataset identifiers, payload strings, or example rows.** If a source dataset is not
+   downloaded, stop and say so.
 
 ## State and graph
 
-7. **Never invent state keys.** If a node needs new data, add the field to `AgentState` in
-   `app/graph/state.py` first, then use it.
+8. Never invent state keys. Add the field to `AgentState` first, then use it.
+9. Nodes return partial dicts. No in-place mutation.
+10. `messages` is the only reducer field. Everything else is last-write-wins.
+11. `resolved_question` takes precedence over `question` downstream when set.
+12. Verification retries bounded at 2, then escalate to CLARIFY. Never an unbounded loop.
 
-8. **Nodes return partial dicts. No in-place mutation of state.**
+## Code
 
-9. `messages` is the only reducer field (`Annotated[list[dict], add]`). Everything else is last-write-wins.
+13. No bare `except:`. Catch specific exceptions, log with context, write `state["error"]`. The graph always
+    reaches its terminal node.
+14. `mypy --strict` passes on `app/gate/` and `app/graph/`.
+15. Config lives in `app/settings.py`. No magic constants elsewhere.
+16. Commit at each milestone, message naming it.
 
-10. **`resolved_question` takes precedence over `question`** everywhere downstream when it is set.
+## Scope
 
-11. **Verification retries are bounded at 2**, then escalate by downgrading the response to CLARIFY.
-    Never an unbounded reject/retry loop.
-
-## Code quality
-
-12. **No bare `except:`.** Catch specific exceptions, log with context, write to `state["error"]`.
-    The graph must always reach the terminal node.
-
-13. **Type hints everywhere.** `mypy --strict` must pass on `app/gate/` and `app/graph/`.
-
-14. **Config lives in `app/settings.py`** (pydantic-settings). No magic constants anywhere else.
-
-15. **Commit at every milestone boundary**, message naming the milestone. The commit history gets read.
-
-16. If something is genuinely underspecified, take the option that keeps the repo runnable **without
-    credentials**, and leave a `# DECISION:` comment explaining the choice. Do not ask and stall.
-
-## Scope discipline
-
-17. **Do not build ahead of the current phase.** Check `PHASE.md` for the active phase. If a file belongs
-    to a later phase, do not create it — even if it seems obviously needed.
-
-18. When time is constrained, cut features in this order: UI → ALTERNATIVES path → Qdrant → web-search
-    tools → synthesis agent. **Never cut:** the comparison harness, the adversarial suite, the CI
-    regression gate, the verification agent.
+17. **Build only the active phase.** The active phase is declared at the top of `SPEC.md`. If a file belongs
+    to a later phase, do not create it — not even a stub.
+18. When cutting scope: UI → ALTERNATIVES path → external vector DB → web-search tools → synthesis agent.
+    Never cut: comparison harness, adversarial suite, CI regression gate, verification agent.
+19. If something is underspecified, choose the option that keeps the repo runnable without credentials and
+    leave a `# DECISION:` comment. Do not stall.
