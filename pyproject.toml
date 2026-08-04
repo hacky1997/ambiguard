@@ -1,0 +1,57 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ambiguard"
+version = "0.1.0"
+description = "Multi-agent QA with learned ambiguity routing via CenterDistill (EAAAI 2026)"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+dependencies = [
+    "pydantic>=2.0",
+    "pydantic-settings>=2.0",
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+gate = [
+    "torch>=2.0",
+    "transformers>=4.30",
+    "safetensors>=0.3",
+]
+eval = [
+    "scipy>=1.10",
+]
+dev = [
+    "pytest>=7.0",
+    "mypy>=1.0",
+    "ruff>=0.1",
+    "numpy>=1.24",
+]
+all = [
+    "ambiguard[gate,eval,dev]",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = "app.gate.*"
+strict = true
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
