@@ -22,6 +22,7 @@ import numpy as np
 import numpy.typing as npt
 
 from app.gate.base import Behaviour, GateDecision
+from app.gate.heuristic import HeuristicGate
 from app.gate.thresholds import DEFAULT_THRESHOLDS, GateThresholds
 
 logger = logging.getLogger(__name__)
@@ -40,7 +41,7 @@ _TEACHER_TAU: float = 10.0
 def _try_import_torch() -> tuple[Any, bool]:
     """Import torch if available."""
     try:
-        import torch  # type: ignore[import-untyped]
+        import torch
         return torch, True
     except ImportError:
         return None, False
@@ -61,7 +62,7 @@ def _try_load_checkpoint(
         return None, None, None, False
 
     try:
-        from transformers import AutoTokenizer, AutoModel  # type: ignore[import-untyped]
+        from transformers import AutoTokenizer, AutoModel
     except ImportError:
         logger.warning("transformers not installed — using heuristic fallback")
         return None, None, None, False
@@ -74,7 +75,7 @@ def _try_load_checkpoint(
         logger.info("Loading checkpoint from local path: %s", checkpoint_path)
     elif hf_repo:
         try:
-            from huggingface_hub import snapshot_download  # type: ignore[import-untyped]
+            from huggingface_hub import snapshot_download
             local_dir: str = snapshot_download(hf_repo)
             resolved_path = Path(local_dir)
             logger.info("Downloaded checkpoint from HF Hub: %s", hf_repo)
@@ -95,7 +96,7 @@ def _try_load_checkpoint(
         centers: npt.NDArray[np.float64] = np.load(str(centers_path))
 
         # Load model and tokenizer
-        tokenizer = AutoTokenizer.from_pretrained(str(resolved_path))
+        tokenizer = AutoTokenizer.from_pretrained(str(resolved_path))  # type: ignore[no-untyped-call]
         model = AutoModel.from_pretrained(str(resolved_path))
 
         # Set model to eval mode (spec §5.2)
@@ -137,6 +138,8 @@ class CenterDistillGate:
         self._centers: npt.NDArray[np.float64] | None = None
         self._device: Any = None
         self._fallback: bool = True
+        # Typed to avoid Any return in __call__ when delegating
+        self._heuristic_gate: HeuristicGate | None = None
         self._heuristic: Any = None
 
         model, tokenizer, centers, success = _try_load_checkpoint(
@@ -148,10 +151,10 @@ class CenterDistillGate:
             self._tokenizer = tokenizer
             self._centers = centers
             self._fallback = False
+            self._heuristic_gate = None
             self._device = next(model.parameters()).device
         else:
-            from app.gate.heuristic import HeuristicGate
-            self._heuristic = HeuristicGate(thresholds=self._thresholds)
+            self._heuristic_gate = HeuristicGate(thresholds=self._thresholds)
 
     @property
     def using_fallback(self) -> bool:
@@ -163,8 +166,8 @@ class CenterDistillGate:
 
         Delegates to heuristic if no checkpoint loaded.
         """
-        if self._fallback:
-            return self._heuristic(question, context)
+        if self._fallback and self._heuristic_gate is not None:
+            return self._heuristic_gate(question, context)
         return self._classify_learned(question, context)
 
     def _classify_learned(self, question: str, context: str) -> GateDecision:
