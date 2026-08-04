@@ -9,7 +9,8 @@ Rules (AGENTS.md rules 8, 9, 10, 11):
 
 from __future__ import annotations
 
-from typing import Annotated, Any, Literal, TypedDict
+from typing import Annotated, Any, Literal
+from typing_extensions import TypedDict
 from langgraph.graph.message import add_messages
 
 from app.gate.base import GateDecision

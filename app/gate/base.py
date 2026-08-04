@@ -10,7 +10,8 @@ never as CenterDistill results (AGENTS.md rule 4).
 
 from __future__ import annotations
 
-from typing import Literal, Protocol, TypedDict
+from typing import Literal, Protocol
+from typing_extensions import TypedDict
 
 
 Behaviour = Literal["ANSWER", "CLARIFY", "ALTERNATIVES"]

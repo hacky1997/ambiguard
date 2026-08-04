@@ -9,4 +9,4 @@ Dataset: eval/datasets/golden_gate.jsonl (120 samples)
 | Majority class (ANSWER) | 0.500 | [0.408, 0.592] | 0.0 | 0 ms | 0 ms | $0.00 | yes |
 | Confidence threshold (τ=0.44) ⚠️ fallback | 0.250 | [0.175, 0.325] | 0.0 | 0 ms | 0 ms | $0.00 | yes |
 
-*Generated: 2026-08-04T08:41:19Z*
+*Generated: 2026-08-04T08:52:24Z*
