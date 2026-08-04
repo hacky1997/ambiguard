@@ -54,9 +54,14 @@ class CenterDistillModel(nn.Module):
 
     def __init__(self, base_name: str, num_centers: int) -> None:
         super().__init__()
-        from transformers import AutoModel
+        from transformers import AutoConfig, AutoModel
 
-        self.encoder = AutoModel.from_pretrained(base_name)
+        try:
+            config = AutoConfig.from_pretrained(base_name)
+            self.encoder = AutoModel.from_config(config)
+        except Exception:
+            self.encoder = AutoModel.from_pretrained(base_name)
+
         hidden = self.encoder.config.hidden_size
         self.span_head = nn.Linear(hidden, 2)
         self.center_head = nn.Linear(hidden, num_centers)
@@ -64,15 +69,20 @@ class CenterDistillModel(nn.Module):
 
 
 def _load_state(path: Path) -> dict[str, torch.Tensor]:
-    st_file = path / "model.safetensors"
-    if st_file.exists():
+    # Check for model.safetensors or model-001.safetensors or pytorch_model.bin
+    st_files = list(path.glob("model*.safetensors"))
+    if st_files:
         from safetensors.torch import load_file
 
-        return load_file(str(st_file), device="cpu")
+        state: dict[str, torch.Tensor] = {}
+        for stf in sorted(st_files):
+            state.update(load_file(str(stf), device="cpu"))
+        return state
+
     bin_file = path / "pytorch_model.bin"
     if bin_file.exists():
         return torch.load(bin_file, map_location="cpu")
-    raise FileNotFoundError(f"No model.safetensors or pytorch_model.bin in {path}")
+    raise FileNotFoundError(f"No model*.safetensors or pytorch_model.bin in {path}")
 
 
 def _sha256(path: Path) -> str:
@@ -88,7 +98,7 @@ def main() -> int:
     ap.add_argument(
         "--checkpoint-dir",
         required=True,
-        help="Directory containing checkpoint-*/ subdirectories",
+        help="Directory containing checkpoint model files or checkpoint-*/ subdirectories",
     )
     ap.add_argument(
         "--base-model",
@@ -109,39 +119,28 @@ def main() -> int:
     )
     args = ap.parse_args()
 
-    ckpt_root = Path(args.checkpoint_dir)
-    out_dir = Path(args.out)
+    ckpt_root = Path(args.checkpoint_dir).expanduser()
+    out_dir = Path(args.out).expanduser()
 
     # ── 1. Locate the checkpoint ───────────────────────────────────────────────
+    ckpt = ckpt_root
     candidates = sorted(
         (Path(p) for p in glob.glob(str(ckpt_root / "checkpoint-*"))),
         key=lambda p: int(p.name.rsplit("-", 1)[1]),
     )
-    if not candidates:
-        print(
-            f"ERROR: no checkpoint-* directories under {ckpt_root}", file=sys.stderr
-        )
-        print(
-            "The top-level model.safetensors is span-only and cannot be used.",
-            file=sys.stderr,
-        )
-        return 1
+    if candidates:
+        if args.step is not None:
+            matches = [p for p in candidates if p.name == f"checkpoint-{args.step}"]
+            if matches:
+                ckpt = matches[0]
+        else:
+            # Check if candidate has model files
+            for cand in reversed(candidates):
+                if list(cand.glob("model*.safetensors")) or (cand / "pytorch_model.bin").exists():
+                    ckpt = cand
+                    break
 
-    if args.step is not None:
-        matches = [p for p in candidates if p.name == f"checkpoint-{args.step}"]
-        if not matches:
-            print(
-                f"ERROR: checkpoint-{args.step} not found. "
-                f"Available: {[p.name for p in candidates]}",
-                file=sys.stderr,
-            )
-            return 1
-        ckpt = matches[0]
-    else:
-        ckpt = candidates[-1]
-
-    print(f"Checkpoints found : {[p.name for p in candidates]}")
-    print(f"Using             : {ckpt.name}")
+    print(f"Using directory : {ckpt}")
 
     # ── 2. Load and inspect ────────────────────────────────────────────────────
     state = _load_state(ckpt)
@@ -268,10 +267,13 @@ def main() -> int:
     )
     tok.save_pretrained(str(out_dir))
 
+    source_step = int(ckpt.name.rsplit("-", 1)[1]) if "-" in ckpt.name and ckpt.name.rsplit("-", 1)[1].isdigit() else 0
+    available_steps = [int(p.name.rsplit("-", 1)[1]) for p in candidates if "-" in p.name and p.name.rsplit("-", 1)[1].isdigit()]
+
     manifest = {
         "source_checkpoint": str(ckpt),
-        "source_step": int(ckpt.name.rsplit("-", 1)[1]),
-        "available_steps": [int(p.name.rsplit("-", 1)[1]) for p in candidates],
+        "source_step": source_step,
+        "available_steps": available_steps,
         "base_model": args.base_model,
         "K": K,
         "center_head_keys": center_keys,

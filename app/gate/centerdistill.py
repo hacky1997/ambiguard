@@ -103,10 +103,25 @@ def _try_load_checkpoint(
             class RepairedCenterDistillModel(nn.Module):
                 def __init__(self, base_name: str, num_centers: int) -> None:
                     super().__init__()
-                    self.encoder = AutoModel.from_pretrained(base_name)
+                    try:
+                        config = AutoConfig.from_pretrained(base_name)
+                        self.encoder = AutoModel.from_config(config)
+                    except Exception:
+                        self.encoder = AutoModel.from_pretrained(base_name)
+
                     hidden = self.encoder.config.hidden_size
                     self.span_head = nn.Linear(hidden, 2)
                     self.center_head = nn.Linear(hidden, num_centers)
+
+                def forward(
+                    self,
+                    input_ids: Any = None,
+                    attention_mask: Any = None,
+                    **kwargs: Any,
+                ) -> Any:
+                    return self.encoder(
+                        input_ids=input_ids, attention_mask=attention_mask, **kwargs
+                    )
 
             model = RepairedCenterDistillModel(base_model_name, K)
             model.load_state_dict(ckpt_data["state_dict"], strict=False)
