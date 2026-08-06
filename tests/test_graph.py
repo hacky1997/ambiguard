@@ -18,7 +18,7 @@ class TestGraphStateContracts:
 
     def test_answer_path_execution(self, monkeypatch: pytest.MonkeyPatch) -> None:
         """ANSWER path routes supervisor -> research -> synthesis -> verification -> END."""
-        monkeypatch.setenv("GATE_CHECKPOINT_PATH", "")
+        monkeypatch.setenv("AMBIGUARD_GATE_CHECKPOINT_PATH", "")
         graph = build_graph()
         initial_state: AgentState = {
             "thread_id": "t1",
@@ -35,7 +35,7 @@ class TestGraphStateContracts:
 
     def test_clarify_path_execution(self, monkeypatch: pytest.MonkeyPatch) -> None:
         """CLARIFY path routes supervisor -> clarification -> END."""
-        monkeypatch.setenv("GATE_CHECKPOINT_PATH", "")
+        monkeypatch.setenv("AMBIGUARD_GATE_CHECKPOINT_PATH", "")
         graph = build_graph()
         initial_state: AgentState = {
             "thread_id": "t2",
@@ -52,8 +52,9 @@ class TestGraphStateContracts:
         words = final_state["clarifying_question"].split()
         assert len(words) <= 25
 
-    def test_resolved_question_precedence(self) -> None:
+    def test_resolved_question_precedence(self, monkeypatch: pytest.MonkeyPatch) -> None:
         """AGENTS.md rule 11: resolved_question takes precedence over question."""
+        monkeypatch.setenv("AMBIGUARD_GATE_CHECKPOINT_PATH", "")
         graph = build_graph()
         initial_state: AgentState = {
             "thread_id": "t3",
