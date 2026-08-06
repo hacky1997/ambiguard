@@ -37,7 +37,7 @@ _K: int = 5
 
 # Tokenizer settings (spec §5.2)
 _MAX_LENGTH: int = 384
-_TRUNCATION: str = "only_second"
+_TRUNCATION: str = "longest_first"
 
 # Teacher temperature for center similarity (paper §2: τ = 10.0)
 _TEACHER_TAU: float = 10.0
