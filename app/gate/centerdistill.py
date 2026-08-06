@@ -311,7 +311,7 @@ class CenterDistillGate:
             1. max_prob > tau_conf        → ANSWER
             2. second_mass > tau_multi    → ALTERNATIVES
             3. entropy > tau_ent          → CLARIFY
-            4. else                       → ANSWER (conservative default)
+            4. else                       → CLARIFY (safe default — asking is cheaper)
 
         DO NOT reorder — it silently changes results.
         """
@@ -332,7 +332,8 @@ class CenterDistillGate:
         elif entropy > self._thresholds.tau_ent:
             behaviour = "CLARIFY"
         else:
-            behaviour = "ANSWER"  # conservative default
+            # DECISION: safe default — asking is cheaper than answering wrongly.
+            behaviour = "CLARIFY"
 
         return GateDecision(
             behaviour=behaviour,

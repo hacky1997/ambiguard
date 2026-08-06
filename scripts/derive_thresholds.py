@@ -4,9 +4,12 @@ Per AGENTS.md rule 2, threshold evaluation order is fixed:
     if max_prob > tau_conf:        ANSWER
     elif second_mass > tau_multi:  ALTERNATIVES
     elif entropy > tau_ent:        CLARIFY
-    else:                          ANSWER
+    else:                          CLARIFY  (safe default — asking is cheaper than answering wrongly)
 
 Entropy MUST be in nats (natural log).
+
+Objective: macro-F1 (not raw accuracy) to prevent the grid search from
+collapsing to a degenerate majority-class solution.
 
 Usage:
     python scripts/derive_thresholds.py [--dataset eval/datasets/golden_gate.jsonl] [--out eval/results/derived_thresholds.json]
@@ -28,33 +31,55 @@ from app.settings import get_settings
 logger = logging.getLogger(__name__)
 
 
+CLASSES = ("ANSWER", "ALTERNATIVES", "CLARIFY")
+
+
+def _predict(
+    item: dict[str, Any],
+    tau_conf: float,
+    tau_multi: float,
+    tau_ent: float,
+) -> str:
+    """Predict behaviour under the fixed threshold order (AGENTS.md rule 2)."""
+    if item["max_prob"] > tau_conf:
+        return "ANSWER"
+    elif item["second_mass"] > tau_multi:
+        return "ALTERNATIVES"
+    elif item["entropy"] > tau_ent:
+        return "CLARIFY"
+    else:
+        # DECISION: safe default — asking is cheaper than answering wrongly.
+        return "CLARIFY"
+
+
 def evaluate_thresholds(
     items: list[dict[str, Any]],
     tau_conf: float,
     tau_multi: float,
     tau_ent: float,
 ) -> float:
-    """Evaluate accuracy of a threshold triple under the fixed evaluation order."""
-    correct = 0
-    for item in items:
-        max_prob = item["max_prob"]
-        second_mass = item["second_mass"]
-        entropy = item["entropy"]
-        gold = item["expected_behaviour"]
+    """Evaluate macro-F1 of a threshold triple.
 
-        if max_prob > tau_conf:
-            pred = "ANSWER"
-        elif second_mass > tau_multi:
-            pred = "ALTERNATIVES"
-        elif entropy > tau_ent:
-            pred = "CLARIFY"
-        else:
-            pred = "ANSWER"
+    Macro-F1 prevents the grid search from collapsing to a degenerate
+    majority-class solution (always-ANSWER scores ~0.33 macro-F1).
+    """
+    if not items:
+        return 0.0
 
-        if pred == gold:
-            correct += 1
+    preds = [_predict(item, tau_conf, tau_multi, tau_ent) for item in items]
+    golds = [item["expected_behaviour"] for item in items]
 
-    return correct / len(items) if items else 0.0
+    f1_sum = 0.0
+    for cls in CLASSES:
+        tp = sum(1 for p, g in zip(preds, golds) if p == cls and g == cls)
+        fp = sum(1 for p, g in zip(preds, golds) if p == cls and g != cls)
+        fn = sum(1 for p, g in zip(preds, golds) if p != cls and g == cls)
+        prec = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+        rec = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+        f1 = 2 * prec * rec / (prec + rec) if (prec + rec) > 0 else 0.0
+        f1_sum += f1
+
+    return f1_sum / len(CLASSES)
 
 
 def main() -> None:
@@ -117,7 +142,7 @@ def main() -> None:
 
     logger.info("Grid searching optimal thresholds on %d calibration samples...", len(train_items))
 
-    best_acc = -1.0
+    best_score = -1.0
     best_tau_conf = 0.44
     best_tau_multi = 0.24
     best_tau_ent = 1.51
@@ -130,16 +155,16 @@ def main() -> None:
     for tc in conf_grid:
         for tm in multi_grid:
             for te in ent_grid:
-                acc = evaluate_thresholds(train_items, float(tc), float(tm), float(te))
-                if acc > best_acc:
-                    best_acc = acc
+                score = evaluate_thresholds(train_items, float(tc), float(tm), float(te))
+                if score > best_score:
+                    best_score = score
                     best_tau_conf = float(tc)
                     best_tau_multi = float(tm)
                     best_tau_ent = float(te)
 
-    val_acc = evaluate_thresholds(val_items, best_tau_conf, best_tau_multi, best_tau_ent)
-    paper_train_acc = evaluate_thresholds(train_items, 0.44, 0.24, 1.51)
-    paper_val_acc = evaluate_thresholds(val_items, 0.44, 0.24, 1.51)
+    val_score = evaluate_thresholds(val_items, best_tau_conf, best_tau_multi, best_tau_ent)
+    paper_train_score = evaluate_thresholds(train_items, 0.44, 0.24, 1.51)
+    paper_val_score = evaluate_thresholds(val_items, 0.44, 0.24, 1.51)
 
     result = {
         "derived_thresholds": {
@@ -147,13 +172,15 @@ def main() -> None:
             "tau_multi": round(best_tau_multi, 4),
             "tau_ent": round(best_tau_ent, 4),
         },
+        "objective": "macro-F1",
+        "fallthrough_default": "CLARIFY",
         "calibration_results": {
             "n_calibration_samples": len(train_items),
             "n_validation_samples": len(val_items),
-            "calibrated_train_accuracy": round(best_acc, 4),
-            "calibrated_val_accuracy": round(val_acc, 4),
-            "paper_defaults_train_accuracy": round(paper_train_acc, 4),
-            "paper_defaults_val_accuracy": round(paper_val_acc, 4),
+            "calibrated_train_macro_f1": round(best_score, 4),
+            "calibrated_val_macro_f1": round(val_score, 4),
+            "paper_defaults_train_macro_f1": round(paper_train_score, 4),
+            "paper_defaults_val_macro_f1": round(paper_val_score, 4),
         },
     }
 
@@ -162,10 +189,10 @@ def main() -> None:
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(result, f, indent=2)
 
-    logger.info("Threshold optimization complete!")
+    logger.info("Threshold optimization complete (objective=macro-F1, fallthrough=CLARIFY)!")
     logger.info("  Optimal thresholds: tau_conf=%.4f, tau_multi=%.4f, tau_ent=%.4f", best_tau_conf, best_tau_multi, best_tau_ent)
-    logger.info("  Train Accuracy: %.1f%% (derived) vs %.1f%% (paper default)", best_acc * 100, paper_train_acc * 100)
-    logger.info("  Val Accuracy:   %.1f%% (derived) vs %.1f%% (paper default)", val_acc * 100, paper_val_acc * 100)
+    logger.info("  Train macro-F1: %.4f (derived) vs %.4f (paper default)", best_score, paper_train_score)
+    logger.info("  Val macro-F1:   %.4f (derived) vs %.4f (paper default)", val_score, paper_val_score)
     logger.info("Results written to %s", out_path)
 
 

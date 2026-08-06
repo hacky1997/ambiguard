@@ -1,15 +1,17 @@
 {
   "derived_thresholds": {
-    "tau_conf": 0.32,
-    "tau_multi": 0.28,
-    "tau_ent": 1.58
+    "tau_conf": 0.31,
+    "tau_multi": 0.24,
+    "tau_ent": 1.0
   },
+  "objective": "macro-F1",
+  "fallthrough_default": "CLARIFY",
   "calibration_results": {
     "n_calibration_samples": 300,
     "n_validation_samples": 300,
-    "calibrated_train_accuracy": 0.5067,
-    "calibrated_val_accuracy": 0.4967,
-    "paper_defaults_train_accuracy": 0.32,
-    "paper_defaults_val_accuracy": 0.26
+    "calibrated_train_macro_f1": 0.3879,
+    "calibrated_val_macro_f1": 0.34,
+    "paper_defaults_train_macro_f1": 0.2734,
+    "paper_defaults_val_macro_f1": 0.2163
   }
 }
