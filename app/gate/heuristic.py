@@ -160,3 +160,5 @@ class HeuristicGate:
             latency_ms=round(elapsed_ms, 2),
             fallback_used=True,  # ALWAYS True for heuristic gate
         )
+
+    decide = __call__

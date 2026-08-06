@@ -24,6 +24,7 @@ import numpy.typing as npt
 from app.gate.base import Behaviour, GateDecision
 from app.gate.heuristic import HeuristicGate
 from app.gate.thresholds import DEFAULT_THRESHOLDS, GateThresholds
+from app.settings import Settings
 
 logger = logging.getLogger(__name__)
 
@@ -180,10 +181,15 @@ class CenterDistillGate:
 
     def __init__(
         self,
-        checkpoint_path: Path | None = None,
+        checkpoint_path: Path | Settings | None = None,
         hf_repo: str | None = None,
         thresholds: GateThresholds | None = None,
     ) -> None:
+        if isinstance(checkpoint_path, Settings):
+            settings = checkpoint_path
+            checkpoint_path = settings.gate_checkpoint_path
+            hf_repo = hf_repo or settings.gate_hf_repo
+
         self._thresholds = thresholds or DEFAULT_THRESHOLDS
         self._model: Any = None
         self._tokenizer: Any = None
@@ -221,6 +227,8 @@ class CenterDistillGate:
         if self._fallback and self._heuristic_gate is not None:
             return self._heuristic_gate(question, context)
         return self._classify_learned(question, context)
+
+    decide = __call__
 
     def _classify_learned(self, question: str, context: str) -> GateDecision:
         """Run CenterDistill inference.
