@@ -1,0 +1,60 @@
+{
+  "model": "gpt-4o-mini",
+  "n_per_variant": 200,
+  "seed": 42,
+  "variants": {
+    "clean": {
+      "accuracy": 0.54,
+      "ci95": [
+        0.47,
+        0.61
+      ],
+      "recall": {
+        "ANSWER": 0.87,
+        "AMBIGUOUS": 0.21
+      },
+      "pred_dist": {
+        "ANSWER": 166,
+        "AMBIGUOUS": 34
+      },
+      "cost_usd": 0.8785
+    },
+    "formatted": {
+      "accuracy": 0.615,
+      "ci95": [
+        0.55,
+        0.68
+      ],
+      "recall": {
+        "ANSWER": 0.95,
+        "AMBIGUOUS": 0.28
+      },
+      "pred_dist": {
+        "ANSWER": 167,
+        "AMBIGUOUS": 33
+      },
+      "cost_usd": 0.9365
+    },
+    "blind": {
+      "accuracy": 0.515,
+      "ci95": [
+        0.445,
+        0.585
+      ],
+      "recall": {
+        "ANSWER": 0.03,
+        "AMBIGUOUS": 1.0
+      },
+      "pred_dist": {
+        "AMBIGUOUS": 197,
+        "ANSWER": 3
+      },
+      "cost_usd": 0.2041
+    }
+  },
+  "formatted_minus_clean": 0.075,
+  "ci_overlap": true,
+  "confirmed": false,
+  "total_cost_usd": 2.0191,
+  "note": "All three variants use identical rows and identical passage text. Only the wrapper formatting differs, and in the 'formatted' variant it differs by class \u2014 reproducing the defect found in the original dataset builder."
+}
