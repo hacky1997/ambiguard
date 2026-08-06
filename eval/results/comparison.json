@@ -14,7 +14,8 @@
       "cost_per_1k_usd": 0.0,
       "deterministic": true,
       "fallback_used": false,
-      "n_samples": 600
+      "n_samples": 600,
+      "balanced_accuracy": 0.367
     },
     {
       "arm_name": "LLM judge (gpt-4o-mini)",
@@ -27,7 +28,8 @@
       "cost_per_1k_usd": 1.8261,
       "deterministic": true,
       "fallback_used": false,
-      "n_samples": 600
+      "n_samples": 600,
+      "balanced_accuracy": 0.616
     },
     {
       "arm_name": "Majority class (ANSWER)",
@@ -40,10 +42,11 @@
       "cost_per_1k_usd": 0.0,
       "deterministic": true,
       "fallback_used": false,
-      "n_samples": 600
+      "n_samples": 600,
+      "balanced_accuracy": 0.333
     },
     {
-      "arm_name": "Confidence threshold (τ=0.44)",
+      "arm_name": "Confidence threshold (\u03c4=0.44)",
       "behaviour_accuracy": 0.257,
       "ci_95_lower": 0.222,
       "ci_95_upper": 0.292,
@@ -53,7 +56,8 @@
       "cost_per_1k_usd": 0.0,
       "deterministic": true,
       "fallback_used": false,
-      "n_samples": 600
+      "n_samples": 600,
+      "balanced_accuracy": 0.331
     }
   ],
   "per_row_details": {
@@ -27063,7 +27067,7 @@
         }
       }
     ],
-    "Confidence threshold (τ=0.44)": [
+    "Confidence threshold (\u03c4=0.44)": [
       {
         "id": "gate_0001",
         "prediction": "CLARIFY",

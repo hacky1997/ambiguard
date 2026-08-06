@@ -26,8 +26,8 @@ def format_comparison_table(comparison: dict[str, Any]) -> str:
         f"Dataset: {comparison.get('dataset', 'N/A')} "
         f"({comparison.get('n_samples', 0)} samples)",
         "",
-        "| Arm | Beh. Acc | 95% CI | WC-F1 | p50 lat. | p95 lat. | $/1k | Det. |",
-        "|---|---|---|---|---|---|---|---|",
+        "| Arm | Beh. Acc | Bal. Acc | 95% CI | WC-F1 | p50 lat. | p95 lat. | $/1k | Det. |",
+        "|---|---|---|---|---|---|---|---|---|",
     ]
 
     for arm in arms:
@@ -37,6 +37,7 @@ def format_comparison_table(comparison: dict[str, Any]) -> str:
                 name += " ⚠️ fallback"
 
         acc = arm.get("behaviour_accuracy", 0)
+        bal_acc = arm.get("balanced_accuracy", 0)
         ci_lo = arm.get("ci_95_lower", 0)
         ci_hi = arm.get("ci_95_upper", 0)
         wc = arm.get("worst_cluster_f1", 0)
@@ -46,7 +47,7 @@ def format_comparison_table(comparison: dict[str, Any]) -> str:
         det = "yes" if arm.get("deterministic", False) else "no"
 
         lines.append(
-            f"| {name} | {acc:.3f} | [{ci_lo:.3f}, {ci_hi:.3f}] | "
+            f"| {name} | {acc:.3f} | {bal_acc:.3f} | [{ci_lo:.3f}, {ci_hi:.3f}] | "
             f"{wc:.1f} | {p50:.0f} ms | {p95:.0f} ms | "
             f"${cost:.2f} | {det} |"
         )

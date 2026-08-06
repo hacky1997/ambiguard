@@ -22,6 +22,7 @@ from eval.arms.centerdistill_arm import CenterDistillArm
 from eval.arms.confidence_arm import ConfidenceArm
 from eval.arms.llm_judge_arm import LLMJudgeArm
 from eval.arms.majority_arm import MajorityArm
+from eval.metrics.balanced_accuracy import balanced_accuracy
 from eval.metrics.behaviour_accuracy import behaviour_accuracy
 from eval.metrics.bootstrap import bootstrap_ci
 from eval.metrics.worst_cluster_f1 import worst_cluster_f1
@@ -89,6 +90,7 @@ def _run_arm(
     acc_point, acc_lower, acc_upper = bootstrap_ci(
         predictions, gold, behaviour_accuracy
     )
+    bal_acc = balanced_accuracy(predictions, gold)
     wc_f1 = worst_cluster_f1(predictions, gold)
 
     # Latency stats
@@ -118,6 +120,7 @@ def _run_arm(
     return {
         "arm_name": arm.name,
         "behaviour_accuracy": acc_point,
+        "balanced_accuracy": bal_acc,
         "ci_95_lower": acc_lower,
         "ci_95_upper": acc_upper,
         "worst_cluster_f1": wc_f1,
