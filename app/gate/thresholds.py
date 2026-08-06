@@ -53,3 +53,20 @@ class GateThresholds:
 
 # Paper defaults — do not modify without re-running scripts/derive_thresholds.py
 DEFAULT_THRESHOLDS = GateThresholds()
+
+
+def get_thresholds_from_settings(settings: Any = None) -> GateThresholds:
+    """Load thresholds from Settings/env or fallback to DEFAULT_THRESHOLDS."""
+    if settings is None:
+        from app.settings import get_settings
+        settings = get_settings()
+
+    tau_conf = settings.tau_conf if getattr(settings, "tau_conf", None) is not None else DEFAULT_THRESHOLDS.tau_conf
+    tau_multi = settings.tau_multi if getattr(settings, "tau_multi", None) is not None else DEFAULT_THRESHOLDS.tau_multi
+    tau_ent = settings.tau_ent if getattr(settings, "tau_ent", None) is not None else DEFAULT_THRESHOLDS.tau_ent
+
+    return GateThresholds(
+        tau_conf=float(tau_conf),
+        tau_multi=float(tau_multi),
+        tau_ent=float(tau_ent),
+    )

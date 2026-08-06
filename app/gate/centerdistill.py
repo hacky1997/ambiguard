@@ -23,7 +23,11 @@ import numpy.typing as npt
 
 from app.gate.base import Behaviour, GateDecision
 from app.gate.heuristic import HeuristicGate
-from app.gate.thresholds import DEFAULT_THRESHOLDS, GateThresholds
+from app.gate.thresholds import (
+    DEFAULT_THRESHOLDS,
+    GateThresholds,
+    get_thresholds_from_settings,
+)
 from app.settings import Settings
 
 logger = logging.getLogger(__name__)
@@ -189,8 +193,9 @@ class CenterDistillGate:
             settings = checkpoint_path
             checkpoint_path = settings.gate_checkpoint_path
             hf_repo = hf_repo or settings.gate_hf_repo
+            thresholds = thresholds or get_thresholds_from_settings(settings)
 
-        self._thresholds = thresholds or DEFAULT_THRESHOLDS
+        self._thresholds = thresholds or get_thresholds_from_settings()
         self._model: Any = None
         self._tokenizer: Any = None
         self._centers: npt.NDArray[np.float64] | None = None

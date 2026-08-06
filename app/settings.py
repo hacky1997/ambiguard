@@ -38,6 +38,18 @@ class Settings(BaseSettings):
         default=None,
         description="HF Hub repo ID for CenterDistill checkpoint",
     )
+    tau_conf: float | None = Field(
+        default=None,
+        description="Optional override for tau_conf threshold",
+    )
+    tau_multi: float | None = Field(
+        default=None,
+        description="Optional override for tau_multi threshold",
+    )
+    tau_ent: float | None = Field(
+        default=None,
+        description="Optional override for tau_ent threshold",
+    )
 
     # --- LLM provider ---
     llm_provider: str = Field(
