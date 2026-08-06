@@ -95,6 +95,8 @@ def _try_load_checkpoint(
             logger.info("Loading repaired artifact: %s", full_pt)
             ckpt_data = torch.load(full_pt, map_location=device)
             base_model_name = ckpt_data.get("base_model", "deepset/xlm-roberta-large-squad2")
+            if not Path(base_model_name).exists() and (base_model_name.startswith("/") or "\\" in base_model_name):
+                base_model_name = "deepset/xlm-roberta-large-squad2"
             K = ckpt_data.get("K", 5)
 
             # Rebuild model structure matching repair_checkpoint.py
@@ -128,7 +130,16 @@ def _try_load_checkpoint(
             model.load_state_dict(ckpt_data["state_dict"], strict=False)
             model.eval().to(device)
 
-            tokenizer = AutoTokenizer.from_pretrained(str(resolved_path))  # type: ignore[no-untyped-call]
+            tok_path = (
+                resolved_path
+                if (resolved_path / "tokenizer_config.json").exists()
+                else (
+                    resolved_path.parent
+                    if (resolved_path.parent / "tokenizer_config.json").exists()
+                    else base_model_name
+                )
+            )
+            tokenizer = AutoTokenizer.from_pretrained(str(tok_path))  # type: ignore[no-untyped-call]
             dummy_centers = np.zeros((K, 768), dtype=np.float64)
 
             logger.info("Repaired CenterDistill artifact loaded on %s", device)

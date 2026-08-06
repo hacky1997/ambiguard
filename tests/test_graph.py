@@ -16,8 +16,9 @@ class TestGraphStateContracts:
         graph = build_graph()
         assert graph is not None
 
-    def test_answer_path_execution(self) -> None:
+    def test_answer_path_execution(self, monkeypatch: pytest.MonkeyPatch) -> None:
         """ANSWER path routes supervisor -> research -> synthesis -> verification -> END."""
+        monkeypatch.setenv("GATE_CHECKPOINT_PATH", "")
         graph = build_graph()
         initial_state: AgentState = {
             "thread_id": "t1",
@@ -32,8 +33,9 @@ class TestGraphStateContracts:
         assert final_state.get("verification") is not None
         assert final_state["verification"]["passed"] is True
 
-    def test_clarify_path_execution(self) -> None:
+    def test_clarify_path_execution(self, monkeypatch: pytest.MonkeyPatch) -> None:
         """CLARIFY path routes supervisor -> clarification -> END."""
+        monkeypatch.setenv("GATE_CHECKPOINT_PATH", "")
         graph = build_graph()
         initial_state: AgentState = {
             "thread_id": "t2",
