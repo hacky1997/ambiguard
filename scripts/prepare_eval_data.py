@@ -152,7 +152,7 @@ def write_readme() -> None:
 def main() -> None:
     """Generate golden_gate.jsonl dataset and README."""
     logging.basicConfig(level=logging.INFO)
-    rows = prepare_golden_dataset(max_samples=120)
+    rows = prepare_golden_dataset(max_samples=600)
     
     _OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(_OUTPUT_PATH, "w", encoding="utf-8") as f:

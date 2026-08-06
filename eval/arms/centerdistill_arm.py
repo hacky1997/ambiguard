@@ -22,18 +22,21 @@ class CenterDistillArm:
     fallback_used=True so the comparison table labels it correctly.
     """
 
-    def __init__(self, thresholds: GateThresholds | None = None) -> None:
+    def __init__(self, thresholds: GateThresholds | None = None, name_suffix: str = "") -> None:
         settings = get_settings()
         self._gate = CenterDistillGate(
             checkpoint_path=settings.gate_checkpoint_path,
             hf_repo=settings.gate_hf_repo,
             thresholds=thresholds,
         )
+        self._suffix = name_suffix
 
     @property
     def name(self) -> str:
         if self._gate.using_fallback:
             return "CenterDistill (heuristic fallback)"
+        if self._suffix:
+            return f"CenterDistill ({self._suffix})"
         return "CenterDistill"
 
     @property

@@ -148,10 +148,30 @@ def run_comparison(
     # Instantiate arms (spec §3.1)
     arms: list[Any] = [
         CenterDistillArm(),
+    ]
+
+    derived_json = Path("eval/results/derived_thresholds.json")
+    if derived_json.exists():
+        try:
+            with open(derived_json, encoding="utf-8") as f:
+                d_data = json.load(f)
+            t_dict = d_data.get("derived_thresholds", {})
+            if t_dict:
+                from app.gate.thresholds import GateThresholds
+                calib_t = GateThresholds(
+                    tau_conf=float(t_dict["tau_conf"]),
+                    tau_multi=float(t_dict["tau_multi"]),
+                    tau_ent=float(t_dict["tau_ent"]),
+                )
+                arms.append(CenterDistillArm(thresholds=calib_t, name_suffix="calibrated"))
+        except Exception as exc:
+            logger.warning("Could not load derived thresholds: %s", exc)
+
+    arms.extend([
         LLMJudgeArm(),
         MajorityArm.from_dataset([r["expected_behaviour"] for r in dataset]),
         ConfidenceArm(),
-    ]
+    ])
 
     results: list[dict[str, Any]] = []
     for arm in arms:

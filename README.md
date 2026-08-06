@@ -6,13 +6,15 @@
 
 ## 1. Comparison Results
 
+Dataset: `eval/datasets/golden_gate.jsonl` (600 samples)
+
 | Arm | Beh. Acc | 95% CI | WC-F1 | p50 lat. | p95 lat. | $/1k | Det. |
 |---|---|---|---|---|---|---|---|
-| **CenterDistill** *(learned gate)* | **0.891** | [0.872, 0.908] | **8.6** | **74 ms** | **110 ms** | **$0.00** | **yes** |
-| CenterDistill *(heuristic fallback)* | 0.292 | [0.208, 0.375] | 0.0 | 0 ms | 0 ms | $0.00 | yes |
-| LLM judge (gpt-4.1) | 0.783 | [0.741, 0.822] | 6.5 | 1250 ms | 2100 ms | $4.50 | no |
-| Confidence threshold (τ=0.44) | 0.712 | [0.665, 0.758] | 5.1 | 74 ms | 110 ms | $0.00 | yes |
-| Majority class (ANSWER) | 0.500 | [0.408, 0.592] | 0.0 | <1 ms | <1 ms | $0.00 | yes |
+| **CenterDistill (calibrated)** | **0.502** | [0.462, 0.542] | 1.1 | 455 ms | 629 ms | $0.00 | yes |
+| Majority class (ANSWER) | 0.500 | [0.460, 0.540] | 0.0 | 0 ms | 0 ms | $0.00 | yes |
+| CenterDistill (paper default) | 0.290 | [0.255, 0.327] | 2.1 | 443 ms | 598 ms | $0.00 | yes |
+| LLM judge (mock-v1) | 0.298 | [0.262, 0.335] | 2.8 | 0 ms | 0 ms | $0.00 | yes |
+| Confidence threshold (τ=0.44) | 0.257 | [0.222, 0.292] | 0.0 | 463 ms | 707 ms | $0.00 | yes |
 
 *Every number traces to committed `eval/results/comparison.json` produced by actual runs.*
 
