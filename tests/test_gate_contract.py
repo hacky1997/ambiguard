@@ -135,8 +135,13 @@ class TestThresholds:
         for key in ("tau_conf", "tau_multi", "tau_ent"):
             assert key in result["thresholds"], f"Missing threshold: {key}"
 
-    def test_threshold_values_correct(self, gate: Any) -> None:
+    def test_threshold_values_correct(self, monkeypatch: Any) -> None:
         """Default thresholds match the paper values."""
+        monkeypatch.setenv("AMBIGUARD_TAU_CONF", "")
+        monkeypatch.setenv("AMBIGUARD_TAU_MULTI", "")
+        monkeypatch.setenv("AMBIGUARD_TAU_ENT", "")
+        from app.gate.heuristic import HeuristicGate
+        gate = HeuristicGate()
         result = gate("Test question", "Test context")
         assert result["thresholds"]["tau_conf"] == 0.44
         assert result["thresholds"]["tau_multi"] == 0.24
