@@ -1,0 +1,51 @@
+{
+  "n": 600,
+  "three_class": {
+    "gate": 0.5017,
+    "judge": 0.7217
+  },
+  "binary": {
+    "task": "ANSWER vs AMBIGUOUS (ALTERNATIVES+CLARIFY collapsed)",
+    "majority_label": "AMBIGUOUS",
+    "majority_acc": 0.5,
+    "gate": {
+      "acc": 0.5433,
+      "ci95": [
+        0.5033,
+        0.5833
+      ]
+    },
+    "judge": {
+      "acc": 0.9383,
+      "ci95": [
+        0.9183,
+        0.9567
+      ]
+    },
+    "gate_answer_precision": 0.5258,
+    "gate_answer_recall": 0.8833,
+    "gate_answer_f1": 0.6592,
+    "confusion": {
+      "tp": 265,
+      "fp": 239,
+      "fn": 35,
+      "tn": 61
+    },
+    "gap_narrowed": false
+  },
+  "class_gated_cascade": {
+    "kept_frac": 0.84,
+    "gate_precision_on_kept": 0.5258,
+    "accuracy": 0.5467,
+    "ci95": [
+      0.5067,
+      0.5883
+    ],
+    "cost_per_1k": 0.293,
+    "p50_ms": 620.2,
+    "cost_saving_pct": 84.0,
+    "acc_vs_judge": -0.175,
+    "binary_accuracy": 0.5817,
+    "binary_acc_vs_judge": -0.3567
+  }
+}
