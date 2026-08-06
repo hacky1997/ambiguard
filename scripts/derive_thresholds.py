@@ -31,25 +31,27 @@ from app.settings import get_settings
 logger = logging.getLogger(__name__)
 
 
-CLASSES = ("ANSWER", "ALTERNATIVES", "CLARIFY")
-
-
 def _predict(
     item: dict[str, Any],
     tau_conf: float,
     tau_multi: float,
     tau_ent: float,
+    is_binary: bool = False,
 ) -> str:
     """Predict behaviour under the fixed threshold order (AGENTS.md rule 2)."""
     if item["max_prob"] > tau_conf:
-        return "ANSWER"
+        pred = "ANSWER"
     elif item["second_mass"] > tau_multi:
-        return "ALTERNATIVES"
+        pred = "ALTERNATIVES"
     elif item["entropy"] > tau_ent:
-        return "CLARIFY"
+        pred = "CLARIFY"
     else:
         # DECISION: safe default — asking is cheaper than answering wrongly.
-        return "CLARIFY"
+        pred = "CLARIFY"
+
+    if is_binary and pred in ("CLARIFY", "ALTERNATIVES"):
+        return "AMBIGUOUS"
+    return pred
 
 
 def evaluate_thresholds(
@@ -66,11 +68,14 @@ def evaluate_thresholds(
     if not items:
         return 0.0
 
-    preds = [_predict(item, tau_conf, tau_multi, tau_ent) for item in items]
+    is_binary = any(item["expected_behaviour"] == "AMBIGUOUS" for item in items)
+    classes = ("ANSWER", "AMBIGUOUS") if is_binary else ("ANSWER", "ALTERNATIVES", "CLARIFY")
+
+    preds = [_predict(item, tau_conf, tau_multi, tau_ent, is_binary=is_binary) for item in items]
     golds = [item["expected_behaviour"] for item in items]
 
     f1_sum = 0.0
-    for cls in CLASSES:
+    for cls in classes:
         tp = sum(1 for p, g in zip(preds, golds) if p == cls and g == cls)
         fp = sum(1 for p, g in zip(preds, golds) if p == cls and g != cls)
         fn = sum(1 for p, g in zip(preds, golds) if p != cls and g == cls)
@@ -79,7 +84,7 @@ def evaluate_thresholds(
         f1 = 2 * prec * rec / (prec + rec) if (prec + rec) > 0 else 0.0
         f1_sum += f1
 
-    return f1_sum / len(CLASSES)
+    return f1_sum / len(classes)
 
 
 def main() -> None:

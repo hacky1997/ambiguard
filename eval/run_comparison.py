@@ -64,6 +64,10 @@ def _run_arm(
 ) -> dict[str, Any]:
     """Run a single arm on the full dataset and compute all metrics."""
     gold: list[str] = [row["expected_behaviour"] for row in dataset]
+    is_binary: bool = "AMBIGUOUS" in set(gold)
+    if hasattr(arm, "is_binary"):
+        arm.is_binary = is_binary
+
     predictions: list[str] = []
     latencies: list[float] = []
     total_cost: float = 0.0
@@ -71,15 +75,18 @@ def _run_arm(
 
     for row in dataset:
         result: ArmResult = arm.predict(row["question"], row["context"])
-        predictions.append(result["prediction"])
+        pred: str = result["prediction"]
+        if is_binary and pred in ("CLARIFY", "ALTERNATIVES"):
+            pred = "AMBIGUOUS"
+        predictions.append(pred)
         latencies.append(result["latency_ms"])
         total_cost += result["cost_usd"]
         per_row_results.append(
             {
                 "id": row["id"],
-                "prediction": result["prediction"],
+                "prediction": pred,
                 "gold": row["expected_behaviour"],
-                "correct": result["prediction"] == row["expected_behaviour"],
+                "correct": pred == row["expected_behaviour"],
                 "latency_ms": result["latency_ms"],
                 "cost_usd": result["cost_usd"],
                 "metadata": result["metadata"],

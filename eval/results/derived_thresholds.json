@@ -1,7 +1,7 @@
 {
   "derived_thresholds": {
-    "tau_conf": 0.31,
-    "tau_multi": 0.24,
+    "tau_conf": 0.3,
+    "tau_multi": 0.05,
     "tau_ent": 1.0
   },
   "objective": "macro-F1",
@@ -9,9 +9,9 @@
   "calibration_results": {
     "n_calibration_samples": 300,
     "n_validation_samples": 300,
-    "calibrated_train_macro_f1": 0.3879,
-    "calibrated_val_macro_f1": 0.34,
-    "paper_defaults_train_macro_f1": 0.2734,
-    "paper_defaults_val_macro_f1": 0.2163
+    "calibrated_train_macro_f1": 0.5323,
+    "calibrated_val_macro_f1": 0.4733,
+    "paper_defaults_train_macro_f1": 0.3754,
+    "paper_defaults_val_macro_f1": 0.3616
   }
 }

@@ -29,13 +29,28 @@ Context: {context}
 
 Respond with exactly one word: ANSWER, CLARIFY, or ALTERNATIVES."""
 
+_JUDGE_PROMPT_TEMPLATE_BINARY: str = """You are an ambiguity classifier. Given a question and context, decide the routing behaviour.
 
-def _parse_behaviour(raw: str) -> str:
+Rules:
+- ANSWER: The question has a single clear answer given the context.
+- AMBIGUOUS: The question is ambiguous or has multiple valid interpretations.
+
+Question: {question}
+Context: {context}
+
+Respond with exactly one word: ANSWER or AMBIGUOUS."""
+
+
+def _parse_behaviour(raw: str, is_binary: bool = False) -> str:
     """Extract a valid behaviour label from LLM output.
 
     Handles common variations: extra whitespace, lowercase, explanation text.
     """
     upper = raw.strip().upper()
+    if is_binary:
+        if "AMBIGUOUS" in upper or "CLARIFY" in upper or "ALTERNATIVES" in upper:
+            return "AMBIGUOUS"
+        return "ANSWER"
     for label in ("ANSWER", "CLARIFY", "ALTERNATIVES"):
         if label in upper:
             return label
@@ -56,9 +71,11 @@ class LLMJudgeArm:
         provider_name: str | None = None,
         api_key: str | None = None,
         model: str | None = None,
+        is_binary: bool = False,
     ) -> None:
         settings = get_settings()
         self._provider_name: str = provider_name or settings.llm_provider
+        self.is_binary: bool = is_binary
         self._provider = get_provider(
             self._provider_name,
             api_key=api_key or settings.openai_api_key,
@@ -75,13 +92,14 @@ class LLMJudgeArm:
 
     def predict(self, question: str, context: str) -> ArmResult:
         """Ask the LLM to classify ambiguity."""
-        prompt: str = _JUDGE_PROMPT_TEMPLATE.format(
+        template = _JUDGE_PROMPT_TEMPLATE_BINARY if self.is_binary else _JUDGE_PROMPT_TEMPLATE
+        prompt: str = template.format(
             question=question, context=context
         )
         response: LLMResponse = self._provider.complete(prompt, temperature=0.0)
 
         return ArmResult(
-            prediction=_parse_behaviour(response["content"]),
+            prediction=_parse_behaviour(response["content"], is_binary=self.is_binary),
             latency_ms=response["latency_ms"],
             cost_usd=response["cost_usd"],
             metadata={
