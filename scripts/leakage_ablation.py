@@ -122,7 +122,12 @@ def main() -> int:
                     help="Rows per variant. 3 x n API calls total.")
     ap.add_argument("--dry-run", action="store_true",
                     help="Print rendered contexts, make no API calls.")
+    ap.add_argument("--variants", nargs="+", default=["clean", "formatted"],
+                    choices=["clean", "formatted", "blind"],
+                    help="Variants to evaluate.")
     args = ap.parse_args()
+
+    active_variants = {k: VARIANTS[k] for k in args.variants if k in VARIANTS}
 
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 
@@ -132,7 +137,7 @@ def main() -> int:
         logger.error("Expected binary labels, found %s", labels)
         return 1
 
-    # Balanced sample, fixed seed, same rows across all three variants.
+    # Balanced sample, fixed seed, same rows across all variants.
     by_label: dict[str, list] = {}
     for r in rows:
         by_label.setdefault(r["expected_behaviour"], []).append(r)
@@ -148,7 +153,7 @@ def main() -> int:
                 dict(Counter(r["expected_behaviour"] for r in sample)))
 
     if args.dry_run:
-        for name, fn in VARIANTS.items():
+        for name, fn in active_variants.items():
             print(f"\n{'=' * 70}\nVARIANT: {name}\n{'=' * 70}")
             for r in sample[:2]:
                 print(f"\n[{r['expected_behaviour']}] {r['question']}")
@@ -178,7 +183,7 @@ def main() -> int:
     results: dict[str, Any] = {}
     total_cost = 0.0
 
-    for name, render in VARIANTS.items():
+    for name, render in active_variants.items():
         logger.info("Running variant: %s", name)
         preds, cost = [], 0.0
         for i, row in enumerate(sample):
@@ -212,12 +217,9 @@ def main() -> int:
                     name, acc * 100, lo * 100, hi * 100, cost)
 
     # ── Report ────────────────────────────────────────────────────
-    clean = results["clean"]
-    fmt = results["formatted"]
-    blind = results["blind"]
-    delta = fmt["accuracy"] - clean["accuracy"]
-    overlap = not (fmt["ci95"][0] > clean["ci95"][1] or
-                   clean["ci95"][0] > fmt["ci95"][1])
+    clean = results.get("clean")
+    fmt = results.get("formatted")
+    blind = results.get("blind")
 
     print("\n" + "=" * 74)
     print(f"LEAKAGE ABLATION — {provider.model_name}, n={len(sample)} per variant")
@@ -225,7 +227,7 @@ def main() -> int:
     print(f"{'variant':<14} {'accuracy':>10} {'CI95':>18} "
           f"{'rec ANSWER':>12} {'rec AMBIG':>11}")
     print("-" * 74)
-    for name in ("clean", "formatted", "blind"):
+    for name in active_variants:
         r = results[name]
         ci_str = f"[{r['ci95'][0]:.1%}, {r['ci95'][1]:.1%}]"
         print(f"{name:<14} {r['accuracy']:>9.1%} "
@@ -233,21 +235,29 @@ def main() -> int:
               f"{r['recall']['ANSWER']:>11.1%} {r['recall']['AMBIGUOUS']:>10.1%}")
     print("=" * 74)
 
-    print(f"\n  formatted - clean = {delta:+.1%}")
-    if delta > 0.05 and not overlap:
-        print("  ✅ CONFIRMED. Class-dependent formatting inflates accuracy with")
-        print("     no change to the underlying passage. The original benchmark")
-        print("     measured presentation, not ambiguity.")
-    elif delta > 0.05:
-        print("  ⚠ Directionally consistent but CIs overlap. Increase --n.")
-    else:
-        print("  ❌ NOT CONFIRMED. Formatting does not explain the earlier gap.")
-        print("     Something else differs between the two datasets — check the")
-        print("     label scheme and context source.")
+    delta = 0.0
+    overlap = True
+    if clean and fmt:
+        delta = fmt["accuracy"] - clean["accuracy"]
+        overlap = not (fmt["ci95"][0] > clean["ci95"][1] or
+                       clean["ci95"][0] > fmt["ci95"][1])
+        print(f"\n  formatted - clean = {delta:+.1%}")
+        if delta > 0.05 and not overlap:
+            print("  ✅ CONFIRMED. Class-dependent formatting inflates accuracy with")
+            print("     no change to the underlying passage. The original benchmark")
+            print("     measured presentation, not ambiguity.")
+        elif delta > 0.05:
+            print("  ⚠ Directionally consistent but CIs overlap. Increase --n.")
+        else:
+            print("  ❌ NOT CONFIRMED. Formatting does not explain the earlier gap.")
+            print("     Something else differs between the two datasets — check the")
+            print("     label scheme and context source.")
 
-    print(f"\n  blind (question only) = {blind['accuracy']:.1%}")
-    if blind["accuracy"] > clean["accuracy"] - 0.03:
-        print("     Context adds little over the question alone. Worth stating:")
+    if blind and clean:
+        print(f"\n  blind (question only) = {blind['accuracy']:.1%}")
+        if blind["accuracy"] > clean["accuracy"] - 0.03:
+            print("     Context adds little over the question alone. Worth stating:")
+            print("     this task may not be solvable from the passage.")
         print("     this task may not be solvable from the passage.")
 
     print(f"\n  total cost: ${total_cost:.2f}")

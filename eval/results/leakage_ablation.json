@@ -1,60 +1,44 @@
 {
   "model": "gpt-4o-mini",
-  "n_per_variant": 200,
+  "n_per_variant": 400,
   "seed": 42,
   "variants": {
     "clean": {
-      "accuracy": 0.54,
+      "accuracy": 0.555,
       "ci95": [
-        0.47,
-        0.61
+        0.505,
+        0.6025
       ],
       "recall": {
-        "ANSWER": 0.87,
-        "AMBIGUOUS": 0.21
+        "ANSWER": 0.865,
+        "AMBIGUOUS": 0.245
       },
       "pred_dist": {
-        "ANSWER": 166,
-        "AMBIGUOUS": 34
+        "ANSWER": 324,
+        "AMBIGUOUS": 76
       },
-      "cost_usd": 0.8785
+      "cost_usd": 1.7574
     },
     "formatted": {
-      "accuracy": 0.615,
+      "accuracy": 0.62,
       "ci95": [
-        0.55,
-        0.68
+        0.57,
+        0.6675
       ],
       "recall": {
-        "ANSWER": 0.95,
-        "AMBIGUOUS": 0.28
+        "ANSWER": 0.94,
+        "AMBIGUOUS": 0.3
       },
       "pred_dist": {
-        "ANSWER": 167,
-        "AMBIGUOUS": 33
+        "ANSWER": 328,
+        "AMBIGUOUS": 72
       },
-      "cost_usd": 0.9365
-    },
-    "blind": {
-      "accuracy": 0.515,
-      "ci95": [
-        0.445,
-        0.585
-      ],
-      "recall": {
-        "ANSWER": 0.03,
-        "AMBIGUOUS": 1.0
-      },
-      "pred_dist": {
-        "AMBIGUOUS": 197,
-        "ANSWER": 3
-      },
-      "cost_usd": 0.2041
+      "cost_usd": 1.8732
     }
   },
-  "formatted_minus_clean": 0.075,
+  "formatted_minus_clean": 0.065,
   "ci_overlap": true,
   "confirmed": false,
-  "total_cost_usd": 2.0191,
+  "total_cost_usd": 3.6306,
   "note": "All three variants use identical rows and identical passage text. Only the wrapper formatting differs, and in the 'formatted' variant it differs by class \u2014 reproducing the defect found in the original dataset builder."
 }
