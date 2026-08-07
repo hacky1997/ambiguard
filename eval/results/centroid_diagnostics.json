@@ -1,0 +1,84 @@
+{
+  "n_questions": 300,
+  "english_decision_dist": {
+    "ANSWER": 163,
+    "ALTERNATIVES": 137
+  },
+  "per_language": {
+    "es": {
+      "n": 300,
+      "stability": 0.6733,
+      "flip_directions": {
+        "ANSWER->ALTERNATIVES": 73,
+        "ALTERNATIVES->ANSWER": 25
+      },
+      "mean_delta_max_prob": 0.0535,
+      "frac_flips_near_boundary": 0.5306,
+      "mean_embedding_displacement": 0.1038
+    },
+    "de": {
+      "n": 300,
+      "stability": 0.7267,
+      "flip_directions": {
+        "ANSWER->ALTERNATIVES": 60,
+        "ALTERNATIVES->ANSWER": 22
+      },
+      "mean_delta_max_prob": 0.0481,
+      "frac_flips_near_boundary": 0.5854,
+      "mean_embedding_displacement": 0.1208
+    },
+    "ja": {
+      "n": 300,
+      "stability": 0.6467,
+      "flip_directions": {
+        "ANSWER->ALTERNATIVES": 90,
+        "ALTERNATIVES->ANSWER": 16
+      },
+      "mean_delta_max_prob": 0.0765,
+      "frac_flips_near_boundary": 0.4151,
+      "mean_embedding_displacement": 0.155
+    },
+    "ar": {
+      "n": 300,
+      "stability": 0.66,
+      "flip_directions": {
+        "ANSWER->ALTERNATIVES": 77,
+        "ALTERNATIVES->ANSWER": 25
+      },
+      "mean_delta_max_prob": 0.0719,
+      "frac_flips_near_boundary": 0.4706,
+      "mean_embedding_displacement": 0.1277
+    },
+    "hi": {
+      "n": 300,
+      "stability": 0.6667,
+      "flip_directions": {
+        "ANSWER->ALTERNATIVES": 74,
+        "ALTERNATIVES->ANSWER": 26
+      },
+      "mean_delta_max_prob": 0.0643,
+      "frac_flips_near_boundary": 0.37,
+      "mean_embedding_displacement": 0.1366
+    },
+    "sw": {
+      "n": 300,
+      "stability": 0.6333,
+      "flip_directions": {
+        "ANSWER->ALTERNATIVES": 94,
+        "ALTERNATIVES->ANSWER": 16
+      },
+      "mean_delta_max_prob": 0.0865,
+      "frac_flips_near_boundary": 0.2636,
+      "mean_embedding_displacement": 0.1412
+    }
+  },
+  "flip_directions_overall": {
+    "ANSWER->ALTERNATIVES": 468,
+    "ALTERNATIVES->ANSWER": 130
+  },
+  "dominant_direction": "ANSWER->ALTERNATIVES",
+  "direction_skew": 0.7826,
+  "frac_flips_near_boundary": 0.4314,
+  "mean_embedding_displacement": 0.1309,
+  "verdict": "representation_problem"
+}
