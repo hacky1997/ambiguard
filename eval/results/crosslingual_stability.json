@@ -1,0 +1,140 @@
+{
+  "n_samples": 300,
+  "label_mode": "binary",
+  "translation_tainted": false,
+  "warnings": [
+    "LLM judge predicts 'ANSWER' on 81% of English rows. Stability is trivially high for a near-constant predictor and does not demonstrate cross-lingual robustness."
+  ],
+  "english_baseline_dist_gate": {
+    "ANSWER": 163,
+    "AMBIGUOUS": 137
+  },
+  "mean_stability_gate": 0.6678,
+  "ci95_gate": [
+    0.6461,
+    0.6894
+  ],
+  "per_language_gate": {
+    "es": {
+      "language": "Spanish",
+      "stability": 0.6733,
+      "ci95": [
+        0.62,
+        0.7267
+      ],
+      "unchanged_rate": 0.0
+    },
+    "de": {
+      "language": "German",
+      "stability": 0.7267,
+      "ci95": [
+        0.6767,
+        0.7767
+      ],
+      "unchanged_rate": 0.0
+    },
+    "ja": {
+      "language": "Japanese",
+      "stability": 0.6467,
+      "ci95": [
+        0.5933,
+        0.7
+      ],
+      "unchanged_rate": 0.0
+    },
+    "ar": {
+      "language": "Arabic",
+      "stability": 0.66,
+      "ci95": [
+        0.6067,
+        0.7133
+      ],
+      "unchanged_rate": 0.0
+    },
+    "hi": {
+      "language": "Hindi",
+      "stability": 0.6667,
+      "ci95": [
+        0.6133,
+        0.72
+      ],
+      "unchanged_rate": 0.0
+    },
+    "sw": {
+      "language": "Swahili",
+      "stability": 0.6333,
+      "ci95": [
+        0.58,
+        0.6867
+      ],
+      "unchanged_rate": 0.0
+    }
+  },
+  "worst_language_gate": "sw",
+  "english_baseline_dist_llm": {
+    "AMBIGUOUS": 58,
+    "ANSWER": 242
+  },
+  "mean_stability_llm": 0.8361,
+  "ci95_llm": [
+    0.8189,
+    0.8528
+  ],
+  "per_language_llm": {
+    "es": {
+      "language": "Spanish",
+      "stability": 0.8733,
+      "ci95": [
+        0.8333,
+        0.91
+      ],
+      "unchanged_rate": 0.0
+    },
+    "de": {
+      "language": "German",
+      "stability": 0.88,
+      "ci95": [
+        0.8433,
+        0.9167
+      ],
+      "unchanged_rate": 0.0
+    },
+    "ja": {
+      "language": "Japanese",
+      "stability": 0.8233,
+      "ci95": [
+        0.78,
+        0.8667
+      ],
+      "unchanged_rate": 0.0
+    },
+    "ar": {
+      "language": "Arabic",
+      "stability": 0.8133,
+      "ci95": [
+        0.77,
+        0.8567
+      ],
+      "unchanged_rate": 0.0
+    },
+    "hi": {
+      "language": "Hindi",
+      "stability": 0.83,
+      "ci95": [
+        0.7867,
+        0.8733
+      ],
+      "unchanged_rate": 0.0
+    },
+    "sw": {
+      "language": "Swahili",
+      "stability": 0.7967,
+      "ci95": [
+        0.75,
+        0.84
+      ],
+      "unchanged_rate": 0.0
+    }
+  },
+  "gate_minus_llm": -0.1683
+}

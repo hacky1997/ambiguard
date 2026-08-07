@@ -1,0 +1,273 @@
+{
+  "n_samples": 210,
+  "label_mode": "binary",
+  "gold_dist": {
+    "AMBIGUOUS": 168,
+    "ANSWER": 42
+  },
+  "gate": {
+    "accuracy": 0.3524,
+    "ci95": [
+      0.2905,
+      0.419
+    ],
+    "control_accuracy": 0.4524,
+    "control_ci95": [
+      0.3095,
+      0.5952
+    ],
+    "n_controls": 42,
+    "pred_dist": {
+      "ANSWER": 132,
+      "AMBIGUOUS": 78
+    },
+    "per_category": {
+      "calendar": {
+        "n": 15,
+        "accuracy": 0.6,
+        "ci95": [
+          0.3333,
+          0.8667
+        ]
+      },
+      "code_switching": {
+        "n": 15,
+        "accuracy": 0.0667,
+        "ci95": [
+          0.0,
+          0.2
+        ]
+      },
+      "currency": {
+        "n": 15,
+        "accuracy": 0.0667,
+        "ci95": [
+          0.0,
+          0.2
+        ]
+      },
+      "date_format": {
+        "n": 15,
+        "accuracy": 0.8,
+        "ci95": [
+          0.6,
+          1.0
+        ]
+      },
+      "entity_collision": {
+        "n": 15,
+        "accuracy": 0.3333,
+        "ci95": [
+          0.1333,
+          0.6
+        ]
+      },
+      "formality": {
+        "n": 15,
+        "accuracy": 0.7333,
+        "ci95": [
+          0.4667,
+          0.9333
+        ]
+      },
+      "gender": {
+        "n": 15,
+        "accuracy": 0.2667,
+        "ci95": [
+          0.0667,
+          0.5333
+        ]
+      },
+      "honorific": {
+        "n": 15,
+        "accuracy": 0.1333,
+        "ci95": [
+          0.0,
+          0.3333
+        ]
+      },
+      "measurement": {
+        "n": 15,
+        "accuracy": 0.6667,
+        "ci95": [
+          0.4,
+          0.8667
+        ]
+      },
+      "number_ambiguity": {
+        "n": 15,
+        "accuracy": 0.8,
+        "ci95": [
+          0.6,
+          1.0
+        ]
+      },
+      "numeric_scale": {
+        "n": 15,
+        "accuracy": 0.2667,
+        "ci95": [
+          0.0667,
+          0.5333
+        ]
+      },
+      "script_variant": {
+        "n": 15,
+        "accuracy": 0.1333,
+        "ci95": [
+          0.0,
+          0.3333
+        ]
+      },
+      "subject_drop": {
+        "n": 15,
+        "accuracy": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "word_order": {
+        "n": 15,
+        "accuracy": 0.0667,
+        "ci95": [
+          0.0,
+          0.2
+        ]
+      }
+    },
+    "warning": "Gate control accuracy 45.2% is below 50%: unambiguous cross-lingual queries are being flagged as ambiguous. This is over-triggering, not detection — overall accuracy on this set is not meaningful while controls fail."
+  },
+  "llm": {
+    "accuracy": 0.8714,
+    "ci95": [
+      0.8238,
+      0.9143
+    ],
+    "control_accuracy": 0.9762,
+    "control_ci95": [
+      0.9286,
+      1.0
+    ],
+    "n_controls": 42,
+    "pred_dist": {
+      "AMBIGUOUS": 143,
+      "ANSWER": 67
+    },
+    "per_category": {
+      "calendar": {
+        "n": 15,
+        "accuracy": 0.3333,
+        "ci95": [
+          0.1333,
+          0.6
+        ]
+      },
+      "code_switching": {
+        "n": 15,
+        "accuracy": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "currency": {
+        "n": 15,
+        "accuracy": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "date_format": {
+        "n": 15,
+        "accuracy": 0.9333,
+        "ci95": [
+          0.8,
+          1.0
+        ]
+      },
+      "entity_collision": {
+        "n": 15,
+        "accuracy": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "formality": {
+        "n": 15,
+        "accuracy": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "gender": {
+        "n": 15,
+        "accuracy": 0.7333,
+        "ci95": [
+          0.4667,
+          0.9333
+        ]
+      },
+      "honorific": {
+        "n": 15,
+        "accuracy": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "measurement": {
+        "n": 15,
+        "accuracy": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "number_ambiguity": {
+        "n": 15,
+        "accuracy": 0.9333,
+        "ci95": [
+          0.8,
+          1.0
+        ]
+      },
+      "numeric_scale": {
+        "n": 15,
+        "accuracy": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "script_variant": {
+        "n": 15,
+        "accuracy": 0.8667,
+        "ci95": [
+          0.6667,
+          1.0
+        ]
+      },
+      "subject_drop": {
+        "n": 15,
+        "accuracy": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "word_order": {
+        "n": 15,
+        "accuracy": 0.4,
+        "ci95": [
+          0.1333,
+          0.6667
+        ]
+      }
+    },
+    "warning": null
+  },
+  "gate_minus_llm": -0.519
+}

@@ -68,19 +68,23 @@ class LLMJudgeArm:
 
     def __init__(
         self,
-        provider_name: str | None = None,
+        provider_or_name: Any | str | None = None,
         api_key: str | None = None,
         model: str | None = None,
         is_binary: bool = False,
     ) -> None:
         settings = get_settings()
-        self._provider_name: str = provider_name or settings.llm_provider
         self.is_binary: bool = is_binary
-        self._provider = get_provider(
-            self._provider_name,
-            api_key=api_key or settings.openai_api_key,
-            model=model or settings.openai_model,
-        )
+        if provider_or_name is not None and not isinstance(provider_or_name, str):
+            self._provider = provider_or_name
+            self._provider_name = getattr(provider_or_name, "provider_name", "custom")
+        else:
+            self._provider_name = provider_or_name or settings.llm_provider
+            self._provider = get_provider(
+                self._provider_name,
+                api_key=api_key or settings.openai_api_key,
+                model=model or settings.openai_model,
+            )
 
     @property
     def name(self) -> str:
