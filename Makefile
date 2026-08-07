@@ -8,10 +8,13 @@ dev:
 data:
 	python scripts/prepare_eval_data.py
 	python scripts/prepare_adversarial_data.py
+	python scripts/build_typological_set.py
+	python scripts/validate_typological_set.py
 
 # --- Testing ---
 
 test:
+	python scripts/validate_typological_set.py
 	python -m pytest tests/ -v
 
 lint:
