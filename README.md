@@ -78,7 +78,7 @@ Balanced binary task (ANSWER vs AMBIGUOUS), 600 examples from AmbigNQ human anno
 Read this carefully:
 - Every confidence interval contains 50%. No arm is distinguishable from guessing.
 - The LLM judge leads on raw accuracy by 3 points, well inside the overlap.
-- The gate leads on worst-class F1 — 4.9 vs 3.2 — meaning it is less lopsided across the two classes.
+- Both systems collapse toward one class: worst-class F1 is 4.9 and 3.2 on a 0–10 scale, meaning neither handles the weaker class competently. The gate's minimum is marginally higher, but the 1.7-point difference is inside sampling noise at n=600 and no confidence interval is reported for this metric.
 - Worst-class F1 is the minimum per-class F1 over gold classes. A constant predictor scores 0.0 by construction. An earlier implementation iterated over predicted classes instead and reported 6.7 for a predictor that never emitted the minority class at all.
 
 Raw numbers: [`eval/results/comparison.json`](eval/results/comparison.json)
@@ -100,7 +100,7 @@ Controlled ablation — identical rows, identical passage text, only the wrapper
 
 *n = 400 per variant, gpt-4o-mini, temperature 0.*
 
-+6.5 points from formatting alone. The recall shift is clear: ANSWER recall climbs from 86.5% to 94.0%, which is what you would expect if the wrapper is announcing the label.
++6.5 points from formatting alone. The 95% intervals overlap by 3.2 points ([57.0, 60.2]), so this is a directional result consistent with the leak hypothesis, not a statistically separated effect at n=400. The recall shift is the clearer evidence: ANSWER recall climbs from 86.5% to 94.0%, which is what you would expect if the wrapper is announcing the label.
 
 `prepare_eval_data.py` now runs an automated leakage check before writing, and fails the build if the label becomes recoverable from answer-string presence, context length, or class-specific markers.
 
@@ -127,7 +127,7 @@ Both are collapsed predictors. Adding the retrieved passage buys 2.5 points over
 
 I expected the learned gate to be structurally immune to prompt injection: it consumes embeddings and emits a probability distribution, so there is no instruction-following surface to attack.
 
-Injected tokens change the encoder's output, which moves $max(P_S)$ across a decision threshold. The routing flips just as effectively as if the model had obeyed an instruction.
+Injected tokens change the encoder's output, which moves $max(P_S)$ across a decision threshold. The routing flips just as effectively as if the model had obeyed an instruction. Note on metric scope: `eval/results/adversarial.json` reports 0% injection resistance on a legacy 5-case payload suite measuring explicit instruction compliance in text output, whereas the 300-case suite in `injection_robustness.json` measures decision-distribution stability under context perturbation.
 
 Evaluating mitigation via **question-only gating** (`decide(question, None)`):
 
@@ -138,7 +138,7 @@ Evaluating mitigation via **question-only gating** (`decide(question, None)`):
 
 *n_clean = 150, n_injection = 300 poisoned variants across prefix/midpoint/suffix positions.*
 
-Question-only gating is injection-immune by construction — the gate never reads retrieved text, providing a structural guarantee at zero measurable loss in clean accuracy.
+Question-only gating is injection-immune by construction — the gate never reads retrieved text, providing a structural guarantee at zero measurable loss in clean accuracy. Question-only gating moves clean accuracy from 45.3% to 47.3% while raising robustness from 95.7% to 100%. Robustness is gained at no measurable accuracy cost, since the clean accuracy confidence intervals overlap heavily ([37.3%, 53.3%] vs [39.3%, 55.3%]).
 
 Raw numbers: [`eval/results/injection_robustness.json`](eval/results/injection_robustness.json)
 
