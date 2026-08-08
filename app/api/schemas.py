@@ -20,7 +20,12 @@ class ResumeRequest(BaseModel):
     """Request payload for /api/chat/resume endpoint (CLARIFY turn resume)."""
 
     thread_id: str = Field(..., description="Session thread ID to resume")
-    user_clarification: str = Field(..., min_length=1, description="User response clarifying the query")
+    user_clarification: str = Field(default="", description="User response clarifying the query")
+    reply: str | None = Field(default=None, description="Alias for user_clarification")
+
+    def model_post_init(self, __context: Any) -> None:
+        if not self.user_clarification and self.reply:
+            self.user_clarification = self.reply
 
 
 class ChatResponse(BaseModel):

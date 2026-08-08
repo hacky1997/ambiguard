@@ -24,11 +24,7 @@ def supervisor_node(state: AgentState) -> dict[str, Any]:
     AGENTS.md rule 11: resolved_question takes precedence over question everywhere downstream when set.
     """
     settings = get_settings()
-    gate = CenterDistillGate(
-        checkpoint_path=settings.gate_checkpoint_path,
-        hf_repo=settings.gate_hf_repo,
-        thresholds=DEFAULT_THRESHOLDS,
-    )
+    gate = CenterDistillGate(settings)
 
     # Rule 11: resolved_question takes precedence
     query: str = state.get("resolved_question") or state.get("question", "")

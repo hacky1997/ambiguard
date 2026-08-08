@@ -16,7 +16,7 @@ from app.graph.builder import build_graph
 from app.graph.state import AgentState
 from app.observability.metrics import metrics
 
-router = APIRouter(prefix="/api/chat", tags=["Chat"])
+router = APIRouter(tags=["Chat"])
 
 # Simple in-memory thread storage for session state
 _THREAD_SESSIONS: dict[str, AgentState] = {}

@@ -2,7 +2,6 @@
 
 > **ACTIVE PHASE: 3**
 > Build only what Phase 3 permits. See `AGENTS.md` rule 17.
-> **NEW ARCHITECTURE SPEC**: See [`docs/PRODUCTION_SPAN_GATE_SPEC.md`](file:///Users/sayak/Downloads/files%20%282%29/docs/PRODUCTION_SPAN_GATE_SPEC.md) for Token-Level Span Detection & Multi-Label Ambiguity Tagging.
 
 ---
 
