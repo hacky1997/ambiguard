@@ -138,7 +138,7 @@ Evaluating mitigation via **question-only gating** (`decide(question, None)`):
 
 *n_clean = 150, n_injection = 300 poisoned variants across prefix/midpoint/suffix positions.*
 
-Question-only gating is injection-immune by construction — the gate never reads retrieved text, providing a structural guarantee at zero measurable loss in clean accuracy. Question-only gating moves clean accuracy from 45.3% to 47.3% while raising robustness from 95.7% to 100%. Robustness is gained at no measurable accuracy cost, since the clean accuracy confidence intervals overlap heavily ([37.3%, 53.3%] vs [39.3%, 55.3%]).
+Question-only gating is injection-immune by construction — the gate never reads retrieved text. It moves clean accuracy from 45.3% to 47.3% while raising robustness from 95.7% to 100%. Robustness is gained at no measurable accuracy cost, since the clean accuracy confidence intervals overlap heavily ([37.3%, 53.3%] vs [39.3%, 55.3%]).
 
 Raw numbers: [`eval/results/injection_robustness.json`](eval/results/injection_robustness.json)
 
