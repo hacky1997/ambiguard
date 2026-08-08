@@ -1,0 +1,45 @@
+{
+  "before": {
+    "per_class": {
+      "ANSWER": {
+        "n": 300,
+        "mean_len": 1197.2,
+        "question_in_context_rate": 0.5233,
+        "empty_rate": 0.0
+      },
+      "AMBIGUOUS": {
+        "n": 300,
+        "mean_len": 1197.7,
+        "question_in_context_rate": 0.58,
+        "empty_rate": 0.0
+      }
+    },
+    "problems": [
+      "serialisation marker \"'title'\" still present ANSWER=100%, AMBIGUOUS=100%",
+      "serialisation marker \"'snippet'\" still present ANSWER=100%, AMBIGUOUS=100%",
+      "serialisation marker '[{' still present ANSWER=100%, AMBIGUOUS=100%"
+    ]
+  },
+  "after": {
+    "per_class": {
+      "ANSWER": {
+        "n": 300,
+        "mean_len": 604.5,
+        "question_in_context_rate": 0.0,
+        "empty_rate": 0.0
+      },
+      "AMBIGUOUS": {
+        "n": 300,
+        "mean_len": 592.1,
+        "question_in_context_rate": 0.0,
+        "empty_rate": 0.0
+      }
+    },
+    "problems": []
+  },
+  "mean_len_before": 1197.4,
+  "mean_len_after": 598.3,
+  "rows_with_question_removed": 1,
+  "empty_after_repair": 0,
+  "output": "eval/datasets/golden_gate_repaired.jsonl"
+}

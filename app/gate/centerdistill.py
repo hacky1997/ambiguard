@@ -93,7 +93,11 @@ def _try_load_checkpoint(
         return None, None, None, False
 
     try:
-        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        device = torch.device(
+            "cuda"
+            if torch.cuda.is_available()
+            else ("mps" if torch.backends.mps.is_available() else "cpu")
+        )
         full_pt = resolved_path / "centerdistill_full.pt"
 
         if full_pt.exists():
@@ -234,6 +238,71 @@ class CenterDistillGate:
         return self._classify_learned(question, context)
 
     decide = __call__
+
+    def encode_cls(self, question: str, context: str | None = None) -> npt.NDArray[np.float64]:
+        """Extract the CLS token hidden embedding from XLM-RoBERTa (1024-dim)."""
+        return self.encode_cls_batch([question], [context])[0]
+
+    def encode_cls_batch(self, questions: list[str], contexts: list[str | None]) -> npt.NDArray[np.float64]:
+        """Extract CLS embeddings for a batch of question-context pairs (1024-dim)."""
+        if self._fallback:
+            return np.zeros((len(questions), 1024), dtype=np.float64)
+
+        torch, _ = _try_import_torch()
+        out: list[npt.NDArray[np.float64]] = []
+        bs = 32
+        for i in range(0, len(questions), bs):
+            b_q = questions[i:i + bs]
+            b_c = contexts[i:i + bs]
+            inputs = self._tokenizer(
+                b_q,
+                b_c,
+                max_length=_MAX_LENGTH,
+                truncation=_TRUNCATION,
+                padding="max_length",
+                return_tensors="pt",
+            )
+            inputs = {k: v.to(self._device) for k, v in inputs.items()}
+            with torch.inference_mode():
+                outputs = self._model(**inputs)
+                cls_hidden = outputs.last_hidden_state[:, 0, :]
+                out.append(cls_hidden.cpu().numpy().astype(np.float64))
+        return np.concatenate(out, axis=0)
+
+    def decide_from_embedding(
+        self, embedding: npt.NDArray[np.float64] | Any
+    ) -> GateDecision:
+        """Classify a pre-computed CLS embedding vector (1024-dim) directly.
+
+        Passes embedding through the center_head (or teacher similarity formula)
+        and applies thresholds.
+        """
+        if self._fallback and self._heuristic_gate is not None:
+            return self._heuristic_gate("", "")
+
+        torch, _ = _try_import_torch()
+        start: float = time.perf_counter()
+
+        if isinstance(embedding, np.ndarray):
+            emb_tensor = torch.tensor(embedding, dtype=torch.float32, device=self._device)
+            if emb_tensor.dim() == 1:
+                emb_tensor = emb_tensor.unsqueeze(0)
+        else:
+            emb_tensor = embedding.to(self._device)
+            if emb_tensor.dim() == 1:
+                emb_tensor = emb_tensor.unsqueeze(0)
+
+        with torch.inference_mode():
+            if hasattr(self._model, "center_head"):
+                logits = self._model.center_head(emb_tensor)
+                p_s: npt.NDArray[np.float64] = (
+                    torch.softmax(logits, dim=-1).cpu().numpy()[0]
+                )
+            else:
+                p_s = self._center_similarity(emb_tensor)
+
+        elapsed_ms: float = (time.perf_counter() - start) * 1000.0
+        return self._apply_thresholds(p_s.tolist(), elapsed_ms)
 
     def _classify_learned(self, question: str, context: str) -> GateDecision:
         """Run CenterDistill inference.
