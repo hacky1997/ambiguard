@@ -7,47 +7,41 @@
       "tau_multi": 0.05,
       "tau_ent": 1.0
     },
-    "standard_policy": {
-      "accuracy_3class": 0.2617,
-      "ci95_3class": [
-        0.2267,
-        0.2983
-      ],
-      "accuracy_binary": 0.5033,
-      "ci95_binary": [
+    "alternatives_branch_activations": {
+      "count": 288,
+      "fraction": 0.48
+    },
+    "standard_policy_binary": {
+      "accuracy": 0.5033,
+      "ci95": [
         0.4633,
         0.5433
       ],
-      "confusion_3class": {
+      "predictions": {
         "said_ANSWER": 312,
         "said_ALTERNATIVES": 288,
         "said_CLARIFY": 0
       }
     },
-    "ablated_policy_no_second_mass": {
-      "accuracy_3class": 0.2617,
-      "ci95_3class": [
-        0.2267,
-        0.2983
-      ],
-      "accuracy_binary": 0.5033,
-      "ci95_binary": [
+    "ablated_policy_no_second_mass_binary": {
+      "accuracy": 0.5033,
+      "ci95": [
         0.4633,
         0.5433
       ],
-      "confusion_3class": {
+      "predictions": {
         "said_ANSWER": 312,
         "said_ALTERNATIVES": 0,
         "said_CLARIFY": 288
       }
     },
-    "paired_delta_3class": {
+    "paired_binary_delta": {
       "mean": 0.0,
       "ci95": [
         0.0,
         0.0
       ],
-      "statistically_improved": false
+      "note": "Binary labels (ANSWER vs AMBIGUOUS) cannot distinguish CLARIFY from ALTERNATIVES; requires PAQA sub-type annotations."
     }
   },
   "golden_gate_repaired": {
@@ -58,47 +52,41 @@
       "tau_multi": 0.05,
       "tau_ent": 1.0
     },
-    "standard_policy": {
-      "accuracy_3class": 0.3167,
-      "ci95_3class": [
-        0.28,
-        0.355
-      ],
-      "accuracy_binary": 0.505,
-      "ci95_binary": [
+    "alternatives_branch_activations": {
+      "count": 223,
+      "fraction": 0.3717
+    },
+    "standard_policy_binary": {
+      "accuracy": 0.505,
+      "ci95": [
         0.465,
         0.5467
       ],
-      "confusion_3class": {
+      "predictions": {
         "said_ANSWER": 377,
         "said_ALTERNATIVES": 223,
         "said_CLARIFY": 0
       }
     },
-    "ablated_policy_no_second_mass": {
-      "accuracy_3class": 0.3167,
-      "ci95_3class": [
-        0.28,
-        0.355
-      ],
-      "accuracy_binary": 0.505,
-      "ci95_binary": [
+    "ablated_policy_no_second_mass_binary": {
+      "accuracy": 0.505,
+      "ci95": [
         0.465,
         0.5467
       ],
-      "confusion_3class": {
+      "predictions": {
         "said_ANSWER": 377,
         "said_ALTERNATIVES": 0,
         "said_CLARIFY": 223
       }
     },
-    "paired_delta_3class": {
+    "paired_binary_delta": {
       "mean": 0.0,
       "ci95": [
         0.0,
         0.0
       ],
-      "statistically_improved": false
+      "note": "Binary labels (ANSWER vs AMBIGUOUS) cannot distinguish CLARIFY from ALTERNATIVES; requires PAQA sub-type annotations."
     }
   }
 }

@@ -92,58 +92,55 @@ def evaluate_dataset(dataset_path: Path, gate: CenterDistillGate) -> dict[str, A
     abl_binary_preds = np.where(ablated_preds == "ANSWER", "ANSWER", "AMBIGUOUS")
     gold_binary = np.where(golds == "ANSWER", "ANSWER", "AMBIGUOUS")
 
-    std_3class_ok = std_preds == golds
-    abl_3class_ok = ablated_preds == golds
-
     std_bin_ok = std_binary_preds == gold_binary
     abl_bin_ok = abl_binary_preds == gold_binary
-
-    std_acc, std_lo, std_hi = boot_ci(std_3class_ok)
-    abl_acc, abl_lo, abl_hi = boot_ci(abl_3class_ok)
 
     std_bacc, std_blo, std_bhi = boot_ci(std_bin_ok)
     abl_bacc, abl_blo, abl_bhi = boot_ci(abl_bin_ok)
 
-    # Paired delta bootstrap for 3-class accuracy
+    # Paired delta bootstrap for binary accuracy
     rng = np.random.default_rng(_SEED)
     deltas = []
     for _ in range(10_000):
         idx = rng.integers(0, len(rows), len(rows))
-        deltas.append(abl_3class_ok[idx].mean() - std_3class_ok[idx].mean())
+        deltas.append(abl_bin_ok[idx].mean() - std_bin_ok[idx].mean())
     d_mean = float(np.mean(deltas))
     d_lo = float(np.percentile(deltas, 2.5))
     d_hi = float(np.percentile(deltas, 97.5))
+
+    alternatives_firing_count = int((std_preds == "ALTERNATIVES").sum())
+    alternatives_firing_frac = float(alternatives_firing_count / len(rows))
 
     return {
         "dataset": dataset_path.name,
         "n": len(rows),
         "thresholds_used": {"tau_conf": tc, "tau_multi": tm, "tau_ent": te},
-        "standard_policy": {
-            "accuracy_3class": round(std_acc, 4),
-            "ci95_3class": [round(std_lo, 4), round(std_hi, 4)],
-            "accuracy_binary": round(std_bacc, 4),
-            "ci95_binary": [round(std_blo, 4), round(std_bhi, 4)],
-            "confusion_3class": {
+        "alternatives_branch_activations": {
+            "count": alternatives_firing_count,
+            "fraction": round(alternatives_firing_frac, 4),
+        },
+        "standard_policy_binary": {
+            "accuracy": round(std_bacc, 4),
+            "ci95": [round(std_blo, 4), round(std_bhi, 4)],
+            "predictions": {
                 "said_ANSWER": int((std_preds == "ANSWER").sum()),
-                "said_ALTERNATIVES": int((std_preds == "ALTERNATIVES").sum()),
+                "said_ALTERNATIVES": alternatives_firing_count,
                 "said_CLARIFY": int((std_preds == "CLARIFY").sum()),
             }
         },
-        "ablated_policy_no_second_mass": {
-            "accuracy_3class": round(abl_acc, 4),
-            "ci95_3class": [round(abl_lo, 4), round(abl_hi, 4)],
-            "accuracy_binary": round(abl_bacc, 4),
-            "ci95_binary": [round(abl_blo, 4), round(abl_bhi, 4)],
-            "confusion_3class": {
+        "ablated_policy_no_second_mass_binary": {
+            "accuracy": round(abl_bacc, 4),
+            "ci95": [round(abl_blo, 4), round(abl_bhi, 4)],
+            "predictions": {
                 "said_ANSWER": int((ablated_preds == "ANSWER").sum()),
-                "said_ALTERNATIVES": int((ablated_preds == "ALTERNATIVES").sum()),
+                "said_ALTERNATIVES": 0,
                 "said_CLARIFY": int((ablated_preds == "CLARIFY").sum()),
             }
         },
-        "paired_delta_3class": {
+        "paired_binary_delta": {
             "mean": round(d_mean, 4),
             "ci95": [round(d_lo, 4), round(d_hi, 4)],
-            "statistically_improved": bool(d_lo > 0.0)
+            "note": "Binary labels (ANSWER vs AMBIGUOUS) cannot distinguish CLARIFY from ALTERNATIVES; requires PAQA sub-type annotations."
         }
     }
 
@@ -165,22 +162,16 @@ def main() -> int:
 
     for res in (orig_res, repaired_res):
         print(f"\n--- Dataset: {res['dataset']} (n={res['n']}) ---")
-        std = res["standard_policy"]
-        abl = res["ablated_policy_no_second_mass"]
-        p_delta = res["paired_delta_3class"]
+        std = res["standard_policy_binary"]
+        abl = res["ablated_policy_no_second_mass_binary"]
+        alt_act = res["alternatives_branch_activations"]
+        p_delta = res["paired_binary_delta"]
 
-        print(f"  Standard Policy (3-class):  {std['accuracy_3class']:.1%}  [{std['ci95_3class'][0]:.1%}, {std['ci95_3class'][1]:.1%}]")
-        print(f"  Ablated Policy (no 2nd_m):  {abl['accuracy_3class']:.1%}  [{abl['ci95_3class'][0]:.1%}, {abl['ci95_3class'][1]:.1%}]")
-        print(f"  Paired 3-Class Δ Accuracy:   {p_delta['mean']:+.1%}  [{p_delta['ci95'][0]:+.1%}, {p_delta['ci95'][1]:+.1%}]")
-        print(f"  Binary Task Accuracy (std): {std['accuracy_binary']:.1%}")
-        print(f"  Binary Task Accuracy (abl): {abl['accuracy_binary']:.1%}")
-
-        if p_delta["statistically_improved"]:
-            print("  ✅ Removal of second_mass branch STATISTICALLY IMPROVES 3-class accuracy!")
-        elif p_delta["mean"] > 0:
-            print("  ✅ Directional accuracy improvement from removing second_mass branch.")
-        else:
-            print("  ❌ No accuracy improvement from removing second_mass branch.")
+        print(f"  ALTERNATIVES Branch Activations: {alt_act['count']}/{res['n']} ({alt_act['fraction']:.1%})")
+        print(f"  Standard Policy Binary Acc:     {std['accuracy']:.1%}  [{std['ci95'][0]:.1%}, {std['ci95'][1]:.1%}]")
+        print(f"  Ablated Policy Binary Acc:      {abl['accuracy']:.1%}  [{abl['ci95'][0]:.1%}, {abl['ci95'][1]:.1%}]")
+        print(f"  Paired Binary Δ Accuracy:        {p_delta['mean']:+.1%}  [{p_delta['ci95'][0]:+.1%}, {p_delta['ci95'][1]:+.1%}]")
+        print(f"  Limitation Note: {p_delta['note']}")
 
     out_data = {
         "golden_gate_orig": orig_res,
