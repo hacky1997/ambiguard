@@ -1,0 +1,104 @@
+{
+  "golden_gate_orig": {
+    "dataset": "golden_gate.jsonl",
+    "n": 600,
+    "thresholds_used": {
+      "tau_conf": 0.3,
+      "tau_multi": 0.05,
+      "tau_ent": 1.0
+    },
+    "standard_policy": {
+      "accuracy_3class": 0.2617,
+      "ci95_3class": [
+        0.2267,
+        0.2983
+      ],
+      "accuracy_binary": 0.5033,
+      "ci95_binary": [
+        0.4633,
+        0.5433
+      ],
+      "confusion_3class": {
+        "said_ANSWER": 312,
+        "said_ALTERNATIVES": 288,
+        "said_CLARIFY": 0
+      }
+    },
+    "ablated_policy_no_second_mass": {
+      "accuracy_3class": 0.2617,
+      "ci95_3class": [
+        0.2267,
+        0.2983
+      ],
+      "accuracy_binary": 0.5033,
+      "ci95_binary": [
+        0.4633,
+        0.5433
+      ],
+      "confusion_3class": {
+        "said_ANSWER": 312,
+        "said_ALTERNATIVES": 0,
+        "said_CLARIFY": 288
+      }
+    },
+    "paired_delta_3class": {
+      "mean": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "statistically_improved": false
+    }
+  },
+  "golden_gate_repaired": {
+    "dataset": "golden_gate_repaired.jsonl",
+    "n": 600,
+    "thresholds_used": {
+      "tau_conf": 0.3,
+      "tau_multi": 0.05,
+      "tau_ent": 1.0
+    },
+    "standard_policy": {
+      "accuracy_3class": 0.3167,
+      "ci95_3class": [
+        0.28,
+        0.355
+      ],
+      "accuracy_binary": 0.505,
+      "ci95_binary": [
+        0.465,
+        0.5467
+      ],
+      "confusion_3class": {
+        "said_ANSWER": 377,
+        "said_ALTERNATIVES": 223,
+        "said_CLARIFY": 0
+      }
+    },
+    "ablated_policy_no_second_mass": {
+      "accuracy_3class": 0.3167,
+      "ci95_3class": [
+        0.28,
+        0.355
+      ],
+      "accuracy_binary": 0.505,
+      "ci95_binary": [
+        0.465,
+        0.5467
+      ],
+      "confusion_3class": {
+        "said_ANSWER": 377,
+        "said_ALTERNATIVES": 0,
+        "said_CLARIFY": 223
+      }
+    },
+    "paired_delta_3class": {
+      "mean": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "statistically_improved": false
+    }
+  }
+}
