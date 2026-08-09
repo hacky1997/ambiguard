@@ -119,6 +119,49 @@ def boot_auc(scores: np.ndarray, labels: np.ndarray,
     return base, float(np.percentile(vals, 2.5)), float(np.percentile(vals, 97.5))
 
 
+def boot_paired_auc_delta(scores: np.ndarray, base_scores: np.ndarray, labels: np.ndarray,
+                         n_boot: int = 2_000) -> tuple[float, float, float, float, float, float]:
+    """ROC-AUC and paired AUC delta with bootstrap CIs on identical resamples."""
+    def _auc(s: np.ndarray, y: np.ndarray) -> float:
+        pos, neg = s[y == 1], s[y == 0]
+        if len(pos) == 0 or len(neg) == 0:
+            return 0.5
+        allv = np.concatenate([pos, neg])
+        order = np.argsort(allv)
+        ranks = np.empty(len(order), dtype=float)
+        ranks[order] = np.arange(1, len(order) + 1)
+        r_pos = ranks[: len(pos)].sum()
+        return float((r_pos - len(pos) * (len(pos) + 1) / 2) / (len(pos) * len(neg)))
+
+    base_auc = _auc(scores, labels)
+    ref_auc = _auc(base_scores, labels)
+    delta_main = base_auc - ref_auc
+
+    rng = np.random.default_rng(_SEED)
+    auc_vals = []
+    delta_vals = []
+    for _ in range(n_boot):
+        idx = rng.integers(0, len(scores), len(scores))
+        if len(np.unique(labels[idx])) < 2:
+            continue
+        a_s = _auc(scores[idx], labels[idx])
+        a_b = _auc(base_scores[idx], labels[idx])
+        auc_vals.append(a_s)
+        delta_vals.append(a_s - a_b)
+
+    if not auc_vals:
+        return base_auc, base_auc, base_auc, delta_main, delta_main, delta_main
+
+    return (
+        base_auc,
+        float(np.percentile(auc_vals, 2.5)),
+        float(np.percentile(auc_vals, 97.5)),
+        delta_main,
+        float(np.percentile(delta_vals, 2.5)),
+        float(np.percentile(delta_vals, 97.5)),
+    )
+
+
 # ── Graph statistics over the center manifold ────────────────────
 def dispersion(P: np.ndarray, W: np.ndarray) -> np.ndarray:
     """Expected pairwise distance under P.  D = sum_{i<j} P_i P_j W_ij.
@@ -283,25 +326,27 @@ def main() -> int:
         "laplacian_energy": laplacian_energy(P, W_raw),
     }
 
+    base_ent = stats["entropy (baseline)"]
     results: dict[str, Any] = {}
     print("\n" + "=" * 72)
     print(f"AMBIGUITY SIGNAL — n={len(rows)}, AUC vs gold")
     print("=" * 72)
-    print(f"{'statistic':<28} {'AUC':>7} {'CI95':>18}")
+    print(f"{'statistic':<28} {'AUC':>7} {'CI95':>18} {'Paired Δ CI95':>20}")
     print("-" * 72)
     for name, s in stats.items():
-        a, lo, hi = boot_auc(s, gold)
-        results[name] = {"auc": round(a, 4), "ci95": [round(lo, 4), round(hi, 4)]}
+        a, lo, hi, d_val, d_lo, d_hi = boot_paired_auc_delta(s, base_ent, gold)
+        results[name] = {
+            "auc": round(a, 4),
+            "ci95": [round(lo, 4), round(hi, 4)],
+            "paired_delta_auc": round(d_val, 4),
+            "paired_delta_ci95": [round(d_lo, 4), round(d_hi, 4)],
+        }
         marker = ""
-        if "baseline" not in name:
-            base = max(results.get("entropy (baseline)", {}).get("auc", 0.5),
-                       results.get("second_mass (baseline)", {}).get("auc", 0.5))
-            if lo > base:
-                marker = "  <- beats both baselines"
-        print(f"{name:<28} {a:>7.3f} {f'[{lo:.3f}, {hi:.3f}]':>18}{marker}")
+        if "baseline" not in name and d_lo > 0.0:
+            marker = "  <- paired Δ > 0"
+        print(f"{name:<28} {a:>7.3f} {f'[{lo:.3f}, {hi:.3f}]':>18} {f'[{d_lo:+.3f}, {d_hi:+.3f}]':>20}{marker}")
     print("-" * 72)
-    print("  AUC 0.5 = chance. Baselines are the geometry-blind statistics the")
-    print("  current policy already uses.")
+    print("  AUC 0.5 = chance. Paired Δ CI95 is computed on identical resamples against entropy.")
 
     # ── Does geometry add anything over entropy? ──────────────────
     ent = stats["entropy (baseline)"]
@@ -311,14 +356,14 @@ def main() -> int:
     )
     best_geo = stats[best_geo_name]
     corr = float(np.corrcoef(ent, best_geo)[0, 1])
-    base_auc = max(results["entropy (baseline)"]["auc"],
-                   results["second_mass (baseline)"]["auc"])
-    delta = results[best_geo_name]["auc"] - base_auc
-    separated = results[best_geo_name]["ci95"][0] > base_auc
+    best_res = results[best_geo_name]
+    delta = best_res["paired_delta_auc"]
+    p_lo, p_hi = best_res["paired_delta_ci95"]
+    separated = p_lo > 0.0
 
     print(f"\n  best geometric statistic: {best_geo_name}")
     print(f"  corr with entropy: {corr:+.3f}")
-    print(f"  AUC delta over best baseline: {delta:+.3f}")
+    print(f"  paired AUC delta over entropy: {delta:+.3f} (95% CI [{p_lo:+.3f}, {p_hi:+.3f}])")
     if separated:
         print("  ✅ Geometry adds signal the flat statistics do not carry.")
         print("     Routing on the manifold beats routing on the index set.")
@@ -327,7 +372,7 @@ def main() -> int:
         print("     entropy — the center graph is too flat to distinguish")
         print("     'mass on adjacent centers' from 'mass on distant centers'.")
     else:
-        print("  ⚠ Different from entropy, but not measurably better. Report as null.")
+        print("  ⚠ Paired delta CI includes zero. Directional gain, but not statistically separated. Report as null.")
 
     # ── Per-class: do CLARIFY and ALTERNATIVES sit at different scales? ──
     print("\n" + "-" * 72)
