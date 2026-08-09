@@ -1,0 +1,103 @@
+{
+  "n": 600,
+  "centroid_source": "center_head.weight (learned center directions)",
+  "geometry_raw": {
+    "pairwise_distances": [
+      0.9749,
+      0.9756,
+      1.0132,
+      0.979,
+      0.9624,
+      1.0017,
+      0.9683,
+      0.9032,
+      0.9752,
+      0.991
+    ],
+    "min": 0.9032,
+    "max": 1.0132,
+    "mean": 0.9745,
+    "relative_spread": 0.1128,
+    "degenerate": true
+  },
+  "geometry_rank_normalised": {
+    "pairwise_distances": [
+      0.3333,
+      0.5556,
+      1.0,
+      0.6667,
+      0.1111,
+      0.8889,
+      0.2222,
+      0.0,
+      0.4444,
+      0.7778
+    ],
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.5,
+    "relative_spread": 2.0,
+    "degenerate": false
+  },
+  "statistics": {
+    "entropy (baseline)": {
+      "auc": 0.5237,
+      "ci95": [
+        0.4755,
+        0.5697
+      ]
+    },
+    "second_mass (baseline)": {
+      "auc": 0.4253,
+      "ci95": [
+        0.3803,
+        0.4728
+      ]
+    },
+    "dispersion": {
+      "auc": 0.5301,
+      "ci95": [
+        0.4826,
+        0.5766
+      ]
+    },
+    "dispersion (rank-norm)": {
+      "auc": 0.5711,
+      "ci95": [
+        0.5272,
+        0.6178
+      ]
+    },
+    "top2_distance": {
+      "auc": 0.4822,
+      "ci95": [
+        0.4371,
+        0.5292
+      ]
+    },
+    "top2_distance (rank-norm)": {
+      "auc": 0.5169,
+      "ci95": [
+        0.4699,
+        0.5647
+      ]
+    },
+    "laplacian_energy": {
+      "auc": 0.4807,
+      "ci95": [
+        0.4348,
+        0.5291
+      ]
+    }
+  },
+  "best_geometric": "dispersion (rank-norm)",
+  "corr_with_entropy": 0.4314,
+  "auc_delta_over_baseline": 0.0474,
+  "ci_separated": true,
+  "near_uniform_frac": 0.48,
+  "single_dominant_frac": 0.0133,
+  "gold_dist": {
+    "1": 300,
+    "0": 300
+  }
+}
