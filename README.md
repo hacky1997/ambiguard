@@ -1,5 +1,7 @@
 # AmbiGuard
 
+![AmbiGuard Live Demo](demo.gif)
+
 An evaluation harness for ambiguity-aware query routing, built around a published research classifier.
 
 The short version: I set out to show that a small learned classifier could decide how a QA system should respond — answer, or ask for clarification — more cheaply than asking an LLM. Building the harness to prove it, I found four defects in how this task gets trained and measured, including two in my own published work. On leak-free data, no system tested detects ambiguity above chance — including GPT-4o-mini.
