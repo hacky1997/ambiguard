@@ -1,0 +1,102 @@
+{
+  "n": 300,
+  "samples": 5,
+  "temperature": 1.0,
+  "model": "gpt-4o-mini",
+  "cost_usd": 8.197,
+  "gate_baseline": {
+    "auc": 0.5003,
+    "ci95": [
+      0.4339,
+      0.5682
+    ]
+  },
+  "statistics": {
+    "mean_pairwise": {
+      "auc": 0.504,
+      "ci95": [
+        0.4352,
+        0.5712
+      ],
+      "paired_delta_vs_gate": 0.0038,
+      "paired_delta_ci95": [
+        -0.0889,
+        0.0964
+      ],
+      "beats_gate": false
+    },
+    "max_pairwise": {
+      "auc": 0.5048,
+      "ci95": [
+        0.4367,
+        0.5732
+      ],
+      "paired_delta_vs_gate": 0.0044,
+      "paired_delta_ci95": [
+        -0.0865,
+        0.0949
+      ],
+      "beats_gate": false
+    },
+    "centroid_spread": {
+      "auc": 0.5048,
+      "ci95": [
+        0.4364,
+        0.5721
+      ],
+      "paired_delta_vs_gate": 0.0045,
+      "paired_delta_ci95": [
+        -0.0885,
+        0.0978
+      ],
+      "beats_gate": false
+    },
+    "n_clusters": {
+      "auc": 0.7287,
+      "ci95": [
+        0.5971,
+        0.8034
+      ],
+      "paired_delta_vs_gate": 0.2105,
+      "paired_delta_ci95": [
+        0.0774,
+        0.3195
+      ],
+      "beats_gate": true
+    },
+    "disagreement_ratio": {
+      "auc": 0.7221,
+      "ci95": [
+        0.5871,
+        0.7984
+      ],
+      "paired_delta_vs_gate": 0.2085,
+      "paired_delta_ci95": [
+        0.0711,
+        0.3194
+      ],
+      "beats_gate": true
+    },
+    "hedges": {
+      "auc": 0.9716,
+      "ci95": [
+        0.8986,
+        0.9836
+      ],
+      "paired_delta_vs_gate": 0.4547,
+      "paired_delta_ci95": [
+        0.3739,
+        0.5319
+      ],
+      "beats_gate": true
+    }
+  },
+  "best": "hedges",
+  "answer_length_corr": 0.0676,
+  "hedge_rate": 0.0033,
+  "gold_dist": {
+    "1": 154,
+    "0": 146
+  },
+  "cluster_threshold": 0.35
+}
