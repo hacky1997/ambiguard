@@ -36,7 +36,13 @@ No system tested beats chance on AmbigNQ — a finding that survived the removal
    - Evaluated CLAM-style log-probability scoring $\log P(\text{AMBIGUOUS}) - \log P(\text{ANSWER})$ over `gpt-4o-mini` completion tokens ($n=300$).
    - Log-prob AUC reached **0.578** (`95% CI [0.515, 0.641]`), confirming that log-prob scoring remains near chance and does not alter the headline finding on AmbigNQ.
 
+7. **ASPI Benchmark & Clarification-as-Attack-Surface Analysis**:
+   - Evaluated clarification policy as attack-surface reduction on ASPI (`slack` domain, 97 scenarios).
+   - Hand-written rule floor detector achieved **52.1% accuracy** on Slack (55.6% overall across 728 scenarios), confirming ASPI slot gaps are not trivially rule-detectable.
+   - Routing comparison on `gpt-4o-mini`: `always_clarify` (100% clarif, MAX ASR 37.1%, utility 23.7%), `llm_decides` (0% clarif, MAX ASR 71.1%, utility 37.1%, 40.2% skipped-and-succeeded), `gate_decides` (62.9% clarif, MAX ASR 49.5%, utility 28.9%, 20.6% skipped-and-succeeded).
+
 ## Methodological Limitations
 
 - **Typological Benchmark**: Dataset labels are single-author and unvalidated by independent human annotators.
 - **AmbigNQ**: Labels reflect teacher-induced distributions and specific annotator interpretations rather than observable model behavior.
+- **ASPI Benchmark**: The attack-surface hypothesis requires a model with low baseline injection susceptibility; all models we could access sit 15–40× above ASPI's reported baseline, which compresses the effect below measurability.
