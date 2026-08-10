@@ -107,8 +107,5 @@
       }
     }
   },
-  "inter_annotator_agreement_50": {
-    "raw_agreement": 0.26,
-    "cohens_kappa": 0.0375
-  }
+  "limitation_note": "Dataset labels are single-author and unvalidated by independent human annotators."
 }
