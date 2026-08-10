@@ -32,6 +32,10 @@ No system tested beats chance on AmbigNQ — a finding that survived the removal
    - 48% of open-domain QA rows produce near-uniform center probabilities ($\max P < 0.30$), setting a hard ceiling on scalar threshold policies over arbitrary trivia queries.
    - Surface formatting markers accounted for a $+6.5\%$ artifact shift in raw accuracy; context repairs improved behavioral consistency without altering binary classification limits.
 
+6. **Log-Probability LLM Judge Scoring (CATA §9 Test)**:
+   - Evaluated CLAM-style log-probability scoring $\log P(\text{AMBIGUOUS}) - \log P(\text{ANSWER})$ over `gpt-4o-mini` completion tokens ($n=300$).
+   - Log-prob AUC reached **0.578** (`95% CI [0.515, 0.641]`), confirming that log-prob scoring remains near chance and does not alter the headline finding on AmbigNQ.
+
 ## Methodological Limitations
 
 - **Typological Benchmark**: Dataset labels are single-author and unvalidated by independent human annotators.
