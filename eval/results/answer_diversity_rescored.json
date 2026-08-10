@@ -1,0 +1,237 @@
+{
+  "samples": 5,
+  "n": 300,
+  "thresholds_swept": [
+    0.2,
+    0.25,
+    0.3,
+    0.35,
+    0.4,
+    0.5
+  ],
+  "results": {
+    "buggy_greedy@0.20": {
+      "auc": 0.6321,
+      "ci95": [
+        0.5254,
+        0.7034
+      ],
+      "mean_k": 1.46,
+      "multi_cluster_rate": 0.4033
+    },
+    "buggy_greedy@0.25": {
+      "auc": 0.6525,
+      "ci95": [
+        0.5268,
+        0.7252
+      ],
+      "mean_k": 1.373,
+      "multi_cluster_rate": 0.3367
+    },
+    "buggy_greedy@0.30": {
+      "auc": 0.6884,
+      "ci95": [
+        0.5567,
+        0.77
+      ],
+      "mean_k": 1.307,
+      "multi_cluster_rate": 0.28
+    },
+    "buggy_greedy@0.35": {
+      "auc": 0.7287,
+      "ci95": [
+        0.5971,
+        0.8034
+      ],
+      "mean_k": 1.24,
+      "multi_cluster_rate": 0.2267
+    },
+    "buggy_greedy@0.40": {
+      "auc": 0.7936,
+      "ci95": [
+        0.6829,
+        0.8679
+      ],
+      "mean_k": 1.183,
+      "multi_cluster_rate": 0.18
+    },
+    "buggy_greedy@0.50": {
+      "auc": 0.8616,
+      "ci95": [
+        0.7804,
+        0.9238
+      ],
+      "mean_k": 1.09,
+      "multi_cluster_rate": 0.09
+    },
+    "single_link@0.20": {
+      "auc": 0.6783,
+      "ci95": [
+        0.5471,
+        0.7515
+      ],
+      "mean_k": 1.37,
+      "multi_cluster_rate": 0.33
+    },
+    "single_link@0.25": {
+      "auc": 0.7029,
+      "ci95": [
+        0.5667,
+        0.7724
+      ],
+      "mean_k": 1.32,
+      "multi_cluster_rate": 0.29
+    },
+    "single_link@0.30": {
+      "auc": 0.7497,
+      "ci95": [
+        0.6038,
+        0.8149
+      ],
+      "mean_k": 1.257,
+      "multi_cluster_rate": 0.2367
+    },
+    "single_link@0.35": {
+      "auc": 0.7788,
+      "ci95": [
+        0.655,
+        0.8533
+      ],
+      "mean_k": 1.203,
+      "multi_cluster_rate": 0.1933
+    },
+    "single_link@0.40": {
+      "auc": 0.831,
+      "ci95": [
+        0.7263,
+        0.9011
+      ],
+      "mean_k": 1.16,
+      "multi_cluster_rate": 0.1567
+    },
+    "single_link@0.50": {
+      "auc": 0.8687,
+      "ci95": [
+        0.7895,
+        0.9287
+      ],
+      "mean_k": 1.077,
+      "multi_cluster_rate": 0.0767
+    },
+    "complete_link@0.20": {
+      "auc": 0.6222,
+      "ci95": [
+        0.5277,
+        0.6957
+      ],
+      "mean_k": 1.48,
+      "multi_cluster_rate": 0.42
+    },
+    "complete_link@0.25": {
+      "auc": 0.6615,
+      "ci95": [
+        0.5321,
+        0.731
+      ],
+      "mean_k": 1.393,
+      "multi_cluster_rate": 0.35
+    },
+    "complete_link@0.30": {
+      "auc": 0.6788,
+      "ci95": [
+        0.5449,
+        0.7559
+      ],
+      "mean_k": 1.337,
+      "multi_cluster_rate": 0.3033
+    },
+    "complete_link@0.35": {
+      "auc": 0.7205,
+      "ci95": [
+        0.5867,
+        0.7978
+      ],
+      "mean_k": 1.26,
+      "multi_cluster_rate": 0.2467
+    },
+    "complete_link@0.40": {
+      "auc": 0.7835,
+      "ci95": [
+        0.661,
+        0.8575
+      ],
+      "mean_k": 1.203,
+      "multi_cluster_rate": 0.1967
+    },
+    "complete_link@0.50": {
+      "auc": 0.856,
+      "ci95": [
+        0.7731,
+        0.9201
+      ],
+      "mean_k": 1.1,
+      "multi_cluster_rate": 0.1
+    },
+    "average_link@0.20": {
+      "auc": 0.6411,
+      "ci95": [
+        0.5261,
+        0.7163
+      ],
+      "mean_k": 1.423,
+      "multi_cluster_rate": 0.37
+    },
+    "average_link@0.25": {
+      "auc": 0.6795,
+      "ci95": [
+        0.5523,
+        0.7524
+      ],
+      "mean_k": 1.353,
+      "multi_cluster_rate": 0.3167
+    },
+    "average_link@0.30": {
+      "auc": 0.7252,
+      "ci95": [
+        0.5853,
+        0.7995
+      ],
+      "mean_k": 1.28,
+      "multi_cluster_rate": 0.2567
+    },
+    "average_link@0.35": {
+      "auc": 0.7436,
+      "ci95": [
+        0.6166,
+        0.8185
+      ],
+      "mean_k": 1.233,
+      "multi_cluster_rate": 0.22
+    },
+    "average_link@0.40": {
+      "auc": 0.8201,
+      "ci95": [
+        0.7026,
+        0.8903
+      ],
+      "mean_k": 1.173,
+      "multi_cluster_rate": 0.17
+    },
+    "average_link@0.50": {
+      "auc": 0.8634,
+      "ci95": [
+        0.7847,
+        0.9237
+      ],
+      "mean_k": 1.093,
+      "multi_cluster_rate": 0.0933
+    }
+  },
+  "best": {
+    "auc": 0.8687066358299235,
+    "method": "single_link",
+    "thr": 0.5,
+    "lo": 0.7895256941952304
+  },
+  "note": "buggy_greedy is the original non-transitive implementation, retained only for comparison. It is not a valid clustering."
+}
