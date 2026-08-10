@@ -11,227 +11,227 @@
   ],
   "results": {
     "buggy_greedy@0.20": {
-      "auc": 0.6321,
+      "auc": 0.5169,
       "ci95": [
-        0.5254,
-        0.7034
+        0.4589,
+        0.5737
       ],
       "mean_k": 1.46,
       "multi_cluster_rate": 0.4033
     },
     "buggy_greedy@0.25": {
-      "auc": 0.6525,
+      "auc": 0.4976,
       "ci95": [
-        0.5268,
-        0.7252
+        0.4422,
+        0.5517
       ],
       "mean_k": 1.373,
       "multi_cluster_rate": 0.3367
     },
     "buggy_greedy@0.30": {
-      "auc": 0.6884,
+      "auc": 0.5009,
       "ci95": [
-        0.5567,
-        0.77
+        0.4481,
+        0.5538
       ],
       "mean_k": 1.307,
       "multi_cluster_rate": 0.28
     },
     "buggy_greedy@0.35": {
-      "auc": 0.7287,
+      "auc": 0.4889,
       "ci95": [
-        0.5971,
-        0.8034
+        0.4409,
+        0.5359
       ],
       "mean_k": 1.24,
       "multi_cluster_rate": 0.2267
     },
     "buggy_greedy@0.40": {
-      "auc": 0.7936,
+      "auc": 0.5157,
       "ci95": [
-        0.6829,
-        0.8679
+        0.4715,
+        0.558
       ],
       "mean_k": 1.183,
       "multi_cluster_rate": 0.18
     },
     "buggy_greedy@0.50": {
-      "auc": 0.8616,
+      "auc": 0.4943,
       "ci95": [
-        0.7804,
-        0.9238
+        0.4596,
+        0.5273
       ],
       "mean_k": 1.09,
       "multi_cluster_rate": 0.09
     },
     "single_link@0.20": {
-      "auc": 0.6783,
+      "auc": 0.5202,
       "ci95": [
-        0.5471,
-        0.7515
+        0.4647,
+        0.5767
       ],
       "mean_k": 1.37,
       "multi_cluster_rate": 0.33
     },
     "single_link@0.25": {
-      "auc": 0.7029,
+      "auc": 0.5133,
       "ci95": [
-        0.5667,
-        0.7724
+        0.4603,
+        0.5661
       ],
       "mean_k": 1.32,
       "multi_cluster_rate": 0.29
     },
     "single_link@0.30": {
-      "auc": 0.7497,
+      "auc": 0.5116,
       "ci95": [
-        0.6038,
-        0.8149
+        0.4622,
+        0.5582
       ],
       "mean_k": 1.257,
       "multi_cluster_rate": 0.2367
     },
     "single_link@0.35": {
-      "auc": 0.7788,
+      "auc": 0.51,
       "ci95": [
-        0.655,
-        0.8533
+        0.4643,
+        0.5554
       ],
       "mean_k": 1.203,
       "multi_cluster_rate": 0.1933
     },
     "single_link@0.40": {
-      "auc": 0.831,
+      "auc": 0.5263,
       "ci95": [
-        0.7263,
-        0.9011
+        0.4849,
+        0.5666
       ],
       "mean_k": 1.16,
       "multi_cluster_rate": 0.1567
     },
     "single_link@0.50": {
-      "auc": 0.8687,
+      "auc": 0.4879,
       "ci95": [
-        0.7895,
-        0.9287
+        0.4558,
+        0.5183
       ],
       "mean_k": 1.077,
       "multi_cluster_rate": 0.0767
     },
     "complete_link@0.20": {
-      "auc": 0.6222,
+      "auc": 0.5183,
       "ci95": [
-        0.5277,
-        0.6957
+        0.4598,
+        0.5767
       ],
       "mean_k": 1.48,
       "multi_cluster_rate": 0.42
     },
     "complete_link@0.25": {
-      "auc": 0.6615,
+      "auc": 0.5125,
       "ci95": [
-        0.5321,
-        0.731
+        0.4561,
+        0.5667
       ],
       "mean_k": 1.393,
       "multi_cluster_rate": 0.35
     },
     "complete_link@0.30": {
-      "auc": 0.6788,
+      "auc": 0.5036,
       "ci95": [
-        0.5449,
-        0.7559
+        0.4501,
+        0.5574
       ],
       "mean_k": 1.337,
       "multi_cluster_rate": 0.3033
     },
     "complete_link@0.35": {
-      "auc": 0.7205,
+      "auc": 0.5016,
       "ci95": [
-        0.5867,
-        0.7978
+        0.4524,
+        0.5505
       ],
       "mean_k": 1.26,
       "multi_cluster_rate": 0.2467
     },
     "complete_link@0.40": {
-      "auc": 0.7835,
+      "auc": 0.5179,
       "ci95": [
-        0.661,
-        0.8575
+        0.4722,
+        0.5605
       ],
       "mean_k": 1.203,
       "multi_cluster_rate": 0.1967
     },
     "complete_link@0.50": {
-      "auc": 0.856,
+      "auc": 0.4973,
       "ci95": [
-        0.7731,
-        0.9201
+        0.4617,
+        0.5316
       ],
       "mean_k": 1.1,
       "multi_cluster_rate": 0.1
     },
     "average_link@0.20": {
-      "auc": 0.6411,
+      "auc": 0.5109,
       "ci95": [
-        0.5261,
-        0.7163
+        0.4562,
+        0.5687
       ],
       "mean_k": 1.423,
       "multi_cluster_rate": 0.37
     },
     "average_link@0.25": {
-      "auc": 0.6795,
+      "auc": 0.5129,
       "ci95": [
-        0.5523,
-        0.7524
+        0.4593,
+        0.565
       ],
       "mean_k": 1.353,
       "multi_cluster_rate": 0.3167
     },
     "average_link@0.30": {
-      "auc": 0.7252,
+      "auc": 0.512,
       "ci95": [
-        0.5853,
-        0.7995
+        0.4614,
+        0.5594
       ],
       "mean_k": 1.28,
       "multi_cluster_rate": 0.2567
     },
     "average_link@0.35": {
-      "auc": 0.7436,
+      "auc": 0.5022,
       "ci95": [
-        0.6166,
-        0.8185
+        0.4544,
+        0.5477
       ],
       "mean_k": 1.233,
       "multi_cluster_rate": 0.22
     },
     "average_link@0.40": {
-      "auc": 0.8201,
+      "auc": 0.526,
       "ci95": [
-        0.7026,
-        0.8903
+        0.483,
+        0.5681
       ],
       "mean_k": 1.173,
       "multi_cluster_rate": 0.17
     },
     "average_link@0.50": {
-      "auc": 0.8634,
+      "auc": 0.4975,
       "ci95": [
-        0.7847,
-        0.9237
+        0.4625,
+        0.53
       ],
       "mean_k": 1.093,
       "multi_cluster_rate": 0.0933
     }
   },
   "best": {
-    "auc": 0.8687066358299235,
+    "auc": 0.5262631204412026,
     "method": "single_link",
-    "thr": 0.5,
-    "lo": 0.7895256941952304
+    "thr": 0.4,
+    "lo": 0.4848750963523349
   },
   "note": "buggy_greedy is the original non-transitive implementation, retained only for comparison. It is not a valid clustering."
 }

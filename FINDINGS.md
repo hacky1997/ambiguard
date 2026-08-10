@@ -15,7 +15,7 @@ No system tested beats chance on AmbigNQ — a finding that survived the removal
 
 1. **Answer-Side Semantic Clustering**:
    - Sampled answers to ambiguous questions cluster as tightly as answers to unambiguous ones (mean $k$ gap = 0.002 at 10 samples: ambiguous 1.084 vs unambiguous 1.082).
-   - Rescoring with transitive linkage (`single_link`, `complete_link`, `average_link`) confirms that high AUCs at $\text{thr} \ge 0.40$ are tie-breaking artifacts driven by $>88\%$ of rows collapsing to $k=1$. Honest thresholds ($0.20–0.35$) degrade with sample count (AUC 0.591–0.647 at 10 samples). Models commit to a single reading rather than reflecting question-side ambiguity.
+   - Rescoring with transitive linkage (`single_link`, `complete_link`, `average_link`) under mathematically exact tie-averaged AUC calculation confirms that all AUCs across all thresholds (0.20–0.50) collapse to chance (AUC 0.488–0.546 across 5 and 10 samples). Models commit to a single reading rather than reflecting question-side ambiguity.
 
 2. **Typological Holdout Generalization**:
    - 2:1 Dev/Holdout evaluation (140 dev / 70 holdout rows) shows no performance collapse (70.0% dev vs 77.1% holdout, $-7.1\%$ drop), confirming surface rules generalize across unseen lexical variations within categories.

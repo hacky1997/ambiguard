@@ -78,11 +78,24 @@ def _auc(s: np.ndarray, y: np.ndarray) -> float:
     pos, neg = s[y == 1], s[y == 0]
     if len(pos) == 0 or len(neg) == 0:
         return 0.5
-    order = np.argsort(np.concatenate([pos, neg]))
-    ranks = np.empty(len(order), dtype=float)
-    ranks[order] = np.arange(1, len(order) + 1)
-    return float((ranks[: len(pos)].sum() - len(pos) * (len(pos) + 1) / 2)
-                 / (len(pos) * len(neg)))
+    n_pos, n_neg = len(pos), len(neg)
+    all_scores = np.concatenate([pos, neg])
+    all_labels = np.concatenate([np.ones(n_pos), np.zeros(n_neg)])
+    
+    order = np.argsort(all_scores)
+    all_scores = all_scores[order]
+    all_labels = all_labels[order]
+    
+    distinct_value_indices = np.where(np.diff(all_scores))[0]
+    threshold_idxs = np.concatenate([[-1], distinct_value_indices, [len(all_scores) - 1]])
+    ranks = np.empty(len(all_scores), dtype=float)
+    for i in range(len(threshold_idxs) - 1):
+        start = threshold_idxs[i] + 1
+        end = threshold_idxs[i + 1] + 1
+        ranks[start:end] = (start + end + 1) / 2.0
+
+    pos_ranks = ranks[all_labels == 1]
+    return float((pos_ranks.sum() - n_pos * (n_pos + 1) / 2) / (n_pos * n_neg))
 
 
 def boot_auc(s: np.ndarray, y: np.ndarray, n_boot: int = 2_000):

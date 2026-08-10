@@ -92,20 +92,33 @@ _OUT = Path("eval/results/graph_routing.json")
 _SEED = 42
 
 
+def _auc(s: np.ndarray, y: np.ndarray) -> float:
+    pos, neg = s[y == 1], s[y == 0]
+    if len(pos) == 0 or len(neg) == 0:
+        return 0.5
+    n_pos, n_neg = len(pos), len(neg)
+    all_scores = np.concatenate([pos, neg])
+    all_labels = np.concatenate([np.ones(n_pos), np.zeros(n_neg)])
+    
+    order = np.argsort(all_scores)
+    all_scores = all_scores[order]
+    all_labels = all_labels[order]
+    
+    distinct_value_indices = np.where(np.diff(all_scores))[0]
+    threshold_idxs = np.concatenate([[-1], distinct_value_indices, [len(all_scores) - 1]])
+    ranks = np.empty(len(all_scores), dtype=float)
+    for i in range(len(threshold_idxs) - 1):
+        start = threshold_idxs[i] + 1
+        end = threshold_idxs[i + 1] + 1
+        ranks[start:end] = (start + end + 1) / 2.0
+
+    pos_ranks = ranks[all_labels == 1]
+    return float((pos_ranks.sum() - n_pos * (n_pos + 1) / 2) / (n_pos * n_neg))
+
+
 def boot_auc(scores: np.ndarray, labels: np.ndarray,
              n_boot: int = 2_000) -> tuple[float, float, float]:
     """ROC-AUC with bootstrap CI. labels: 1 = ambiguous."""
-    def _auc(s: np.ndarray, y: np.ndarray) -> float:
-        pos, neg = s[y == 1], s[y == 0]
-        if len(pos) == 0 or len(neg) == 0:
-            return 0.5
-        allv = np.concatenate([pos, neg])
-        order = np.argsort(allv)
-        ranks = np.empty(len(order), dtype=float)
-        ranks[order] = np.arange(1, len(order) + 1)
-        r_pos = ranks[: len(pos)].sum()
-        return float((r_pos - len(pos) * (len(pos) + 1) / 2) / (len(pos) * len(neg)))
-
     base = _auc(scores, labels)
     rng = np.random.default_rng(_SEED)
     vals = []
@@ -122,17 +135,6 @@ def boot_auc(scores: np.ndarray, labels: np.ndarray,
 def boot_paired_auc_delta(scores: np.ndarray, base_scores: np.ndarray, labels: np.ndarray,
                          n_boot: int = 2_000) -> tuple[float, float, float, float, float, float]:
     """ROC-AUC and paired AUC delta with bootstrap CIs on identical resamples."""
-    def _auc(s: np.ndarray, y: np.ndarray) -> float:
-        pos, neg = s[y == 1], s[y == 0]
-        if len(pos) == 0 or len(neg) == 0:
-            return 0.5
-        allv = np.concatenate([pos, neg])
-        order = np.argsort(allv)
-        ranks = np.empty(len(order), dtype=float)
-        ranks[order] = np.arange(1, len(order) + 1)
-        r_pos = ranks[: len(pos)].sum()
-        return float((r_pos - len(pos) * (len(pos) + 1) / 2) / (len(pos) * len(neg)))
-
     base_auc = _auc(scores, labels)
     ref_auc = _auc(base_scores, labels)
     delta_main = base_auc - ref_auc
