@@ -2,7 +2,6 @@
   "model": "gpt-4o-mini",
   "n": 300,
   "greedy_gen_acc": 0.4867,
-  "greedy_gen_auc": 0.9699,
   "logprob_auc": 0.5785,
   "logprob_auc_ci95": [
     0.5151,
