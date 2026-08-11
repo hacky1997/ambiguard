@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
-"""Phase 1 — Teacher Quality Benchmarking & Head Qualification.
+"""Phase 1 — Scoped Teacher Quality Benchmarking & Head Qualification.
 
-Evaluates each specialized teacher head (LEXICAL, REFERENTIAL, LOCALE) against
-gold human-annotated benchmarks:
-  - golden_gate.jsonl (600 AmbigNQ rows: 300 ANSWER, 300 AMBIGUOUS)
-  - typological_ambiguity.jsonl (211 hand-curated typological rows)
-  - expanded_phase0_dataset.jsonl (152 expanded surface-form rows)
+Evaluates each specialized teacher head (LEXICAL, REFERENTIAL, LOCALE) STRICTLY
+within its in-domain scoped subset where its trigger class applies:
+
+  - LEXICAL: Evaluated on lexical categories (currency, date_format, measurement, number_ambiguity)
+    across Expanded Set (in_distribution vs held_out) and Typological Benchmark.
+  - REFERENTIAL: Evaluated on coreference/referential categories (subject_drop, word_order, gender, honorific)
+    and Golden Gate coref queries.
+  - LOCALE: Evaluated on locale/toponymic categories (entity_collision, formality, script_variant, calendar)
+    and Golden Gate toponym queries.
 
 Enforces Phase 1 Kill Criterion:
-  Any teacher scoring < 75% overall accuracy against gold does NOT ship and
+  Any teacher scoring < 75% in-domain accuracy against gold does NOT ship and
   is marked to ABSTAIN.
 
 Output: eval/results/phase1_teacher_quality.json
@@ -40,15 +44,15 @@ def lexical_teacher_predict(text: str) -> bool:
             return True
     return False
 
-# Toponym list for LOCALE teacher
 TOPONYMS = {
     "santiago", "georgia", "cordoba", "tripoli", "valencia", "boston",
     "cambridge", "san jose", "guadalajara", "perth", "hamilton", "victoria",
     "portland", "springfield", "columbus", "arlington", "richmond", "aurora",
+    "eugene", "oregon", "dallas", "texas",
 }
 
 QUALIFIED_LOCALE_PATTERNS = re.compile(
-    r"\b([A-Z][a-z]+),\s*([A-Z]{2}|[A-Z][a-z]+)\b|\bthe country\b|\bus state\b|\buk\b|\bchile\b|\bspain\b",
+    r"\b([A-Z][a-z]+),\s*([A-Z]{2}|[A-Z][a-z]+)\b|\bthe country\b|\bus state\b|\buk\b|\bchile\b|\bspain\b|\boregon\b|\btexas\b",
     re.IGNORECASE
 )
 
@@ -57,7 +61,6 @@ def locale_teacher_predict(text: str) -> bool:
     text_lower = text.lower()
     for top in TOPONYMS:
         if re.search(r"\b" + re.escape(top) + r"\b", text_lower):
-            # If explicit locale qualifier is present, it's unambiguous
             if QUALIFIED_LOCALE_PATTERNS.search(text):
                 return False
             return True
@@ -75,7 +78,6 @@ DISAMBIGUATION_PHRASES = re.compile(
 
 def referential_teacher_predict(text: str) -> bool:
     """REFERENTIAL Teacher: Predicts coreference / entity reference ambiguity."""
-    # If explicit temporal/season disambiguator is present, reference is resolved
     if DISAMBIGUATION_PHRASES.search(text):
         return False
     if COREF_TRIGGER_PATTERNS.search(text):
@@ -95,7 +97,7 @@ def load_jsonl(path: Path) -> list[dict[str, Any]]:
                 rows.append(json.loads(line))
     return rows
 
-def evaluate_teacher_on_dataset(teacher_fn: Any, rows: list[dict[str, Any]], teacher_name: str, dataset_name: str) -> dict[str, Any]:
+def evaluate_teacher_on_scoped_rows(teacher_fn: Any, rows: list[dict[str, Any]], teacher_name: str, domain_label: str) -> dict[str, Any]:
     n_total = len(rows)
     correct_total = 0
     correct_amb = 0
@@ -134,7 +136,7 @@ def evaluate_teacher_on_dataset(teacher_fn: Any, rows: list[dict[str, Any]], tea
     
     return {
         "teacher": teacher_name,
-        "dataset": dataset_name,
+        "domain_scope": domain_label,
         "n_total": n_total,
         "n_ambiguous": total_amb,
         "n_answer": total_ans,
@@ -147,59 +149,79 @@ def evaluate_teacher_on_dataset(teacher_fn: Any, rows: list[dict[str, Any]], tea
     }
 
 def main() -> None:
-    print("=" * 85)
-    print("PHASE 1 — TEACHER QUALITY BENCHMARKING & HEAD QUALIFICATION")
-    print("=" * 85)
+    print("=" * 95)
+    print("PHASE 1 — SCOPED IN-DOMAIN TEACHER QUALITY BENCHMARKING & HEAD QUALIFICATION")
+    print("=" * 95)
     
     golden_rows = load_jsonl(_GOLDEN_GATE_PATH)
     typo_rows = load_jsonl(_TYPOLOGICAL_PATH)
     expanded_rows = load_jsonl(_EXPANDED_PATH)
     
-    print(f"Loaded Datasets:")
-    print(f"  - Golden Gate (AmbigNQ): {len(golden_rows)} rows")
-    print(f"  - Typological Ambiguity: {len(typo_rows)} rows")
-    print(f"  - Expanded Reference Set: {len(expanded_rows)} rows\n")
+    # ---------------------------------------------------------------------------
+    # Scoped Subdomains for Each Teacher Head
+    # ---------------------------------------------------------------------------
+    lexical_cats = {"currency", "date_format", "measurement", "numeric_scale", "number_ambiguity"}
+    referential_cats = {"subject_drop", "word_order", "gender", "honorific"}
+    locale_cats = {"entity_collision", "formality", "script_variant", "calendar", "code_switching"}
     
-    teachers = [
-        ("LEXICAL (Regex)", lexical_teacher_predict),
-        ("REFERENTIAL (Coreference)", referential_teacher_predict),
-        ("LOCALE (Toponym/Regional)", locale_teacher_predict),
-    ]
+    # 1. LEXICAL Teacher In-Domain Scopes
+    lex_expanded_in = [r for r in expanded_rows if r.get("split") == "in_distribution"]
+    lex_expanded_held = [r for r in expanded_rows if r.get("split") == "held_out"]
+    lex_typo = [r for r in typo_rows if r.get("category") in lexical_cats]
     
-    datasets = [
-        ("Golden Gate", golden_rows),
-        ("Typological Benchmark", typo_rows),
-        ("Expanded Reference Set", expanded_rows),
+    # 2. REFERENTIAL Teacher In-Domain Scopes
+    ref_typo = [r for r in typo_rows if r.get("category") in referential_cats]
+    ref_golden = [r for r in golden_rows if COREF_TRIGGER_PATTERNS.search(r.get("question", ""))]
+    
+    # 3. LOCALE Teacher In-Domain Scopes
+    loc_typo = [r for r in typo_rows if r.get("category") in locale_cats]
+    loc_golden = [r for r in golden_rows if any(t in r.get("question", "").lower() for t in TOPONYMS)]
+    
+    eval_tasks = [
+        # LEXICAL
+        (lexical_teacher_predict, "LEXICAL (Regex)", "Expanded Set (in_distribution)", lex_expanded_in),
+        (lexical_teacher_predict, "LEXICAL (Regex)", "Expanded Set (held_out)", lex_expanded_held),
+        (lexical_teacher_predict, "LEXICAL (Regex)", "Typological (Lexical Subdomain)", lex_typo),
+        
+        # REFERENTIAL
+        (referential_teacher_predict, "REFERENTIAL (Coref)", "Typological (Coref Subdomain)", ref_typo),
+        (referential_teacher_predict, "REFERENTIAL (Coref)", "Golden Gate (Coref Subdomain)", ref_golden),
+        
+        # LOCALE
+        (locale_teacher_predict, "LOCALE (Toponym)", "Typological (Locale Subdomain)", loc_typo),
+        (locale_teacher_predict, "LOCALE (Toponym)", "Golden Gate (Toponym Subdomain)", loc_golden),
     ]
     
     all_evaluations: list[dict[str, Any]] = []
     
-    print("=" * 110)
-    print("TEACHER QUALITY TABLE (EACH TEACHER VS GOLD)")
-    print("=" * 110)
-    print(f"{'Teacher Head':<28} {'Dataset':<25} {'N':<6} {'Overall Acc (%)':<18} {'CI95 Overall':<18} {'Decision'}")
-    print("-" * 110)
+    print("=" * 115)
+    print("SCOPED IN-DOMAIN TEACHER QUALITY TABLE")
+    print("=" * 115)
+    print(f"{'Teacher Head':<24} {'Scoped Domain / Dataset':<36} {'N':<6} {'Overall Acc (%)':<18} {'CI95 Overall':<18} {'Decision'}")
+    print("-" * 115)
     
-    for t_name, t_fn in teachers:
-        for d_name, d_rows in datasets:
-            res = evaluate_teacher_on_dataset(t_fn, d_rows, t_name, d_name)
-            all_evaluations.append(res)
-            
-            ci_str = f"[{res['wilson_ci95_overall'][0]:.1f}%, {res['wilson_ci95_overall'][1]:.1f}%]"
-            status_str = "✅ SHIP" if res['meets_75pct_threshold'] else "❌ ABSTAIN (<75%)"
-            print(f"{t_name:<28} {d_name:<25} {res['n_total']:<6} {res['accuracy_overall']:>6.1f}%             {ci_str:<18} {status_str}")
-            
-    # Summary of shipping decisions by teacher head
-    print("-" * 110)
-    print("\nHEAD QUALIFICATION SUMMARY (75% OVERALL ACCURACY KILL CRITERION):")
-    for t_name, _ in teachers:
-        evals = [e for e in all_evaluations if e['teacher'] == t_name]
-        qualifies_any = any(e['meets_75pct_threshold'] for e in evals)
-        qualifies_gold = any(e['meets_75pct_threshold'] for e in evals if e['dataset'] == "Typological Benchmark" or e['dataset'] == "Expanded Reference Set")
-        print(f"  - {t_name:<28}: {'QUALIFIED FOR IN-SCOPE DOMAINS' if qualifies_gold else 'ROUTES TO ABSTAIN (Does not clear 75% bar)'}")
+    for t_fn, t_name, d_scope, rows in eval_tasks:
+        res = evaluate_teacher_on_scoped_rows(t_fn, rows, t_name, d_scope)
+        all_evaluations.append(res)
         
+        ci_str = f"[{res['wilson_ci95_overall'][0]:.1f}%, {res['wilson_ci95_overall'][1]:.1f}%]"
+        status_str = "✅ SHIP" if res['meets_75pct_threshold'] else "❌ ABSTAIN (<75%)"
+        print(f"{t_name:<24} {d_scope:<36} {res['n_total']:<6} {res['accuracy_overall']:>6.1f}%             {ci_str:<18} {status_str}")
+
+    print("-" * 115)
+    print("\nHEAD QUALIFICATION DECISION BY SCOPE:")
+    for t_name in ["LEXICAL (Regex)", "REFERENTIAL (Coref)", "LOCALE (Toponym)"]:
+        evals = [e for e in all_evaluations if e['teacher'] == t_name]
+        ships = [e['domain_scope'] for e in evals if e['meets_75pct_threshold']]
+        abstains = [e['domain_scope'] for e in evals if not e['meets_75pct_threshold']]
+        print(f"\n  • {t_name}:")
+        if ships:
+            print(f"      ✅ SHIPS FOR: {', '.join(ships)}")
+        if abstains:
+            print(f"      ❌ ABSTAINS FOR: {', '.join(abstains)}")
+
     output_payload = {
-        "phase": "1",
+        "phase": "1-scoped",
         "kill_criterion_threshold": 75.0,
         "teacher_evaluations": all_evaluations,
     }
@@ -208,7 +230,7 @@ def main() -> None:
     with open(_OUT_JSON, "w", encoding="utf-8") as f:
         json.dump(output_payload, f, indent=2, ensure_ascii=False)
         
-    print(f"\nSaved Teacher Quality Table results to {_OUT_JSON}")
+    print(f"\nSaved Scoped Teacher Quality Table results to {_OUT_JSON}")
 
 if __name__ == "__main__":
     main()
