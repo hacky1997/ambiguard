@@ -46,3 +46,9 @@ No system tested beats chance on AmbigNQ — a finding that survived the removal
 - **Typological Benchmark**: Dataset labels are single-author and unvalidated by independent human annotators.
 - **AmbigNQ**: Labels reflect teacher-induced distributions and specific annotator interpretations rather than observable model behavior.
 - **ASPI Benchmark**: The attack-surface hypothesis requires a model with low baseline injection susceptibility; all models we could access sit 15–40× above ASPI's reported baseline, which compresses the effect below measurability.
+- **Unevaluated Three-Way Routing Policy**: Every number in this repository measures binary ambiguity detection (ANSWER vs AMBIGUOUS). The ANSWER / CLARIFY / ALTERNATIVES policy — the component that distinguishes this system from a binary detector — has never been scored against ground truth, because no dataset available to this project carries those labels:
+  - **AmbigNQ** annotates whether a question is ambiguous, not how a system should respond.
+  - **The typological set** is binary (168 AMBIGUOUS / 42 ANSWER). Three-way labels could be derived from category, but the mapping would be deterministic and the evaluation circular.
+  - **`adversarial.jsonl`** carries genuine three-way labels but has 30 rows (12/11/7) — too few to score.
+
+Distinguishing CLARIFY from ALTERNATIVES requires knowing how many readings a query admits and what each costs to answer. That is a per-row judgement, not a category property.
