@@ -1,48 +1,180 @@
 {
-  "phase": 0,
-  "n_in_distribution": 15,
-  "in_distribution_accuracy": 100.0,
-  "n_held_out": 17,
-  "held_out_accuracy": 94.1,
-  "held_out_ci_95": [
-    73.0,
-    99.0
-  ],
-  "categories": {
+  "phase": "0-corrected",
+  "note": "Previous version scored 94.1% using rules that contained the held-out triggers verbatim. That was a training-set score. RULES_TRAIN here is authored from in-distribution forms only and audited against every held-out trigger before scoring.",
+  "rules_train": {
+    "date_format": "\\b(0?[1-9]|1[0-2])[/.\\-](0?[1-9]|1[0-2])[/.\\-](\\d{2}|\\d{4})\\b",
+    "currency": "[$€£]",
+    "measurement": "\\b(miles?|gallons?)\\b",
+    "number_ambiguity": "\\b(billion|\\d+\\s*m)\\b"
+  },
+  "in_distribution": {
+    "n": 18,
+    "correct": 18,
+    "accuracy": 100.0,
+    "ci95": [
+      82.4,
+      100.0
+    ],
+    "control_accuracy": 100.0,
+    "n_controls": 8,
+    "ambiguous_accuracy": 100.0,
+    "n_ambiguous": 10
+  },
+  "held_out": {
+    "n": 22,
+    "correct": 13,
+    "accuracy": 59.1,
+    "ci95": [
+      38.7,
+      76.7
+    ],
+    "control_accuracy": 100.0,
+    "n_controls": 8,
+    "ambiguous_accuracy": 35.7,
+    "n_ambiguous": 14
+  },
+  "held_out_oracle_leaked": {
+    "n": 22,
+    "correct": 16,
+    "accuracy": 72.7,
+    "ci95": [
+      51.8,
+      86.8
+    ],
+    "control_accuracy": 62.5,
+    "n_controls": 8,
+    "ambiguous_accuracy": 78.6,
+    "n_ambiguous": 14
+  },
+  "generalisation_drop": 40.9,
+  "leakage_points": 13.6,
+  "per_category_held_out": {
     "currency": {
-      "n": 6,
-      "correct": 5,
-      "accuracy": 83.3,
-      "ci_95": [
-        43.6,
-        97.0
+      "train": {
+        "n": 6,
+        "correct": 3,
+        "accuracy": 50.0,
+        "ci95": [
+          18.8,
+          81.2
+        ],
+        "control_accuracy": 100.0,
+        "n_controls": 2,
+        "ambiguous_accuracy": 25.0,
+        "n_ambiguous": 4
+      },
+      "oracle": {
+        "n": 6,
+        "correct": 5,
+        "accuracy": 83.3,
+        "ci95": [
+          43.6,
+          97.0
+        ],
+        "control_accuracy": 100.0,
+        "n_controls": 2,
+        "ambiguous_accuracy": 75.0,
+        "n_ambiguous": 4
+      },
+      "failing_triggers": [
+        "kr",
+        "₨",
+        "KSh"
       ]
     },
     "date_format": {
-      "n": 5,
-      "correct": 5,
-      "accuracy": 100.0,
-      "ci_95": [
-        56.6,
-        100.0
-      ]
+      "train": {
+        "n": 6,
+        "correct": 6,
+        "accuracy": 100.0,
+        "ci95": [
+          61.0,
+          100.0
+        ],
+        "control_accuracy": 100.0,
+        "n_controls": 2,
+        "ambiguous_accuracy": 100.0,
+        "n_ambiguous": 4
+      },
+      "oracle": {
+        "n": 6,
+        "correct": 4,
+        "accuracy": 66.7,
+        "ci95": [
+          30.0,
+          90.3
+        ],
+        "control_accuracy": 0.0,
+        "n_controls": 2,
+        "ambiguous_accuracy": 100.0,
+        "n_ambiguous": 4
+      },
+      "failing_triggers": []
     },
     "measurement": {
-      "n": 3,
-      "correct": 3,
-      "accuracy": 100.0,
-      "ci_95": [
-        43.9,
-        100.0
+      "train": {
+        "n": 5,
+        "correct": 2,
+        "accuracy": 40.0,
+        "ci95": [
+          11.8,
+          76.9
+        ],
+        "control_accuracy": 100.0,
+        "n_controls": 2,
+        "ambiguous_accuracy": 0.0,
+        "n_ambiguous": 3
+      },
+      "oracle": {
+        "n": 5,
+        "correct": 3,
+        "accuracy": 60.0,
+        "ci95": [
+          23.1,
+          88.2
+        ],
+        "control_accuracy": 50.0,
+        "n_controls": 2,
+        "ambiguous_accuracy": 66.7,
+        "n_ambiguous": 3
+      },
+      "failing_triggers": [
+        "pints",
+        "leagues",
+        "cups"
       ]
     },
     "number_ambiguity": {
-      "n": 3,
-      "correct": 3,
-      "accuracy": 100.0,
-      "ci_95": [
-        43.9,
-        100.0
+      "train": {
+        "n": 5,
+        "correct": 2,
+        "accuracy": 40.0,
+        "ci95": [
+          11.8,
+          76.9
+        ],
+        "control_accuracy": 100.0,
+        "n_controls": 2,
+        "ambiguous_accuracy": 0.0,
+        "n_ambiguous": 3
+      },
+      "oracle": {
+        "n": 5,
+        "correct": 4,
+        "accuracy": 80.0,
+        "ci95": [
+          37.6,
+          96.4
+        ],
+        "control_accuracy": 100.0,
+        "n_controls": 2,
+        "ambiguous_accuracy": 66.7,
+        "n_ambiguous": 3
+      },
+      "failing_triggers": [
+        "bn",
+        "MM",
+        "milliard"
       ]
     }
   }
