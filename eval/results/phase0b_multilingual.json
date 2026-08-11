@@ -1,1077 +1,2789 @@
 {
-  "phase": "0b",
-  "n_per_language": 40,
-  "n_controls_per_language": 12,
-  "average_multilingual_accuracy": 47.5,
-  "kill_criterion_threshold_high": 85.0,
-  "kill_criterion_threshold_low": 70.0,
-  "results_by_language": {
-    "en": {
-      "language_name": "English",
-      "n_total": 40,
-      "accuracy_overall": 67.5,
-      "accuracy_controls": 83.3,
-      "accuracy_ambiguous": 60.7,
-      "wilson_ci_95": [
-        52.0,
-        79.9
-      ],
-      "categories": {
-        "currency": {
-          "correct": 7,
-          "total": 10,
-          "accuracy": 70.0,
-          "failures": [
-            {
-              "id": "typo_019",
-              "question_en": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
-              "question_trans": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_020",
-              "question_en": "What is a salary of kr400,000 per year equivalent to in purchasing power?",
-              "question_trans": "What is a salary of kr400,000 per year equivalent to in purchasing power?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_022",
-              "question_en": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
-              "question_trans": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            }
-          ]
+  "phase": "0b-corrected",
+  "seed": 42,
+  "selected_row_ids": [
+    "typo_031",
+    "typo_033",
+    "typo_034",
+    "typo_035",
+    "typo_036",
+    "typo_040",
+    "typo_042",
+    "typo_043",
+    "typo_044",
+    "typo_045",
+    "typo_016",
+    "typo_017",
+    "typo_019",
+    "typo_020",
+    "typo_022",
+    "typo_024",
+    "typo_027",
+    "typo_028",
+    "typo_029",
+    "typo_030",
+    "typo_061",
+    "typo_062",
+    "typo_064",
+    "typo_065",
+    "typo_067",
+    "typo_068",
+    "typo_070",
+    "typo_073",
+    "typo_074",
+    "typo_075",
+    "typo_048",
+    "typo_049",
+    "typo_050",
+    "typo_052",
+    "typo_054",
+    "typo_056",
+    "typo_060",
+    "typo_121",
+    "typo_133",
+    "typo_135"
+  ],
+  "rules_train": {
+    "avg_multilingual_accuracy": 47.5,
+    "results_by_language": {
+      "en": {
+        "language_name": "English",
+        "n_total": 40,
+        "accuracy_overall": 65.0,
+        "accuracy_controls": 91.7,
+        "accuracy_ambiguous": 53.6,
+        "wilson_ci_95": [
+          49.5,
+          77.9
+        ],
+        "categories": {
+          "currency": {
+            "correct": 7,
+            "total": 10,
+            "accuracy": 70.0
+          },
+          "date_format": {
+            "correct": 10,
+            "total": 10,
+            "accuracy": 100.0
+          },
+          "measurement": {
+            "correct": 4,
+            "total": 10,
+            "accuracy": 40.0
+          },
+          "number_ambiguity": {
+            "correct": 5,
+            "total": 10,
+            "accuracy": 50.0
+          }
         },
-        "date_format": {
-          "correct": 10,
-          "total": 10,
-          "accuracy": 100.0,
-          "failures": []
+        "failures": [
+          {
+            "id": "typo_019",
+            "lang": "en",
+            "question_en": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
+            "question_trans": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_020",
+            "lang": "en",
+            "question_en": "What is a salary of kr400,000 per year equivalent to in purchasing power?",
+            "question_trans": "What is a salary of kr400,000 per year equivalent to in purchasing power?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_022",
+            "lang": "en",
+            "question_en": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
+            "question_trans": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_061",
+            "lang": "en",
+            "question_en": "Is 75 degrees considered high for this system?",
+            "question_trans": "Is 75 degrees considered high for this system?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_065",
+            "lang": "en",
+            "question_en": "Is 5 pints considered high for this system?",
+            "question_trans": "Is 5 pints considered high for this system?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_067",
+            "lang": "en",
+            "question_en": "Is 20 knots considered high for this system?",
+            "question_trans": "Is 20 knots considered high for this system?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_068",
+            "lang": "en",
+            "question_en": "Is 60 degrees considered high for this system?",
+            "question_trans": "Is 60 degrees considered high for this system?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_070",
+            "lang": "en",
+            "question_en": "Is 5 ounces considered high for this system?",
+            "question_trans": "Is 5 ounces considered high for this system?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_074",
+            "lang": "en",
+            "question_en": "How many kilometers is 100 statute miles?",
+            "question_trans": "How many kilometers is 100 statute miles?",
+            "category": "measurement",
+            "expected": "ANSWER",
+            "predicted": "AMBIGUOUS"
+          },
+          {
+            "id": "typo_049",
+            "lang": "en",
+            "question_en": "What is the exact numerical value of 1.000?",
+            "question_trans": "What is the exact numerical value of 1.000?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_050",
+            "lang": "en",
+            "question_en": "What is the exact numerical value of 10,000?",
+            "question_trans": "What is the exact numerical value of 10,000?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_052",
+            "lang": "en",
+            "question_en": "What is the exact numerical value of 5 trillion?",
+            "question_trans": "What is the exact numerical value of 5 trillion?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_056",
+            "lang": "en",
+            "question_en": "What is the exact numerical value of 4,000?",
+            "question_trans": "What is the exact numerical value of 4,000?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_121",
+            "lang": "en",
+            "question_en": "Does the phrase containing 'English 'you'' address one person or a group?",
+            "question_trans": "Does the phrase containing 'English 'you'' address one person or a group?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          }
+        ]
+      },
+      "es": {
+        "language_name": "Spanish",
+        "n_total": 40,
+        "accuracy_overall": 52.5,
+        "accuracy_controls": 100.0,
+        "accuracy_ambiguous": 32.1,
+        "wilson_ci_95": [
+          37.5,
+          67.1
+        ],
+        "categories": {
+          "currency": {
+            "correct": 5,
+            "total": 10,
+            "accuracy": 50.0
+          },
+          "date_format": {
+            "correct": 10,
+            "total": 10,
+            "accuracy": 100.0
+          },
+          "measurement": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          },
+          "number_ambiguity": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          }
         },
-        "measurement": {
-          "correct": 5,
-          "total": 10,
-          "accuracy": 50.0,
-          "failures": [
-            {
-              "id": "typo_074",
-              "question_en": "How many kilometers is 100 statute miles?",
-              "question_trans": "How many kilometers is 100 statute miles?",
-              "expected": "ANSWER",
-              "predicted": "AMBIGUOUS"
-            },
-            {
-              "id": "typo_061",
-              "question_en": "Is 75 degrees considered high for this system?",
-              "question_trans": "Is 75 degrees considered high for this system?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_063",
-              "question_en": "Is 50 tons considered high for this system?",
-              "question_trans": "Is 50 tons considered high for this system?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_066",
-              "question_en": "Is 100 feet considered high for this system?",
-              "question_trans": "Is 100 feet considered high for this system?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_067",
-              "question_en": "Is 20 knots considered high for this system?",
-              "question_trans": "Is 20 knots considered high for this system?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            }
-          ]
+        "failures": [
+          {
+            "id": "typo_016",
+            "lang": "es",
+            "question_en": "What is a salary of $50,000 per year equivalent to in purchasing power?",
+            "question_trans": "¿Cuál es un salario de 50.000 dólares al año equivalente en poder adquisitivo?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_019",
+            "lang": "es",
+            "question_en": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
+            "question_trans": "¿Cuál es un salario de 5.000.000 de yenes al año equivalente en poder adquisitivo?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_020",
+            "lang": "es",
+            "question_en": "What is a salary of kr400,000 per year equivalent to in purchasing power?",
+            "question_trans": "¿Cuál es un salario de kr400.000 al año equivalente en poder adquisitivo?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_022",
+            "lang": "es",
+            "question_en": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
+            "question_trans": "¿Cuál es un salario de 1.200.000 rupias al año equivalente en poder adquisitivo?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_024",
+            "lang": "es",
+            "question_en": "What is a salary of $500,000 per year equivalent to in purchasing power?",
+            "question_trans": "¿Cuál es un salario de 500.000 dólares al año equivalente en poder adquisitivo?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_061",
+            "lang": "es",
+            "question_en": "Is 75 degrees considered high for this system?",
+            "question_trans": "¿Los 75 grados se consideran altos para este sistema?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_062",
+            "lang": "es",
+            "question_en": "Is 100 miles considered high for this system?",
+            "question_trans": "¿100 millas se consideran altas para este sistema?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_064",
+            "lang": "es",
+            "question_en": "Is 10 gallons considered high for this system?",
+            "question_trans": "¿Se consideran altos 10 galones para este sistema?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_065",
+            "lang": "es",
+            "question_en": "Is 5 pints considered high for this system?",
+            "question_trans": "¿Se considera alto para este sistema 5 pints?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_067",
+            "lang": "es",
+            "question_en": "Is 20 knots considered high for this system?",
+            "question_trans": "¿Se consideran altos 20 nudos para este sistema?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_068",
+            "lang": "es",
+            "question_en": "Is 60 degrees considered high for this system?",
+            "question_trans": "¿Los 60 grados se consideran altos para este sistema?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_070",
+            "lang": "es",
+            "question_en": "Is 5 ounces considered high for this system?",
+            "question_trans": "¿Se consideran altas 5 onzas para este sistema?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_048",
+            "lang": "es",
+            "question_en": "What is the exact numerical value of 1 billion euros in 1990 text?",
+            "question_trans": "¿Cuál es el valor numérico exacto de 1.000 millones de euros en el texto de 1990?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_049",
+            "lang": "es",
+            "question_en": "What is the exact numerical value of 1.000?",
+            "question_trans": "¿Cuál es el valor numérico exacto de 1.000?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_050",
+            "lang": "es",
+            "question_en": "What is the exact numerical value of 10,000?",
+            "question_trans": "¿Cuál es el valor numérico exacto de 10.000?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_052",
+            "lang": "es",
+            "question_en": "What is the exact numerical value of 5 trillion?",
+            "question_trans": "¿Cuál es el valor numérico exacto de 5 billones?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_054",
+            "lang": "es",
+            "question_en": "What is the exact numerical value of 100 billion?",
+            "question_trans": "¿Cuál es el valor numérico exacto de 100 mil millones?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_056",
+            "lang": "es",
+            "question_en": "What is the exact numerical value of 4,000?",
+            "question_trans": "¿Cuál es el valor numérico exacto de 4.000?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_121",
+            "lang": "es",
+            "question_en": "Does the phrase containing 'English 'you'' address one person or a group?",
+            "question_trans": "¿Se dirige la frase que contiene en inglés 'tú' a una persona o a un grupo?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          }
+        ]
+      },
+      "de": {
+        "language_name": "German",
+        "n_total": 40,
+        "accuracy_overall": 50.0,
+        "accuracy_controls": 100.0,
+        "accuracy_ambiguous": 28.6,
+        "wilson_ci_95": [
+          35.2,
+          64.8
+        ],
+        "categories": {
+          "currency": {
+            "correct": 4,
+            "total": 10,
+            "accuracy": 40.0
+          },
+          "date_format": {
+            "correct": 10,
+            "total": 10,
+            "accuracy": 100.0
+          },
+          "measurement": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          },
+          "number_ambiguity": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          }
         },
-        "number_ambiguity": {
-          "correct": 5,
-          "total": 10,
-          "accuracy": 50.0,
-          "failures": [
-            {
-              "id": "typo_059",
-              "question_en": "How many millions are in 1,000,000,000 (one US billion)?",
-              "question_trans": "How many millions are in 1,000,000,000 (one US billion)?",
-              "expected": "ANSWER",
-              "predicted": "AMBIGUOUS"
-            },
-            {
-              "id": "typo_047",
-              "question_en": "What is the exact numerical value of 1 trillion?",
-              "question_trans": "What is the exact numerical value of 1 trillion?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_049",
-              "question_en": "What is the exact numerical value of 1.000?",
-              "question_trans": "What is the exact numerical value of 1.000?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_050",
-              "question_en": "What is the exact numerical value of 10,000?",
-              "question_trans": "What is the exact numerical value of 10,000?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_052",
-              "question_en": "What is the exact numerical value of 5 trillion?",
-              "question_trans": "What is the exact numerical value of 5 trillion?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            }
-          ]
-        }
-      }
-    },
-    "es": {
-      "language_name": "Spanish",
-      "n_total": 40,
-      "accuracy_overall": 52.5,
-      "accuracy_controls": 100.0,
-      "accuracy_ambiguous": 32.1,
-      "wilson_ci_95": [
-        37.5,
-        67.1
-      ],
-      "categories": {
-        "currency": {
-          "correct": 4,
-          "total": 10,
-          "accuracy": 40.0,
-          "failures": [
-            {
-              "id": "typo_016",
-              "question_en": "What is a salary of $50,000 per year equivalent to in purchasing power?",
-              "question_trans": "¿Cuál es un salario de 50.000 dólares al año equivalente en poder adquisitivo?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_018",
-              "question_en": "What is a salary of $100,000 per year equivalent to in purchasing power?",
-              "question_trans": "¿Cuál es un salario de 100.000 dólares al año equivalente en poder adquisitivo?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_019",
-              "question_en": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
-              "question_trans": "¿Cuál es un salario de 5.000.000 de yenes al año equivalente en poder adquisitivo?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_020",
-              "question_en": "What is a salary of kr400,000 per year equivalent to in purchasing power?",
-              "question_trans": "¿Cuál es un salario de kr400.000 al año equivalente en poder adquisitivo?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_021",
-              "question_en": "What is a salary of £35,000 per year equivalent to in purchasing power?",
-              "question_trans": "¿Cuál es un salario de 35.000 libras esterlinas al año equivalente en poder adquisitivo?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_022",
-              "question_en": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
-              "question_trans": "¿Cuál es un salario de 1.200.000 rupias al año equivalente en poder adquisitivo?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            }
-          ]
+        "failures": [
+          {
+            "id": "typo_016",
+            "lang": "de",
+            "question_en": "What is a salary of $50,000 per year equivalent to in purchasing power?",
+            "question_trans": "Welches Gehalt von 50.000 Dollar pro Jahr entspricht der Kaufkraft?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_017",
+            "lang": "de",
+            "question_en": "What is a salary of $75,000 per year equivalent to in purchasing power?",
+            "question_trans": "Welches Gehalt von 75.000 Dollar pro Jahr entspricht der Kaufkraft?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_019",
+            "lang": "de",
+            "question_en": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
+            "question_trans": "Welches Gehalt von ¥5.000.000 pro Jahr entspricht der Kaufkraft?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_020",
+            "lang": "de",
+            "question_en": "What is a salary of kr400,000 per year equivalent to in purchasing power?",
+            "question_trans": "Welches Gehalt von 400.000 Kronen pro Jahr entspricht der Kaufkraft?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_022",
+            "lang": "de",
+            "question_en": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
+            "question_trans": "Was ist ein Gehalt von 1.200.000 Rupien pro Jahr im Einklang mit der Kaufkraft?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_024",
+            "lang": "de",
+            "question_en": "What is a salary of $500,000 per year equivalent to in purchasing power?",
+            "question_trans": "Welches Gehalt von 500.000 Dollar pro Jahr entspricht der Kaufkraft?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_061",
+            "lang": "de",
+            "question_en": "Is 75 degrees considered high for this system?",
+            "question_trans": "Ist 75 Grad hoch für dieses System?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_062",
+            "lang": "de",
+            "question_en": "Is 100 miles considered high for this system?",
+            "question_trans": "Sind 100 Meilen hoch für dieses System?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_064",
+            "lang": "de",
+            "question_en": "Is 10 gallons considered high for this system?",
+            "question_trans": "Sind 10 Gallonen hoch für dieses System?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_065",
+            "lang": "de",
+            "question_en": "Is 5 pints considered high for this system?",
+            "question_trans": "Ist 5 Pints für dieses System als hoch angesehen?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_067",
+            "lang": "de",
+            "question_en": "Is 20 knots considered high for this system?",
+            "question_trans": "Sind 20 Knoten für dieses System als hoch angesehen?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_068",
+            "lang": "de",
+            "question_en": "Is 60 degrees considered high for this system?",
+            "question_trans": "Ist 60 Grad hoch für dieses System?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_070",
+            "lang": "de",
+            "question_en": "Is 5 ounces considered high for this system?",
+            "question_trans": "Ist 5 Unzen hoch für dieses System?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_048",
+            "lang": "de",
+            "question_en": "What is the exact numerical value of 1 billion euros in 1990 text?",
+            "question_trans": "Was ist der genaue numerische Wert von 1 Milliarde Euro im Text von 1990?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_049",
+            "lang": "de",
+            "question_en": "What is the exact numerical value of 1.000?",
+            "question_trans": "Was ist der genaue numerische Wert von 1.000?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_050",
+            "lang": "de",
+            "question_en": "What is the exact numerical value of 10,000?",
+            "question_trans": "Was ist der genaue numerische Wert von 10.000?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_052",
+            "lang": "de",
+            "question_en": "What is the exact numerical value of 5 trillion?",
+            "question_trans": "Was ist der genaue numerische Wert von 5 Billionen?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_054",
+            "lang": "de",
+            "question_en": "What is the exact numerical value of 100 billion?",
+            "question_trans": "Was ist der genaue numerische Wert von 100 Milliarden?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_056",
+            "lang": "de",
+            "question_en": "What is the exact numerical value of 4,000?",
+            "question_trans": "Was ist der genaue numerische Wert von 4.000?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_121",
+            "lang": "de",
+            "question_en": "Does the phrase containing 'English 'you'' address one person or a group?",
+            "question_trans": "Wird der Satz \"Englisch 'you'\" an eine Person oder eine Gruppe gerichtet?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          }
+        ]
+      },
+      "hi": {
+        "language_name": "Hindi",
+        "n_total": 40,
+        "accuracy_overall": 55.0,
+        "accuracy_controls": 100.0,
+        "accuracy_ambiguous": 35.7,
+        "wilson_ci_95": [
+          39.8,
+          69.3
+        ],
+        "categories": {
+          "currency": {
+            "correct": 6,
+            "total": 10,
+            "accuracy": 60.0
+          },
+          "date_format": {
+            "correct": 10,
+            "total": 10,
+            "accuracy": 100.0
+          },
+          "measurement": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          },
+          "number_ambiguity": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          }
         },
-        "date_format": {
-          "correct": 10,
-          "total": 10,
-          "accuracy": 100.0,
-          "failures": []
+        "failures": [
+          {
+            "id": "typo_016",
+            "lang": "hi",
+            "question_en": "What is a salary of $50,000 per year equivalent to in purchasing power?",
+            "question_trans": "प्रति वर्ष 50,000 डॉलर का वेतन खरीदने की शक्ति के बराबर क्या है?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_019",
+            "lang": "hi",
+            "question_en": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
+            "question_trans": "प्रति वर्ष ¥5,000,000 का वेतन खरीदने की शक्ति के बराबर क्या है?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_020",
+            "lang": "hi",
+            "question_en": "What is a salary of kr400,000 per year equivalent to in purchasing power?",
+            "question_trans": "खरीद शक्ति में प्रति वर्ष 400,000 kr का वेतन कितना है?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_022",
+            "lang": "hi",
+            "question_en": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
+            "question_trans": "खरीद शक्ति में प्रति वर्ष 1,200,000 रुपये का वेतन कितना है?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_061",
+            "lang": "hi",
+            "question_en": "Is 75 degrees considered high for this system?",
+            "question_trans": "क्या इस प्रणाली के लिए 75 डिग्री उच्च माना जाता है?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_062",
+            "lang": "hi",
+            "question_en": "Is 100 miles considered high for this system?",
+            "question_trans": "100 मील इस प्रणाली के लिए उच्च माना जाता है?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_064",
+            "lang": "hi",
+            "question_en": "Is 10 gallons considered high for this system?",
+            "question_trans": "क्या इस प्रणाली के लिए 10 गैलन उच्च माना जाता है?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_065",
+            "lang": "hi",
+            "question_en": "Is 5 pints considered high for this system?",
+            "question_trans": "क्या इस प्रणाली के लिए 5 पिन्ट उच्च माना जाता है?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_067",
+            "lang": "hi",
+            "question_en": "Is 20 knots considered high for this system?",
+            "question_trans": "क्या इस प्रणाली के लिए 20 गाँठ उच्च माना जाता है?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_068",
+            "lang": "hi",
+            "question_en": "Is 60 degrees considered high for this system?",
+            "question_trans": "क्या इस प्रणाली के लिए 60 डिग्री उच्च माना जाता है?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_070",
+            "lang": "hi",
+            "question_en": "Is 5 ounces considered high for this system?",
+            "question_trans": "क्या इस प्रणाली के लिए 5 औंस उच्च माना जाता है?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_048",
+            "lang": "hi",
+            "question_en": "What is the exact numerical value of 1 billion euros in 1990 text?",
+            "question_trans": "1990 के पाठ में 1 बिलियन यूरो का सटीक संख्यात्मक मूल्य क्या है?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_049",
+            "lang": "hi",
+            "question_en": "What is the exact numerical value of 1.000?",
+            "question_trans": "1,000 का सटीक संख्यात्मक मूल्य क्या है?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_050",
+            "lang": "hi",
+            "question_en": "What is the exact numerical value of 10,000?",
+            "question_trans": "10,000 का सटीक संख्यात्मक मूल्य क्या है?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_052",
+            "lang": "hi",
+            "question_en": "What is the exact numerical value of 5 trillion?",
+            "question_trans": "5 ट्रिलियन का सटीक संख्यात्मक मूल्य क्या है?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_054",
+            "lang": "hi",
+            "question_en": "What is the exact numerical value of 100 billion?",
+            "question_trans": "100 अरब का सटीक संख्यात्मक मूल्य क्या है?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_056",
+            "lang": "hi",
+            "question_en": "What is the exact numerical value of 4,000?",
+            "question_trans": "4,000 का सटीक संख्यात्मक मूल्य क्या है?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_121",
+            "lang": "hi",
+            "question_en": "Does the phrase containing 'English 'you'' address one person or a group?",
+            "question_trans": "क्या 'अंग्रेजी 'आप' युक्त वाक्यांश एक व्यक्ति या समूह को संबोधित करता है?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          }
+        ]
+      },
+      "ja": {
+        "language_name": "Japanese",
+        "n_total": 40,
+        "accuracy_overall": 30.0,
+        "accuracy_controls": 100.0,
+        "accuracy_ambiguous": 0.0,
+        "wilson_ci_95": [
+          18.1,
+          45.4
+        ],
+        "categories": {
+          "currency": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          },
+          "date_format": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          },
+          "measurement": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          },
+          "number_ambiguity": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          }
         },
-        "measurement": {
-          "correct": 4,
-          "total": 10,
-          "accuracy": 40.0,
-          "failures": [
-            {
-              "id": "typo_061",
-              "question_en": "Is 75 degrees considered high for this system?",
-              "question_trans": "¿Los 75 grados se consideran altos para este sistema?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_062",
-              "question_en": "Is 100 miles considered high for this system?",
-              "question_trans": "¿100 millas se consideran altas para este sistema?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_063",
-              "question_en": "Is 50 tons considered high for this system?",
-              "question_trans": "¿Se consideran altas 50 toneladas para este sistema?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_064",
-              "question_en": "Is 10 gallons considered high for this system?",
-              "question_trans": "¿Se consideran altos 10 galones para este sistema?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_066",
-              "question_en": "Is 100 feet considered high for this system?",
-              "question_trans": "¿Se considera alto 100 pies para este sistema?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_067",
-              "question_en": "Is 20 knots considered high for this system?",
-              "question_trans": "¿Se consideran altos 20 nudos para este sistema?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            }
-          ]
+        "failures": [
+          {
+            "id": "typo_031",
+            "lang": "ja",
+            "question_en": "When does the contract starting on 05/06/2024 expire?",
+            "question_trans": "契約は2024年06月05日からいつ終了する?",
+            "category": "date_format",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_033",
+            "lang": "ja",
+            "question_en": "When does the contract starting on 11/12/2023 expire?",
+            "question_trans": "2023年12月11日からの契約はいつ終了する?",
+            "category": "date_format",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_034",
+            "lang": "ja",
+            "question_en": "When does the contract starting on 01/02/2026 expire?",
+            "question_trans": "01/02/2026から始まる契約はいつ終了する?",
+            "category": "date_format",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_035",
+            "lang": "ja",
+            "question_en": "When does the contract starting on 07/08/2024 expire?",
+            "question_trans": "07/08/2024から始まる契約はいつ終了する?",
+            "category": "date_format",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_036",
+            "lang": "ja",
+            "question_en": "When does the contract starting on 09/10/2025 expire?",
+            "question_trans": "2025年10月9日からの契約はいつ終了する?",
+            "category": "date_format",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_040",
+            "lang": "ja",
+            "question_en": "When does the contract starting on 08/09/2024 expire?",
+            "question_trans": "08/09/2024から始まる契約はいつ終了する?",
+            "category": "date_format",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_042",
+            "lang": "ja",
+            "question_en": "When does the contract starting on 12/01/2025 expire?",
+            "question_trans": "契約は2025年01月12日からいつ終了する?",
+            "category": "date_format",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_016",
+            "lang": "ja",
+            "question_en": "What is a salary of $50,000 per year equivalent to in purchasing power?",
+            "question_trans": "年間5万ドルの給料は 買取力に相当します",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_017",
+            "lang": "ja",
+            "question_en": "What is a salary of $75,000 per year equivalent to in purchasing power?",
+            "question_trans": "年収7万5千ドルは 買取力に相当する金額でしょうか?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_019",
+            "lang": "ja",
+            "question_en": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
+            "question_trans": "年間5,000,000円の給与は 買取力に相当する金額でしょうか?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_020",
+            "lang": "ja",
+            "question_en": "What is a salary of kr400,000 per year equivalent to in purchasing power?",
+            "question_trans": "年間40万円の賃金は 買取力に相当する金額でしょうか?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_022",
+            "lang": "ja",
+            "question_en": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
+            "question_trans": "年間1,200,000の給与は 買取力に相当する金額でしょうか?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_024",
+            "lang": "ja",
+            "question_en": "What is a salary of $500,000 per year equivalent to in purchasing power?",
+            "question_trans": "年間5万ドルの給料は 買取力に相当するものでしょうか?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_027",
+            "lang": "ja",
+            "question_en": "What is a salary of £45,000 per year equivalent to in purchasing power?",
+            "question_trans": "年間4万5千ポンドの給料は 買取力に相当します",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_061",
+            "lang": "ja",
+            "question_en": "Is 75 degrees considered high for this system?",
+            "question_trans": "このシステムには 75度が高いものと考えられますか?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_062",
+            "lang": "ja",
+            "question_en": "Is 100 miles considered high for this system?",
+            "question_trans": "100マイルは このシステムにとって 高さだと考えられますか?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_064",
+            "lang": "ja",
+            "question_en": "Is 10 gallons considered high for this system?",
+            "question_trans": "このシステムには10ガロンが高額だと考えられますか?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_065",
+            "lang": "ja",
+            "question_en": "Is 5 pints considered high for this system?",
+            "question_trans": "このシステムには5ピントが高額だと考えられますか?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_067",
+            "lang": "ja",
+            "question_en": "Is 20 knots considered high for this system?",
+            "question_trans": "このシステムには20ノードが高いものと考えられますか?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_068",
+            "lang": "ja",
+            "question_en": "Is 60 degrees considered high for this system?",
+            "question_trans": "このシステムでは60度が高いと考えられますか?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_070",
+            "lang": "ja",
+            "question_en": "Is 5 ounces considered high for this system?",
+            "question_trans": "このシステムには5オンスが高額だと考えられますか?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_048",
+            "lang": "ja",
+            "question_en": "What is the exact numerical value of 1 billion euros in 1990 text?",
+            "question_trans": "1990年のテキストで10億ユーロの正確な数字値は?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_049",
+            "lang": "ja",
+            "question_en": "What is the exact numerical value of 1.000?",
+            "question_trans": "1,000の正確な数値とは?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_050",
+            "lang": "ja",
+            "question_en": "What is the exact numerical value of 10,000?",
+            "question_trans": "10万という数字の正確な値は?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_052",
+            "lang": "ja",
+            "question_en": "What is the exact numerical value of 5 trillion?",
+            "question_trans": "5兆円の正確な数字値は?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_054",
+            "lang": "ja",
+            "question_en": "What is the exact numerical value of 100 billion?",
+            "question_trans": "100億という数字の正確な値は?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_056",
+            "lang": "ja",
+            "question_en": "What is the exact numerical value of 4,000?",
+            "question_trans": "4千という数字の正確な値は?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_121",
+            "lang": "ja",
+            "question_en": "Does the phrase containing 'English 'you'' address one person or a group?",
+            "question_trans": "\"英語\"you\"を含むフレーズは,個人または集団を指すのでしょうか?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          }
+        ]
+      },
+      "sw": {
+        "language_name": "Swahili",
+        "n_total": 40,
+        "accuracy_overall": 50.0,
+        "accuracy_controls": 100.0,
+        "accuracy_ambiguous": 28.6,
+        "wilson_ci_95": [
+          35.2,
+          64.8
+        ],
+        "categories": {
+          "currency": {
+            "correct": 4,
+            "total": 10,
+            "accuracy": 40.0
+          },
+          "date_format": {
+            "correct": 10,
+            "total": 10,
+            "accuracy": 100.0
+          },
+          "measurement": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          },
+          "number_ambiguity": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          }
         },
-        "number_ambiguity": {
-          "correct": 3,
-          "total": 10,
-          "accuracy": 30.0,
-          "failures": [
-            {
-              "id": "typo_046",
-              "question_en": "What is the exact numerical value of 1 billion?",
-              "question_trans": "¿Cuál es el valor numérico exacto de mil millones?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_047",
-              "question_en": "What is the exact numerical value of 1 trillion?",
-              "question_trans": "¿Cuál es el valor numérico exacto de 1 billón?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_048",
-              "question_en": "What is the exact numerical value of 1 billion euros in 1990 text?",
-              "question_trans": "¿Cuál es el valor numérico exacto de 1.000 millones de euros en el texto de 1990?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_049",
-              "question_en": "What is the exact numerical value of 1.000?",
-              "question_trans": "¿Cuál es el valor numérico exacto de 1.000?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_050",
-              "question_en": "What is the exact numerical value of 10,000?",
-              "question_trans": "¿Cuál es el valor numérico exacto de 10.000?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_051",
-              "question_en": "What is the exact numerical value of 2 billion?",
-              "question_trans": "¿Cuál es el valor numérico exacto de 2 mil millones?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_052",
-              "question_en": "What is the exact numerical value of 5 trillion?",
-              "question_trans": "¿Cuál es el valor numérico exacto de 5 billones?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            }
-          ]
-        }
-      }
-    },
-    "de": {
-      "language_name": "German",
-      "n_total": 40,
-      "accuracy_overall": 50.0,
-      "accuracy_controls": 100.0,
-      "accuracy_ambiguous": 28.6,
-      "wilson_ci_95": [
-        35.2,
-        64.8
-      ],
-      "categories": {
-        "currency": {
-          "correct": 3,
-          "total": 10,
-          "accuracy": 30.0,
-          "failures": [
-            {
-              "id": "typo_016",
-              "question_en": "What is a salary of $50,000 per year equivalent to in purchasing power?",
-              "question_trans": "Welches Gehalt von 50.000 Dollar pro Jahr entspricht der Kaufkraft?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_017",
-              "question_en": "What is a salary of $75,000 per year equivalent to in purchasing power?",
-              "question_trans": "Welches Gehalt von 75.000 Dollar pro Jahr entspricht der Kaufkraft?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_018",
-              "question_en": "What is a salary of $100,000 per year equivalent to in purchasing power?",
-              "question_trans": "Welches Gehalt von 100.000 Dollar pro Jahr entspricht der Kaufkraft?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_019",
-              "question_en": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
-              "question_trans": "Welches Gehalt von ¥5.000.000 pro Jahr entspricht der Kaufkraft?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_020",
-              "question_en": "What is a salary of kr400,000 per year equivalent to in purchasing power?",
-              "question_trans": "Welches Gehalt von 400.000 Kronen pro Jahr entspricht der Kaufkraft?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_021",
-              "question_en": "What is a salary of £35,000 per year equivalent to in purchasing power?",
-              "question_trans": "Welches Gehalt von 35.000 Pfund pro Jahr entspricht der Kaufkraft?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_022",
-              "question_en": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
-              "question_trans": "Was ist ein Gehalt von 1.200.000 Rupien pro Jahr im Einklang mit der Kaufkraft?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            }
-          ]
-        },
-        "date_format": {
-          "correct": 10,
-          "total": 10,
-          "accuracy": 100.0,
-          "failures": []
-        },
-        "measurement": {
-          "correct": 4,
-          "total": 10,
-          "accuracy": 40.0,
-          "failures": [
-            {
-              "id": "typo_061",
-              "question_en": "Is 75 degrees considered high for this system?",
-              "question_trans": "Ist 75 Grad hoch für dieses System?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_062",
-              "question_en": "Is 100 miles considered high for this system?",
-              "question_trans": "Sind 100 Meilen hoch für dieses System?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_063",
-              "question_en": "Is 50 tons considered high for this system?",
-              "question_trans": "Ist 50 Tonnen hoch für dieses System?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_064",
-              "question_en": "Is 10 gallons considered high for this system?",
-              "question_trans": "Sind 10 Gallonen hoch für dieses System?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_066",
-              "question_en": "Is 100 feet considered high for this system?",
-              "question_trans": "Ist 100 Fuß hoch für dieses System?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_067",
-              "question_en": "Is 20 knots considered high for this system?",
-              "question_trans": "Sind 20 Knoten für dieses System als hoch angesehen?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            }
-          ]
-        },
-        "number_ambiguity": {
-          "correct": 3,
-          "total": 10,
-          "accuracy": 30.0,
-          "failures": [
-            {
-              "id": "typo_046",
-              "question_en": "What is the exact numerical value of 1 billion?",
-              "question_trans": "Was ist der genaue numerische Wert von einer Milliarde?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_047",
-              "question_en": "What is the exact numerical value of 1 trillion?",
-              "question_trans": "Was ist der genaue numerische Wert von 1 Billionen?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_048",
-              "question_en": "What is the exact numerical value of 1 billion euros in 1990 text?",
-              "question_trans": "Was ist der genaue numerische Wert von 1 Milliarde Euro im Text von 1990?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_049",
-              "question_en": "What is the exact numerical value of 1.000?",
-              "question_trans": "Was ist der genaue numerische Wert von 1.000?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_050",
-              "question_en": "What is the exact numerical value of 10,000?",
-              "question_trans": "Was ist der genaue numerische Wert von 10.000?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_051",
-              "question_en": "What is the exact numerical value of 2 billion?",
-              "question_trans": "Was ist der genaue numerische Wert von 2 Milliarden?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_052",
-              "question_en": "What is the exact numerical value of 5 trillion?",
-              "question_trans": "Was ist der genaue numerische Wert von 5 Billionen?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            }
-          ]
-        }
-      }
-    },
-    "hi": {
-      "language_name": "Hindi",
-      "n_total": 40,
-      "accuracy_overall": 57.5,
-      "accuracy_controls": 100.0,
-      "accuracy_ambiguous": 39.3,
-      "wilson_ci_95": [
-        42.2,
-        71.5
-      ],
-      "categories": {
-        "currency": {
-          "correct": 7,
-          "total": 10,
-          "accuracy": 70.0,
-          "failures": [
-            {
-              "id": "typo_016",
-              "question_en": "What is a salary of $50,000 per year equivalent to in purchasing power?",
-              "question_trans": "प्रति वर्ष 50,000 डॉलर का वेतन खरीदने की शक्ति के बराबर क्या है?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_019",
-              "question_en": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
-              "question_trans": "प्रति वर्ष ¥5,000,000 का वेतन खरीदने की शक्ति के बराबर क्या है?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_022",
-              "question_en": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
-              "question_trans": "खरीद शक्ति में प्रति वर्ष 1,200,000 रुपये का वेतन कितना है?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            }
-          ]
-        },
-        "date_format": {
-          "correct": 10,
-          "total": 10,
-          "accuracy": 100.0,
-          "failures": []
-        },
-        "measurement": {
-          "correct": 3,
-          "total": 10,
-          "accuracy": 30.0,
-          "failures": [
-            {
-              "id": "typo_061",
-              "question_en": "Is 75 degrees considered high for this system?",
-              "question_trans": "क्या इस प्रणाली के लिए 75 डिग्री उच्च माना जाता है?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_062",
-              "question_en": "Is 100 miles considered high for this system?",
-              "question_trans": "100 मील इस प्रणाली के लिए उच्च माना जाता है?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_063",
-              "question_en": "Is 50 tons considered high for this system?",
-              "question_trans": "क्या इस प्रणाली के लिए 50 टन उच्च माना जाता है?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_064",
-              "question_en": "Is 10 gallons considered high for this system?",
-              "question_trans": "क्या इस प्रणाली के लिए 10 गैलन उच्च माना जाता है?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_065",
-              "question_en": "Is 5 pints considered high for this system?",
-              "question_trans": "क्या इस प्रणाली के लिए 5 पिन्ट उच्च माना जाता है?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_066",
-              "question_en": "Is 100 feet considered high for this system?",
-              "question_trans": "क्या इस प्रणाली के लिए 100 फीट ऊंचा माना जाता है?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_067",
-              "question_en": "Is 20 knots considered high for this system?",
-              "question_trans": "क्या इस प्रणाली के लिए 20 गाँठ उच्च माना जाता है?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            }
-          ]
-        },
-        "number_ambiguity": {
-          "correct": 3,
-          "total": 10,
-          "accuracy": 30.0,
-          "failures": [
-            {
-              "id": "typo_046",
-              "question_en": "What is the exact numerical value of 1 billion?",
-              "question_trans": "1 बिलियन का सटीक संख्यात्मक मूल्य क्या है?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_047",
-              "question_en": "What is the exact numerical value of 1 trillion?",
-              "question_trans": "1 ट्रिलियन का सटीक संख्यात्मक मूल्य क्या है?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_048",
-              "question_en": "What is the exact numerical value of 1 billion euros in 1990 text?",
-              "question_trans": "1990 के पाठ में 1 बिलियन यूरो का सटीक संख्यात्मक मूल्य क्या है?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_049",
-              "question_en": "What is the exact numerical value of 1.000?",
-              "question_trans": "1,000 का सटीक संख्यात्मक मूल्य क्या है?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_050",
-              "question_en": "What is the exact numerical value of 10,000?",
-              "question_trans": "10,000 का सटीक संख्यात्मक मूल्य क्या है?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_051",
-              "question_en": "What is the exact numerical value of 2 billion?",
-              "question_trans": "2 बिलियन का सटीक संख्यात्मक मूल्य क्या है?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_052",
-              "question_en": "What is the exact numerical value of 5 trillion?",
-              "question_trans": "5 ट्रिलियन का सटीक संख्यात्मक मूल्य क्या है?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            }
-          ]
-        }
-      }
-    },
-    "ja": {
-      "language_name": "Japanese",
-      "n_total": 40,
-      "accuracy_overall": 30.0,
-      "accuracy_controls": 100.0,
-      "accuracy_ambiguous": 0.0,
-      "wilson_ci_95": [
-        18.1,
-        45.4
-      ],
-      "categories": {
-        "currency": {
-          "correct": 3,
-          "total": 10,
-          "accuracy": 30.0,
-          "failures": [
-            {
-              "id": "typo_016",
-              "question_en": "What is a salary of $50,000 per year equivalent to in purchasing power?",
-              "question_trans": "年間5万ドルの給料は 買取力に相当します",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_017",
-              "question_en": "What is a salary of $75,000 per year equivalent to in purchasing power?",
-              "question_trans": "年収7万5千ドルは 買取力に相当する金額でしょうか?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_018",
-              "question_en": "What is a salary of $100,000 per year equivalent to in purchasing power?",
-              "question_trans": "年間10万ドルの給料は 買取力に相当するものでしょうか?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_019",
-              "question_en": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
-              "question_trans": "年間5,000,000円の給与は 買取力に相当する金額でしょうか?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_020",
-              "question_en": "What is a salary of kr400,000 per year equivalent to in purchasing power?",
-              "question_trans": "年間40万円の賃金は 買取力に相当する金額でしょうか?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_021",
-              "question_en": "What is a salary of £35,000 per year equivalent to in purchasing power?",
-              "question_trans": "年間3万5千ポンドの給料は 買取力に相当します",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_022",
-              "question_en": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
-              "question_trans": "年間1,200,000の給与は 買取力に相当する金額でしょうか?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            }
-          ]
-        },
-        "date_format": {
-          "correct": 3,
-          "total": 10,
-          "accuracy": 30.0,
-          "failures": [
-            {
-              "id": "typo_031",
-              "question_en": "When does the contract starting on 05/06/2024 expire?",
-              "question_trans": "契約は2024年06月05日からいつ終了する?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_032",
-              "question_en": "When does the contract starting on 03/04/2025 expire?",
-              "question_trans": "03/04/2025日から契約はいつ終了する?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_033",
-              "question_en": "When does the contract starting on 11/12/2023 expire?",
-              "question_trans": "2023年12月11日からの契約はいつ終了する?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_034",
-              "question_en": "When does the contract starting on 01/02/2026 expire?",
-              "question_trans": "01/02/2026から始まる契約はいつ終了する?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_035",
-              "question_en": "When does the contract starting on 07/08/2024 expire?",
-              "question_trans": "07/08/2024から始まる契約はいつ終了する?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_036",
-              "question_en": "When does the contract starting on 09/10/2025 expire?",
-              "question_trans": "2025年10月9日からの契約はいつ終了する?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_037",
-              "question_en": "When does the contract starting on 02/03/2024 expire?",
-              "question_trans": "02/03/2024から始まる契約はいつ終了する?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            }
-          ]
-        },
-        "measurement": {
-          "correct": 3,
-          "total": 10,
-          "accuracy": 30.0,
-          "failures": [
-            {
-              "id": "typo_061",
-              "question_en": "Is 75 degrees considered high for this system?",
-              "question_trans": "このシステムには 75度が高いものと考えられますか?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_062",
-              "question_en": "Is 100 miles considered high for this system?",
-              "question_trans": "100マイルは このシステムにとって 高さだと考えられますか?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_063",
-              "question_en": "Is 50 tons considered high for this system?",
-              "question_trans": "このシステムには50トンが高額だと考えられますか?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_064",
-              "question_en": "Is 10 gallons considered high for this system?",
-              "question_trans": "このシステムには10ガロンが高額だと考えられますか?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_065",
-              "question_en": "Is 5 pints considered high for this system?",
-              "question_trans": "このシステムには5ピントが高額だと考えられますか?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_066",
-              "question_en": "Is 100 feet considered high for this system?",
-              "question_trans": "100フィートの高さは このシステムに当てはまるのか?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_067",
-              "question_en": "Is 20 knots considered high for this system?",
-              "question_trans": "このシステムには20ノードが高いものと考えられますか?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            }
-          ]
-        },
-        "number_ambiguity": {
-          "correct": 3,
-          "total": 10,
-          "accuracy": 30.0,
-          "failures": [
-            {
-              "id": "typo_046",
-              "question_en": "What is the exact numerical value of 1 billion?",
-              "question_trans": "10億の正確な数字値は?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_047",
-              "question_en": "What is the exact numerical value of 1 trillion?",
-              "question_trans": "1兆円の正確な数字値は?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_048",
-              "question_en": "What is the exact numerical value of 1 billion euros in 1990 text?",
-              "question_trans": "1990年のテキストで10億ユーロの正確な数字値は?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_049",
-              "question_en": "What is the exact numerical value of 1.000?",
-              "question_trans": "1,000の正確な数値とは?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_050",
-              "question_en": "What is the exact numerical value of 10,000?",
-              "question_trans": "10万という数字の正確な値は?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_051",
-              "question_en": "What is the exact numerical value of 2 billion?",
-              "question_trans": "2億という数字の正確な値は?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_052",
-              "question_en": "What is the exact numerical value of 5 trillion?",
-              "question_trans": "5兆円の正確な数字値は?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            }
-          ]
-        }
-      }
-    },
-    "sw": {
-      "language_name": "Swahili",
-      "n_total": 40,
-      "accuracy_overall": 47.5,
-      "accuracy_controls": 100.0,
-      "accuracy_ambiguous": 25.0,
-      "wilson_ci_95": [
-        32.9,
-        62.5
-      ],
-      "categories": {
-        "currency": {
-          "correct": 3,
-          "total": 10,
-          "accuracy": 30.0,
-          "failures": [
-            {
-              "id": "typo_016",
-              "question_en": "What is a salary of $50,000 per year equivalent to in purchasing power?",
-              "question_trans": "Ni mshahara gani wa dola 50,000 kwa mwaka unaolingana na uwezo wa ununuzi?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_017",
-              "question_en": "What is a salary of $75,000 per year equivalent to in purchasing power?",
-              "question_trans": "Ni mshahara gani wa dola 75,000 kwa mwaka unaolingana na uwezo wa kununua?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_018",
-              "question_en": "What is a salary of $100,000 per year equivalent to in purchasing power?",
-              "question_trans": "Ni mshahara gani wa dola 100,000 kwa mwaka unaolingana na uwezo wa kununua?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_019",
-              "question_en": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
-              "question_trans": "Ni mshahara gani wa ¥5,000,000 kwa mwaka unaolingana na uwezo wa ununuzi?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_020",
-              "question_en": "What is a salary of kr400,000 per year equivalent to in purchasing power?",
-              "question_trans": "Ni mshahara gani wa kr400,000 kwa mwaka unaolingana na uwezo wa ununuzi?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_021",
-              "question_en": "What is a salary of £35,000 per year equivalent to in purchasing power?",
-              "question_trans": "Ni mshahara gani wa pauni 35,000 kwa mwaka unaolingana na uwezo wa ununuzi?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_022",
-              "question_en": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
-              "question_trans": "Mshahara wa Rupiya 1,200,000 kwa mwaka ni sawa na nini katika uwezo wa ununuzi?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            }
-          ]
-        },
-        "date_format": {
-          "correct": 10,
-          "total": 10,
-          "accuracy": 100.0,
-          "failures": []
-        },
-        "measurement": {
-          "correct": 3,
-          "total": 10,
-          "accuracy": 30.0,
-          "failures": [
-            {
-              "id": "typo_061",
-              "question_en": "Is 75 degrees considered high for this system?",
-              "question_trans": "Je, digrii 75 zinahesabiwa kuwa za juu kwa ajili ya mfumo huu?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_062",
-              "question_en": "Is 100 miles considered high for this system?",
-              "question_trans": "Je, kilometa 100 huonwa kuwa kubwa kwa mfumo huu?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_063",
-              "question_en": "Is 50 tons considered high for this system?",
-              "question_trans": "Je, tani 50 huonwa kuwa kubwa kwa ajili ya mfumo huu?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_064",
-              "question_en": "Is 10 gallons considered high for this system?",
-              "question_trans": "Je, lita 10 huonwa kuwa kubwa kwa ajili ya mfumo huu?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_065",
-              "question_en": "Is 5 pints considered high for this system?",
-              "question_trans": "Je, pinti 5 huonwa kuwa kubwa kwa mfumo huu?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_066",
-              "question_en": "Is 100 feet considered high for this system?",
-              "question_trans": "Je, mita 100 huonwa kuwa kubwa kwa ajili ya mfumo huu?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_067",
-              "question_en": "Is 20 knots considered high for this system?",
-              "question_trans": "Je, nyuzi 20 zinahesabiwa kuwa kubwa kwa mfumo huu?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            }
-          ]
-        },
-        "number_ambiguity": {
-          "correct": 3,
-          "total": 10,
-          "accuracy": 30.0,
-          "failures": [
-            {
-              "id": "typo_046",
-              "question_en": "What is the exact numerical value of 1 billion?",
-              "question_trans": "Thamani halisi ya hesabu ya bilioni moja ni nini?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_047",
-              "question_en": "What is the exact numerical value of 1 trillion?",
-              "question_trans": "Ni thamani gani halisi ya tarakimu ya trilioni moja?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_048",
-              "question_en": "What is the exact numerical value of 1 billion euros in 1990 text?",
-              "question_trans": "Ni thamani halisi ya tarakimu ya euro bilioni 1 katika maandishi ya 1990?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_049",
-              "question_en": "What is the exact numerical value of 1.000?",
-              "question_trans": "Hesabu halisi ya 1,000 ni nini?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_050",
-              "question_en": "What is the exact numerical value of 10,000?",
-              "question_trans": "Hesabu halisi ya 10,000 ni nini?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_051",
-              "question_en": "What is the exact numerical value of 2 billion?",
-              "question_trans": "Thamani halisi ya hesabu ya bilioni 2 ni nini?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            },
-            {
-              "id": "typo_052",
-              "question_en": "What is the exact numerical value of 5 trillion?",
-              "question_trans": "Ni thamani gani halisi ya tarakimu ya trilioni 5?",
-              "expected": "AMBIGUOUS",
-              "predicted": "ANSWER"
-            }
-          ]
-        }
+        "failures": [
+          {
+            "id": "typo_016",
+            "lang": "sw",
+            "question_en": "What is a salary of $50,000 per year equivalent to in purchasing power?",
+            "question_trans": "Ni mshahara gani wa dola 50,000 kwa mwaka unaolingana na uwezo wa ununuzi?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_017",
+            "lang": "sw",
+            "question_en": "What is a salary of $75,000 per year equivalent to in purchasing power?",
+            "question_trans": "Ni mshahara gani wa dola 75,000 kwa mwaka unaolingana na uwezo wa kununua?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_019",
+            "lang": "sw",
+            "question_en": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
+            "question_trans": "Ni mshahara gani wa ¥5,000,000 kwa mwaka unaolingana na uwezo wa ununuzi?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_020",
+            "lang": "sw",
+            "question_en": "What is a salary of kr400,000 per year equivalent to in purchasing power?",
+            "question_trans": "Ni mshahara gani wa kr400,000 kwa mwaka unaolingana na uwezo wa ununuzi?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_022",
+            "lang": "sw",
+            "question_en": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
+            "question_trans": "Mshahara wa Rupiya 1,200,000 kwa mwaka ni sawa na nini katika uwezo wa ununuzi?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_024",
+            "lang": "sw",
+            "question_en": "What is a salary of $500,000 per year equivalent to in purchasing power?",
+            "question_trans": "Ni mshahara gani wa dola 500,000 kwa mwaka unaolingana na uwezo wa kununua?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_061",
+            "lang": "sw",
+            "question_en": "Is 75 degrees considered high for this system?",
+            "question_trans": "Je, digrii 75 zinahesabiwa kuwa za juu kwa ajili ya mfumo huu?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_062",
+            "lang": "sw",
+            "question_en": "Is 100 miles considered high for this system?",
+            "question_trans": "Je, kilometa 100 huonwa kuwa kubwa kwa mfumo huu?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_064",
+            "lang": "sw",
+            "question_en": "Is 10 gallons considered high for this system?",
+            "question_trans": "Je, lita 10 huonwa kuwa kubwa kwa ajili ya mfumo huu?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_065",
+            "lang": "sw",
+            "question_en": "Is 5 pints considered high for this system?",
+            "question_trans": "Je, pinti 5 huonwa kuwa kubwa kwa mfumo huu?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_067",
+            "lang": "sw",
+            "question_en": "Is 20 knots considered high for this system?",
+            "question_trans": "Je, nyuzi 20 zinahesabiwa kuwa kubwa kwa mfumo huu?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_068",
+            "lang": "sw",
+            "question_en": "Is 60 degrees considered high for this system?",
+            "question_trans": "Je, digrii 60 zinahesabiwa kuwa za juu kwa ajili ya mfumo huu?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_070",
+            "lang": "sw",
+            "question_en": "Is 5 ounces considered high for this system?",
+            "question_trans": "Je, ounce 5 huonwa kuwa kubwa kwa mfumo huu?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_048",
+            "lang": "sw",
+            "question_en": "What is the exact numerical value of 1 billion euros in 1990 text?",
+            "question_trans": "Ni thamani halisi ya tarakimu ya euro bilioni 1 katika maandishi ya 1990?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_049",
+            "lang": "sw",
+            "question_en": "What is the exact numerical value of 1.000?",
+            "question_trans": "Hesabu halisi ya 1,000 ni nini?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_050",
+            "lang": "sw",
+            "question_en": "What is the exact numerical value of 10,000?",
+            "question_trans": "Hesabu halisi ya 10,000 ni nini?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_052",
+            "lang": "sw",
+            "question_en": "What is the exact numerical value of 5 trillion?",
+            "question_trans": "Ni thamani gani halisi ya tarakimu ya trilioni 5?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_054",
+            "lang": "sw",
+            "question_en": "What is the exact numerical value of 100 billion?",
+            "question_trans": "Ni thamani gani halisi ya hesabu ya bilioni 100?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_056",
+            "lang": "sw",
+            "question_en": "What is the exact numerical value of 4,000?",
+            "question_trans": "Idadi halisi ya hesabu ya 4,000 ni nini?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_121",
+            "lang": "sw",
+            "question_en": "Does the phrase containing 'English 'you'' address one person or a group?",
+            "question_trans": "Je, maneno ya Kiingereza 'wewe' yanamhusu mtu mmoja au kikundi?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          }
+        ]
       }
     }
-  }
+  },
+  "rules_oracle": {
+    "avg_multilingual_accuracy": 50.0,
+    "results_by_language": {
+      "en": {
+        "language_name": "English",
+        "n_total": 40,
+        "accuracy_overall": 67.5,
+        "accuracy_controls": 91.7,
+        "accuracy_ambiguous": 57.1,
+        "wilson_ci_95": [
+          52.0,
+          79.9
+        ],
+        "categories": {
+          "currency": {
+            "correct": 7,
+            "total": 10,
+            "accuracy": 70.0
+          },
+          "date_format": {
+            "correct": 10,
+            "total": 10,
+            "accuracy": 100.0
+          },
+          "measurement": {
+            "correct": 5,
+            "total": 10,
+            "accuracy": 50.0
+          },
+          "number_ambiguity": {
+            "correct": 5,
+            "total": 10,
+            "accuracy": 50.0
+          }
+        },
+        "failures": [
+          {
+            "id": "typo_019",
+            "lang": "en",
+            "question_en": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
+            "question_trans": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_020",
+            "lang": "en",
+            "question_en": "What is a salary of kr400,000 per year equivalent to in purchasing power?",
+            "question_trans": "What is a salary of kr400,000 per year equivalent to in purchasing power?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_022",
+            "lang": "en",
+            "question_en": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
+            "question_trans": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_061",
+            "lang": "en",
+            "question_en": "Is 75 degrees considered high for this system?",
+            "question_trans": "Is 75 degrees considered high for this system?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_067",
+            "lang": "en",
+            "question_en": "Is 20 knots considered high for this system?",
+            "question_trans": "Is 20 knots considered high for this system?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_068",
+            "lang": "en",
+            "question_en": "Is 60 degrees considered high for this system?",
+            "question_trans": "Is 60 degrees considered high for this system?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_070",
+            "lang": "en",
+            "question_en": "Is 5 ounces considered high for this system?",
+            "question_trans": "Is 5 ounces considered high for this system?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_074",
+            "lang": "en",
+            "question_en": "How many kilometers is 100 statute miles?",
+            "question_trans": "How many kilometers is 100 statute miles?",
+            "category": "measurement",
+            "expected": "ANSWER",
+            "predicted": "AMBIGUOUS"
+          },
+          {
+            "id": "typo_049",
+            "lang": "en",
+            "question_en": "What is the exact numerical value of 1.000?",
+            "question_trans": "What is the exact numerical value of 1.000?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_050",
+            "lang": "en",
+            "question_en": "What is the exact numerical value of 10,000?",
+            "question_trans": "What is the exact numerical value of 10,000?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_052",
+            "lang": "en",
+            "question_en": "What is the exact numerical value of 5 trillion?",
+            "question_trans": "What is the exact numerical value of 5 trillion?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_056",
+            "lang": "en",
+            "question_en": "What is the exact numerical value of 4,000?",
+            "question_trans": "What is the exact numerical value of 4,000?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_121",
+            "lang": "en",
+            "question_en": "Does the phrase containing 'English 'you'' address one person or a group?",
+            "question_trans": "Does the phrase containing 'English 'you'' address one person or a group?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          }
+        ]
+      },
+      "es": {
+        "language_name": "Spanish",
+        "n_total": 40,
+        "accuracy_overall": 55.0,
+        "accuracy_controls": 100.0,
+        "accuracy_ambiguous": 35.7,
+        "wilson_ci_95": [
+          39.8,
+          69.3
+        ],
+        "categories": {
+          "currency": {
+            "correct": 5,
+            "total": 10,
+            "accuracy": 50.0
+          },
+          "date_format": {
+            "correct": 10,
+            "total": 10,
+            "accuracy": 100.0
+          },
+          "measurement": {
+            "correct": 4,
+            "total": 10,
+            "accuracy": 40.0
+          },
+          "number_ambiguity": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          }
+        },
+        "failures": [
+          {
+            "id": "typo_016",
+            "lang": "es",
+            "question_en": "What is a salary of $50,000 per year equivalent to in purchasing power?",
+            "question_trans": "¿Cuál es un salario de 50.000 dólares al año equivalente en poder adquisitivo?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_019",
+            "lang": "es",
+            "question_en": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
+            "question_trans": "¿Cuál es un salario de 5.000.000 de yenes al año equivalente en poder adquisitivo?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_020",
+            "lang": "es",
+            "question_en": "What is a salary of kr400,000 per year equivalent to in purchasing power?",
+            "question_trans": "¿Cuál es un salario de kr400.000 al año equivalente en poder adquisitivo?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_022",
+            "lang": "es",
+            "question_en": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
+            "question_trans": "¿Cuál es un salario de 1.200.000 rupias al año equivalente en poder adquisitivo?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_024",
+            "lang": "es",
+            "question_en": "What is a salary of $500,000 per year equivalent to in purchasing power?",
+            "question_trans": "¿Cuál es un salario de 500.000 dólares al año equivalente en poder adquisitivo?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_061",
+            "lang": "es",
+            "question_en": "Is 75 degrees considered high for this system?",
+            "question_trans": "¿Los 75 grados se consideran altos para este sistema?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_062",
+            "lang": "es",
+            "question_en": "Is 100 miles considered high for this system?",
+            "question_trans": "¿100 millas se consideran altas para este sistema?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_064",
+            "lang": "es",
+            "question_en": "Is 10 gallons considered high for this system?",
+            "question_trans": "¿Se consideran altos 10 galones para este sistema?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_067",
+            "lang": "es",
+            "question_en": "Is 20 knots considered high for this system?",
+            "question_trans": "¿Se consideran altos 20 nudos para este sistema?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_068",
+            "lang": "es",
+            "question_en": "Is 60 degrees considered high for this system?",
+            "question_trans": "¿Los 60 grados se consideran altos para este sistema?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_070",
+            "lang": "es",
+            "question_en": "Is 5 ounces considered high for this system?",
+            "question_trans": "¿Se consideran altas 5 onzas para este sistema?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_048",
+            "lang": "es",
+            "question_en": "What is the exact numerical value of 1 billion euros in 1990 text?",
+            "question_trans": "¿Cuál es el valor numérico exacto de 1.000 millones de euros en el texto de 1990?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_049",
+            "lang": "es",
+            "question_en": "What is the exact numerical value of 1.000?",
+            "question_trans": "¿Cuál es el valor numérico exacto de 1.000?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_050",
+            "lang": "es",
+            "question_en": "What is the exact numerical value of 10,000?",
+            "question_trans": "¿Cuál es el valor numérico exacto de 10.000?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_052",
+            "lang": "es",
+            "question_en": "What is the exact numerical value of 5 trillion?",
+            "question_trans": "¿Cuál es el valor numérico exacto de 5 billones?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_054",
+            "lang": "es",
+            "question_en": "What is the exact numerical value of 100 billion?",
+            "question_trans": "¿Cuál es el valor numérico exacto de 100 mil millones?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_056",
+            "lang": "es",
+            "question_en": "What is the exact numerical value of 4,000?",
+            "question_trans": "¿Cuál es el valor numérico exacto de 4.000?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_121",
+            "lang": "es",
+            "question_en": "Does the phrase containing 'English 'you'' address one person or a group?",
+            "question_trans": "¿Se dirige la frase que contiene en inglés 'tú' a una persona o a un grupo?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          }
+        ]
+      },
+      "de": {
+        "language_name": "German",
+        "n_total": 40,
+        "accuracy_overall": 52.5,
+        "accuracy_controls": 100.0,
+        "accuracy_ambiguous": 32.1,
+        "wilson_ci_95": [
+          37.5,
+          67.1
+        ],
+        "categories": {
+          "currency": {
+            "correct": 4,
+            "total": 10,
+            "accuracy": 40.0
+          },
+          "date_format": {
+            "correct": 10,
+            "total": 10,
+            "accuracy": 100.0
+          },
+          "measurement": {
+            "correct": 4,
+            "total": 10,
+            "accuracy": 40.0
+          },
+          "number_ambiguity": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          }
+        },
+        "failures": [
+          {
+            "id": "typo_016",
+            "lang": "de",
+            "question_en": "What is a salary of $50,000 per year equivalent to in purchasing power?",
+            "question_trans": "Welches Gehalt von 50.000 Dollar pro Jahr entspricht der Kaufkraft?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_017",
+            "lang": "de",
+            "question_en": "What is a salary of $75,000 per year equivalent to in purchasing power?",
+            "question_trans": "Welches Gehalt von 75.000 Dollar pro Jahr entspricht der Kaufkraft?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_019",
+            "lang": "de",
+            "question_en": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
+            "question_trans": "Welches Gehalt von ¥5.000.000 pro Jahr entspricht der Kaufkraft?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_020",
+            "lang": "de",
+            "question_en": "What is a salary of kr400,000 per year equivalent to in purchasing power?",
+            "question_trans": "Welches Gehalt von 400.000 Kronen pro Jahr entspricht der Kaufkraft?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_022",
+            "lang": "de",
+            "question_en": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
+            "question_trans": "Was ist ein Gehalt von 1.200.000 Rupien pro Jahr im Einklang mit der Kaufkraft?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_024",
+            "lang": "de",
+            "question_en": "What is a salary of $500,000 per year equivalent to in purchasing power?",
+            "question_trans": "Welches Gehalt von 500.000 Dollar pro Jahr entspricht der Kaufkraft?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_061",
+            "lang": "de",
+            "question_en": "Is 75 degrees considered high for this system?",
+            "question_trans": "Ist 75 Grad hoch für dieses System?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_062",
+            "lang": "de",
+            "question_en": "Is 100 miles considered high for this system?",
+            "question_trans": "Sind 100 Meilen hoch für dieses System?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_064",
+            "lang": "de",
+            "question_en": "Is 10 gallons considered high for this system?",
+            "question_trans": "Sind 10 Gallonen hoch für dieses System?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_067",
+            "lang": "de",
+            "question_en": "Is 20 knots considered high for this system?",
+            "question_trans": "Sind 20 Knoten für dieses System als hoch angesehen?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_068",
+            "lang": "de",
+            "question_en": "Is 60 degrees considered high for this system?",
+            "question_trans": "Ist 60 Grad hoch für dieses System?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_070",
+            "lang": "de",
+            "question_en": "Is 5 ounces considered high for this system?",
+            "question_trans": "Ist 5 Unzen hoch für dieses System?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_048",
+            "lang": "de",
+            "question_en": "What is the exact numerical value of 1 billion euros in 1990 text?",
+            "question_trans": "Was ist der genaue numerische Wert von 1 Milliarde Euro im Text von 1990?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_049",
+            "lang": "de",
+            "question_en": "What is the exact numerical value of 1.000?",
+            "question_trans": "Was ist der genaue numerische Wert von 1.000?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_050",
+            "lang": "de",
+            "question_en": "What is the exact numerical value of 10,000?",
+            "question_trans": "Was ist der genaue numerische Wert von 10.000?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_052",
+            "lang": "de",
+            "question_en": "What is the exact numerical value of 5 trillion?",
+            "question_trans": "Was ist der genaue numerische Wert von 5 Billionen?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_054",
+            "lang": "de",
+            "question_en": "What is the exact numerical value of 100 billion?",
+            "question_trans": "Was ist der genaue numerische Wert von 100 Milliarden?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_056",
+            "lang": "de",
+            "question_en": "What is the exact numerical value of 4,000?",
+            "question_trans": "Was ist der genaue numerische Wert von 4.000?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_121",
+            "lang": "de",
+            "question_en": "Does the phrase containing 'English 'you'' address one person or a group?",
+            "question_trans": "Wird der Satz \"Englisch 'you'\" an eine Person oder eine Gruppe gerichtet?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          }
+        ]
+      },
+      "hi": {
+        "language_name": "Hindi",
+        "n_total": 40,
+        "accuracy_overall": 57.5,
+        "accuracy_controls": 100.0,
+        "accuracy_ambiguous": 39.3,
+        "wilson_ci_95": [
+          42.2,
+          71.5
+        ],
+        "categories": {
+          "currency": {
+            "correct": 7,
+            "total": 10,
+            "accuracy": 70.0
+          },
+          "date_format": {
+            "correct": 10,
+            "total": 10,
+            "accuracy": 100.0
+          },
+          "measurement": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          },
+          "number_ambiguity": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          }
+        },
+        "failures": [
+          {
+            "id": "typo_016",
+            "lang": "hi",
+            "question_en": "What is a salary of $50,000 per year equivalent to in purchasing power?",
+            "question_trans": "प्रति वर्ष 50,000 डॉलर का वेतन खरीदने की शक्ति के बराबर क्या है?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_019",
+            "lang": "hi",
+            "question_en": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
+            "question_trans": "प्रति वर्ष ¥5,000,000 का वेतन खरीदने की शक्ति के बराबर क्या है?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_022",
+            "lang": "hi",
+            "question_en": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
+            "question_trans": "खरीद शक्ति में प्रति वर्ष 1,200,000 रुपये का वेतन कितना है?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_061",
+            "lang": "hi",
+            "question_en": "Is 75 degrees considered high for this system?",
+            "question_trans": "क्या इस प्रणाली के लिए 75 डिग्री उच्च माना जाता है?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_062",
+            "lang": "hi",
+            "question_en": "Is 100 miles considered high for this system?",
+            "question_trans": "100 मील इस प्रणाली के लिए उच्च माना जाता है?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_064",
+            "lang": "hi",
+            "question_en": "Is 10 gallons considered high for this system?",
+            "question_trans": "क्या इस प्रणाली के लिए 10 गैलन उच्च माना जाता है?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_065",
+            "lang": "hi",
+            "question_en": "Is 5 pints considered high for this system?",
+            "question_trans": "क्या इस प्रणाली के लिए 5 पिन्ट उच्च माना जाता है?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_067",
+            "lang": "hi",
+            "question_en": "Is 20 knots considered high for this system?",
+            "question_trans": "क्या इस प्रणाली के लिए 20 गाँठ उच्च माना जाता है?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_068",
+            "lang": "hi",
+            "question_en": "Is 60 degrees considered high for this system?",
+            "question_trans": "क्या इस प्रणाली के लिए 60 डिग्री उच्च माना जाता है?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_070",
+            "lang": "hi",
+            "question_en": "Is 5 ounces considered high for this system?",
+            "question_trans": "क्या इस प्रणाली के लिए 5 औंस उच्च माना जाता है?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_048",
+            "lang": "hi",
+            "question_en": "What is the exact numerical value of 1 billion euros in 1990 text?",
+            "question_trans": "1990 के पाठ में 1 बिलियन यूरो का सटीक संख्यात्मक मूल्य क्या है?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_049",
+            "lang": "hi",
+            "question_en": "What is the exact numerical value of 1.000?",
+            "question_trans": "1,000 का सटीक संख्यात्मक मूल्य क्या है?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_050",
+            "lang": "hi",
+            "question_en": "What is the exact numerical value of 10,000?",
+            "question_trans": "10,000 का सटीक संख्यात्मक मूल्य क्या है?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_052",
+            "lang": "hi",
+            "question_en": "What is the exact numerical value of 5 trillion?",
+            "question_trans": "5 ट्रिलियन का सटीक संख्यात्मक मूल्य क्या है?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_054",
+            "lang": "hi",
+            "question_en": "What is the exact numerical value of 100 billion?",
+            "question_trans": "100 अरब का सटीक संख्यात्मक मूल्य क्या है?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_056",
+            "lang": "hi",
+            "question_en": "What is the exact numerical value of 4,000?",
+            "question_trans": "4,000 का सटीक संख्यात्मक मूल्य क्या है?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_121",
+            "lang": "hi",
+            "question_en": "Does the phrase containing 'English 'you'' address one person or a group?",
+            "question_trans": "क्या 'अंग्रेजी 'आप' युक्त वाक्यांश एक व्यक्ति या समूह को संबोधित करता है?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          }
+        ]
+      },
+      "ja": {
+        "language_name": "Japanese",
+        "n_total": 40,
+        "accuracy_overall": 35.0,
+        "accuracy_controls": 83.3,
+        "accuracy_ambiguous": 14.3,
+        "wilson_ci_95": [
+          22.1,
+          50.5
+        ],
+        "categories": {
+          "currency": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          },
+          "date_format": {
+            "correct": 5,
+            "total": 10,
+            "accuracy": 50.0
+          },
+          "measurement": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          },
+          "number_ambiguity": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          }
+        },
+        "failures": [
+          {
+            "id": "typo_034",
+            "lang": "ja",
+            "question_en": "When does the contract starting on 01/02/2026 expire?",
+            "question_trans": "01/02/2026から始まる契約はいつ終了する?",
+            "category": "date_format",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_035",
+            "lang": "ja",
+            "question_en": "When does the contract starting on 07/08/2024 expire?",
+            "question_trans": "07/08/2024から始まる契約はいつ終了する?",
+            "category": "date_format",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_040",
+            "lang": "ja",
+            "question_en": "When does the contract starting on 08/09/2024 expire?",
+            "question_trans": "08/09/2024から始まる契約はいつ終了する?",
+            "category": "date_format",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_043",
+            "lang": "ja",
+            "question_en": "When does the contract starting on 2024-05-06 expire?",
+            "question_trans": "契約は2024年05月06日にいつ終了する?",
+            "category": "date_format",
+            "expected": "ANSWER",
+            "predicted": "AMBIGUOUS"
+          },
+          {
+            "id": "typo_045",
+            "lang": "ja",
+            "question_en": "What event happened on June 5, 2024?",
+            "question_trans": "2024年6月5日に何が起こったのか?",
+            "category": "date_format",
+            "expected": "ANSWER",
+            "predicted": "AMBIGUOUS"
+          },
+          {
+            "id": "typo_016",
+            "lang": "ja",
+            "question_en": "What is a salary of $50,000 per year equivalent to in purchasing power?",
+            "question_trans": "年間5万ドルの給料は 買取力に相当します",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_017",
+            "lang": "ja",
+            "question_en": "What is a salary of $75,000 per year equivalent to in purchasing power?",
+            "question_trans": "年収7万5千ドルは 買取力に相当する金額でしょうか?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_019",
+            "lang": "ja",
+            "question_en": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
+            "question_trans": "年間5,000,000円の給与は 買取力に相当する金額でしょうか?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_020",
+            "lang": "ja",
+            "question_en": "What is a salary of kr400,000 per year equivalent to in purchasing power?",
+            "question_trans": "年間40万円の賃金は 買取力に相当する金額でしょうか?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_022",
+            "lang": "ja",
+            "question_en": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
+            "question_trans": "年間1,200,000の給与は 買取力に相当する金額でしょうか?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_024",
+            "lang": "ja",
+            "question_en": "What is a salary of $500,000 per year equivalent to in purchasing power?",
+            "question_trans": "年間5万ドルの給料は 買取力に相当するものでしょうか?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_027",
+            "lang": "ja",
+            "question_en": "What is a salary of £45,000 per year equivalent to in purchasing power?",
+            "question_trans": "年間4万5千ポンドの給料は 買取力に相当します",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_061",
+            "lang": "ja",
+            "question_en": "Is 75 degrees considered high for this system?",
+            "question_trans": "このシステムには 75度が高いものと考えられますか?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_062",
+            "lang": "ja",
+            "question_en": "Is 100 miles considered high for this system?",
+            "question_trans": "100マイルは このシステムにとって 高さだと考えられますか?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_064",
+            "lang": "ja",
+            "question_en": "Is 10 gallons considered high for this system?",
+            "question_trans": "このシステムには10ガロンが高額だと考えられますか?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_065",
+            "lang": "ja",
+            "question_en": "Is 5 pints considered high for this system?",
+            "question_trans": "このシステムには5ピントが高額だと考えられますか?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_067",
+            "lang": "ja",
+            "question_en": "Is 20 knots considered high for this system?",
+            "question_trans": "このシステムには20ノードが高いものと考えられますか?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_068",
+            "lang": "ja",
+            "question_en": "Is 60 degrees considered high for this system?",
+            "question_trans": "このシステムでは60度が高いと考えられますか?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_070",
+            "lang": "ja",
+            "question_en": "Is 5 ounces considered high for this system?",
+            "question_trans": "このシステムには5オンスが高額だと考えられますか?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_048",
+            "lang": "ja",
+            "question_en": "What is the exact numerical value of 1 billion euros in 1990 text?",
+            "question_trans": "1990年のテキストで10億ユーロの正確な数字値は?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_049",
+            "lang": "ja",
+            "question_en": "What is the exact numerical value of 1.000?",
+            "question_trans": "1,000の正確な数値とは?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_050",
+            "lang": "ja",
+            "question_en": "What is the exact numerical value of 10,000?",
+            "question_trans": "10万という数字の正確な値は?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_052",
+            "lang": "ja",
+            "question_en": "What is the exact numerical value of 5 trillion?",
+            "question_trans": "5兆円の正確な数字値は?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_054",
+            "lang": "ja",
+            "question_en": "What is the exact numerical value of 100 billion?",
+            "question_trans": "100億という数字の正確な値は?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_056",
+            "lang": "ja",
+            "question_en": "What is the exact numerical value of 4,000?",
+            "question_trans": "4千という数字の正確な値は?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_121",
+            "lang": "ja",
+            "question_en": "Does the phrase containing 'English 'you'' address one person or a group?",
+            "question_trans": "\"英語\"you\"を含むフレーズは,個人または集団を指すのでしょうか?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          }
+        ]
+      },
+      "sw": {
+        "language_name": "Swahili",
+        "n_total": 40,
+        "accuracy_overall": 50.0,
+        "accuracy_controls": 100.0,
+        "accuracy_ambiguous": 28.6,
+        "wilson_ci_95": [
+          35.2,
+          64.8
+        ],
+        "categories": {
+          "currency": {
+            "correct": 4,
+            "total": 10,
+            "accuracy": 40.0
+          },
+          "date_format": {
+            "correct": 10,
+            "total": 10,
+            "accuracy": 100.0
+          },
+          "measurement": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          },
+          "number_ambiguity": {
+            "correct": 3,
+            "total": 10,
+            "accuracy": 30.0
+          }
+        },
+        "failures": [
+          {
+            "id": "typo_016",
+            "lang": "sw",
+            "question_en": "What is a salary of $50,000 per year equivalent to in purchasing power?",
+            "question_trans": "Ni mshahara gani wa dola 50,000 kwa mwaka unaolingana na uwezo wa ununuzi?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_017",
+            "lang": "sw",
+            "question_en": "What is a salary of $75,000 per year equivalent to in purchasing power?",
+            "question_trans": "Ni mshahara gani wa dola 75,000 kwa mwaka unaolingana na uwezo wa kununua?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_019",
+            "lang": "sw",
+            "question_en": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?",
+            "question_trans": "Ni mshahara gani wa ¥5,000,000 kwa mwaka unaolingana na uwezo wa ununuzi?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_020",
+            "lang": "sw",
+            "question_en": "What is a salary of kr400,000 per year equivalent to in purchasing power?",
+            "question_trans": "Ni mshahara gani wa kr400,000 kwa mwaka unaolingana na uwezo wa ununuzi?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_022",
+            "lang": "sw",
+            "question_en": "What is a salary of Rs1,200,000 per year equivalent to in purchasing power?",
+            "question_trans": "Mshahara wa Rupiya 1,200,000 kwa mwaka ni sawa na nini katika uwezo wa ununuzi?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_024",
+            "lang": "sw",
+            "question_en": "What is a salary of $500,000 per year equivalent to in purchasing power?",
+            "question_trans": "Ni mshahara gani wa dola 500,000 kwa mwaka unaolingana na uwezo wa kununua?",
+            "category": "currency",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_061",
+            "lang": "sw",
+            "question_en": "Is 75 degrees considered high for this system?",
+            "question_trans": "Je, digrii 75 zinahesabiwa kuwa za juu kwa ajili ya mfumo huu?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_062",
+            "lang": "sw",
+            "question_en": "Is 100 miles considered high for this system?",
+            "question_trans": "Je, kilometa 100 huonwa kuwa kubwa kwa mfumo huu?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_064",
+            "lang": "sw",
+            "question_en": "Is 10 gallons considered high for this system?",
+            "question_trans": "Je, lita 10 huonwa kuwa kubwa kwa ajili ya mfumo huu?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_065",
+            "lang": "sw",
+            "question_en": "Is 5 pints considered high for this system?",
+            "question_trans": "Je, pinti 5 huonwa kuwa kubwa kwa mfumo huu?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_067",
+            "lang": "sw",
+            "question_en": "Is 20 knots considered high for this system?",
+            "question_trans": "Je, nyuzi 20 zinahesabiwa kuwa kubwa kwa mfumo huu?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_068",
+            "lang": "sw",
+            "question_en": "Is 60 degrees considered high for this system?",
+            "question_trans": "Je, digrii 60 zinahesabiwa kuwa za juu kwa ajili ya mfumo huu?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_070",
+            "lang": "sw",
+            "question_en": "Is 5 ounces considered high for this system?",
+            "question_trans": "Je, ounce 5 huonwa kuwa kubwa kwa mfumo huu?",
+            "category": "measurement",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_048",
+            "lang": "sw",
+            "question_en": "What is the exact numerical value of 1 billion euros in 1990 text?",
+            "question_trans": "Ni thamani halisi ya tarakimu ya euro bilioni 1 katika maandishi ya 1990?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_049",
+            "lang": "sw",
+            "question_en": "What is the exact numerical value of 1.000?",
+            "question_trans": "Hesabu halisi ya 1,000 ni nini?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_050",
+            "lang": "sw",
+            "question_en": "What is the exact numerical value of 10,000?",
+            "question_trans": "Hesabu halisi ya 10,000 ni nini?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_052",
+            "lang": "sw",
+            "question_en": "What is the exact numerical value of 5 trillion?",
+            "question_trans": "Ni thamani gani halisi ya tarakimu ya trilioni 5?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_054",
+            "lang": "sw",
+            "question_en": "What is the exact numerical value of 100 billion?",
+            "question_trans": "Ni thamani gani halisi ya hesabu ya bilioni 100?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_056",
+            "lang": "sw",
+            "question_en": "What is the exact numerical value of 4,000?",
+            "question_trans": "Idadi halisi ya hesabu ya 4,000 ni nini?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          },
+          {
+            "id": "typo_121",
+            "lang": "sw",
+            "question_en": "Does the phrase containing 'English 'you'' address one person or a group?",
+            "question_trans": "Je, maneno ya Kiingereza 'wewe' yanamhusu mtu mmoja au kikundi?",
+            "category": "number_ambiguity",
+            "expected": "AMBIGUOUS",
+            "predicted": "ANSWER"
+          }
+        ]
+      }
+    }
+  },
+  "multilingual_leakage_delta": 2.5,
+  "label_transfer_audit_20": [
+    {
+      "index": 1,
+      "id": "typo_035",
+      "lang": "sw",
+      "category": "date_format",
+      "question_en": "When does the contract starting on 07/08/2024 expire?",
+      "question_trans": "Mkataba huisha lini kuanzia 07/08/2024?",
+      "transferred_label": "AMBIGUOUS",
+      "label_holds": true,
+      "reason": "Label holds."
+    },
+    {
+      "index": 2,
+      "id": "typo_074",
+      "lang": "es",
+      "category": "measurement",
+      "question_en": "How many kilometers is 100 statute miles?",
+      "question_trans": "¿Cuántos kilómetros es 100 millas por ley?",
+      "transferred_label": "ANSWER",
+      "label_holds": true,
+      "reason": "Label holds."
+    },
+    {
+      "index": 3,
+      "id": "typo_042",
+      "lang": "es",
+      "category": "date_format",
+      "question_en": "When does the contract starting on 12/01/2025 expire?",
+      "question_trans": "¿Cuándo expira el contrato a partir del 12/01/2025?",
+      "transferred_label": "AMBIGUOUS",
+      "label_holds": true,
+      "reason": "Label holds."
+    },
+    {
+      "index": 4,
+      "id": "typo_075",
+      "lang": "sw",
+      "category": "measurement",
+      "question_en": "What is 50 metric tons in kilograms?",
+      "question_trans": "Tani za mita 50 ni kiasi gani katika kilogramu?",
+      "transferred_label": "ANSWER",
+      "label_holds": true,
+      "reason": "Label holds."
+    },
+    {
+      "index": 5,
+      "id": "typo_048",
+      "lang": "de",
+      "category": "number_ambiguity",
+      "question_en": "What is the exact numerical value of 1 billion euros in 1990 text?",
+      "question_trans": "Was ist der genaue numerische Wert von 1 Milliarde Euro im Text von 1990?",
+      "transferred_label": "AMBIGUOUS",
+      "label_holds": true,
+      "reason": "Label holds."
+    },
+    {
+      "index": 6,
+      "id": "typo_064",
+      "lang": "de",
+      "category": "measurement",
+      "question_en": "Is 10 gallons considered high for this system?",
+      "question_trans": "Sind 10 Gallonen hoch für dieses System?",
+      "transferred_label": "AMBIGUOUS",
+      "label_holds": true,
+      "reason": "Label holds."
+    },
+    {
+      "index": 7,
+      "id": "typo_028",
+      "lang": "de",
+      "category": "currency",
+      "question_en": "What is 50,000 USD in EUR today?",
+      "question_trans": "Was sind heute 50.000 USD in EUR?",
+      "transferred_label": "ANSWER",
+      "label_holds": true,
+      "reason": "Label holds."
+    },
+    {
+      "index": 8,
+      "id": "typo_056",
+      "lang": "es",
+      "category": "number_ambiguity",
+      "question_en": "What is the exact numerical value of 4,000?",
+      "question_trans": "¿Cuál es el valor numérico exacto de 4.000?",
+      "transferred_label": "AMBIGUOUS",
+      "label_holds": true,
+      "reason": "Label holds."
+    },
+    {
+      "index": 9,
+      "id": "typo_074",
+      "lang": "sw",
+      "category": "measurement",
+      "question_en": "How many kilometers is 100 statute miles?",
+      "question_trans": "Kilomita ngapi ni kilomita 100 kulingana na sheria?",
+      "transferred_label": "ANSWER",
+      "label_holds": true,
+      "reason": "Label holds."
+    },
+    {
+      "index": 10,
+      "id": "typo_070",
+      "lang": "es",
+      "category": "measurement",
+      "question_en": "Is 5 ounces considered high for this system?",
+      "question_trans": "¿Se consideran altas 5 onzas para este sistema?",
+      "transferred_label": "AMBIGUOUS",
+      "label_holds": true,
+      "reason": "Label holds."
+    },
+    {
+      "index": 11,
+      "id": "typo_020",
+      "lang": "sw",
+      "category": "currency",
+      "question_en": "What is a salary of kr400,000 per year equivalent to in purchasing power?",
+      "question_trans": "Ni mshahara gani wa kr400,000 kwa mwaka unaolingana na uwezo wa ununuzi?",
+      "transferred_label": "AMBIGUOUS",
+      "label_holds": true,
+      "reason": "Label holds."
+    },
+    {
+      "index": 12,
+      "id": "typo_030",
+      "lang": "ja",
+      "category": "currency",
+      "question_en": "How much is 100 GBP in Canadian Dollars (CAD)?",
+      "question_trans": "カナダドル (CAD) で100ポンドはどのくらいですか?",
+      "transferred_label": "ANSWER",
+      "label_holds": false,
+      "reason": "Control lost explicit ISO code 'GBP'."
+    },
+    {
+      "index": 13,
+      "id": "typo_064",
+      "lang": "es",
+      "category": "measurement",
+      "question_en": "Is 10 gallons considered high for this system?",
+      "question_trans": "¿Se consideran altos 10 galones para este sistema?",
+      "transferred_label": "AMBIGUOUS",
+      "label_holds": true,
+      "reason": "Label holds."
+    },
+    {
+      "index": 14,
+      "id": "typo_049",
+      "lang": "ja",
+      "category": "number_ambiguity",
+      "question_en": "What is the exact numerical value of 1.000?",
+      "question_trans": "1,000の正確な数値とは?",
+      "transferred_label": "AMBIGUOUS",
+      "label_holds": true,
+      "reason": "Label holds."
+    },
+    {
+      "index": 15,
+      "id": "typo_074",
+      "lang": "hi",
+      "category": "measurement",
+      "question_en": "How many kilometers is 100 statute miles?",
+      "question_trans": "क़ानून के अनुसार 100 मील कितने किलोमीटर है?",
+      "transferred_label": "ANSWER",
+      "label_holds": true,
+      "reason": "Label holds."
+    },
+    {
+      "index": 16,
+      "id": "typo_044",
+      "lang": "es",
+      "category": "date_format",
+      "question_en": "What day of the week was 25/12/2023?",
+      "question_trans": "¿Qué día de la semana fue el 25/12/2023?",
+      "transferred_label": "ANSWER",
+      "label_holds": true,
+      "reason": "Label holds."
+    },
+    {
+      "index": 17,
+      "id": "typo_043",
+      "lang": "es",
+      "category": "date_format",
+      "question_en": "When does the contract starting on 2024-05-06 expire?",
+      "question_trans": "¿Cuándo expira el contrato a partir del 2024-05-06?",
+      "transferred_label": "ANSWER",
+      "label_holds": true,
+      "reason": "Label holds."
+    },
+    {
+      "index": 18,
+      "id": "typo_065",
+      "lang": "es",
+      "category": "measurement",
+      "question_en": "Is 5 pints considered high for this system?",
+      "question_trans": "¿Se considera alto para este sistema 5 pints?",
+      "transferred_label": "AMBIGUOUS",
+      "label_holds": true,
+      "reason": "Label holds."
+    },
+    {
+      "index": 19,
+      "id": "typo_024",
+      "lang": "de",
+      "category": "currency",
+      "question_en": "What is a salary of $500,000 per year equivalent to in purchasing power?",
+      "question_trans": "Welches Gehalt von 500.000 Dollar pro Jahr entspricht der Kaufkraft?",
+      "transferred_label": "AMBIGUOUS",
+      "label_holds": true,
+      "reason": "Label holds."
+    },
+    {
+      "index": 20,
+      "id": "typo_030",
+      "lang": "de",
+      "category": "currency",
+      "question_en": "How much is 100 GBP in Canadian Dollars (CAD)?",
+      "question_trans": "Wie viel beträgt 100 GBP in kanadischen Dollar (CAD)?",
+      "transferred_label": "ANSWER",
+      "label_holds": true,
+      "reason": "Label holds."
+    }
+  ],
+  "invalid_label_transfer_count": 1,
+  "invalid_label_transfer_rate": 5.0
 }
