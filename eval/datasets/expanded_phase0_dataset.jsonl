@@ -1,0 +1,152 @@
+{"id": "curr_in_amb_01", "category": "currency", "split": "in_distribution", "trigger": "$", "is_ambiguous": true, "is_control": false, "question": "What is a salary of $50,000 per year equivalent to in purchasing power?"}
+{"id": "curr_in_amb_02", "category": "currency", "split": "in_distribution", "trigger": "$", "is_ambiguous": true, "is_control": false, "question": "Total price is $250 for the order."}
+{"id": "curr_in_amb_03", "category": "currency", "split": "in_distribution", "trigger": "$", "is_ambiguous": true, "is_control": false, "question": "What is a salary of $100,000 per year equivalent to in purchasing power?"}
+{"id": "curr_in_amb_04", "category": "currency", "split": "in_distribution", "trigger": "$", "is_ambiguous": true, "is_control": false, "question": "Total price is $75,000 total."}
+{"id": "curr_in_amb_05", "category": "currency", "split": "in_distribution", "trigger": "€", "is_ambiguous": true, "is_control": false, "question": "Total price is €100 total."}
+{"id": "curr_in_amb_06", "category": "currency", "split": "in_distribution", "trigger": "€", "is_ambiguous": true, "is_control": false, "question": "Total price is €500 for service."}
+{"id": "curr_in_amb_07", "category": "currency", "split": "in_distribution", "trigger": "€", "is_ambiguous": true, "is_control": false, "question": "Total price is €1,000 price."}
+{"id": "curr_in_amb_08", "category": "currency", "split": "in_distribution", "trigger": "£", "is_ambiguous": true, "is_control": false, "question": "What is a salary of £35,000 per year equivalent to in purchasing power?"}
+{"id": "curr_in_amb_09", "category": "currency", "split": "in_distribution", "trigger": "£", "is_ambiguous": true, "is_control": false, "question": "What is a salary of £45,000 per year equivalent to in purchasing power?"}
+{"id": "curr_in_amb_10", "category": "currency", "split": "in_distribution", "trigger": "£", "is_ambiguous": true, "is_control": false, "question": "Total price is £200 total."}
+{"id": "curr_in_ctrl_01", "category": "currency", "split": "in_distribution", "trigger": "USD", "is_ambiguous": false, "is_control": true, "question": "What is 50,000 USD converted to local currency?"}
+{"id": "curr_in_ctrl_02", "category": "currency", "split": "in_distribution", "trigger": "EUR", "is_ambiguous": false, "is_control": true, "question": "What is 100 EUR converted to local currency?"}
+{"id": "curr_in_ctrl_03", "category": "currency", "split": "in_distribution", "trigger": "GBP", "is_ambiguous": false, "is_control": true, "question": "What is 500 GBP converted to local currency?"}
+{"id": "curr_in_ctrl_04", "category": "currency", "split": "in_distribution", "trigger": "USD", "is_ambiguous": false, "is_control": true, "question": "Total price is 250 USD."}
+{"id": "curr_held_amb_01", "category": "currency", "split": "held_out", "trigger": "kr", "is_ambiguous": true, "is_control": false, "question": "What is a salary of kr400,000 per year equivalent to in purchasing power?"}
+{"id": "curr_held_amb_02", "category": "currency", "split": "held_out", "trigger": "Rs", "is_ambiguous": true, "is_control": false, "question": "What is a salary of Rs 1,200,000 per year equivalent to in purchasing power?"}
+{"id": "curr_held_amb_03", "category": "currency", "split": "held_out", "trigger": "₨", "is_ambiguous": true, "is_control": false, "question": "Total price is ₨ 1500 for service."}
+{"id": "curr_held_amb_04", "category": "currency", "split": "held_out", "trigger": "zł", "is_ambiguous": true, "is_control": false, "question": "What is a salary of zł 80,000 per year equivalent to in purchasing power?"}
+{"id": "curr_held_amb_05", "category": "currency", "split": "held_out", "trigger": "din.", "is_ambiguous": true, "is_control": false, "question": "What is a salary of din.15,000 per year equivalent to in purchasing power?"}
+{"id": "curr_held_amb_06", "category": "currency", "split": "held_out", "trigger": "KSh", "is_ambiguous": true, "is_control": false, "question": "Total price is KSh 3000 total."}
+{"id": "curr_held_amb_07", "category": "currency", "split": "held_out", "trigger": "zł", "is_ambiguous": true, "is_control": false, "question": "Total price is 100 zł price."}
+{"id": "curr_held_amb_08", "category": "currency", "split": "held_out", "trigger": "p.", "is_ambiguous": true, "is_control": false, "question": "Total price is 50 p. cost."}
+{"id": "curr_held_amb_09", "category": "currency", "split": "held_out", "trigger": "¥", "is_ambiguous": true, "is_control": false, "question": "What is a salary of ¥5,000,000 per year equivalent to in purchasing power?"}
+{"id": "curr_held_amb_10", "category": "currency", "split": "held_out", "trigger": "Rp", "is_ambiguous": true, "is_control": false, "question": "Total price is Rp 50,000 total."}
+{"id": "curr_held_amb_11", "category": "currency", "split": "held_out", "trigger": "ƒ", "is_ambiguous": true, "is_control": false, "question": "Total price is ƒ 500 price."}
+{"id": "curr_held_amb_12", "category": "currency", "split": "held_out", "trigger": "kr", "is_ambiguous": true, "is_control": false, "question": "Total price is kr 250 fee."}
+{"id": "curr_held_amb_13", "category": "currency", "split": "held_out", "trigger": "Rs", "is_ambiguous": true, "is_control": false, "question": "Total price is Rs 500 total."}
+{"id": "curr_held_amb_14", "category": "currency", "split": "held_out", "trigger": "¥", "is_ambiguous": true, "is_control": false, "question": "Total price is ¥10,000 fee."}
+{"id": "curr_held_amb_15", "category": "currency", "split": "held_out", "trigger": "KSh", "is_ambiguous": true, "is_control": false, "question": "Total price is KSh 1,000 price."}
+{"id": "curr_held_amb_16", "category": "currency", "split": "held_out", "trigger": "zł", "is_ambiguous": true, "is_control": false, "question": "Total price is 500 zł fee."}
+{"id": "curr_held_amb_17", "category": "currency", "split": "held_out", "trigger": "zł", "is_ambiguous": true, "is_control": false, "question": "Total price is zł 150 total."}
+{"id": "curr_held_amb_18", "category": "currency", "split": "held_out", "trigger": "din.", "is_ambiguous": true, "is_control": false, "question": "Total price is din. 500 fee."}
+{"id": "curr_held_ctrl_01", "category": "currency", "split": "held_out", "trigger": "CAD", "is_ambiguous": false, "is_control": true, "question": "What is 50,000 CAD converted to local currency?"}
+{"id": "curr_held_ctrl_02", "category": "currency", "split": "held_out", "trigger": "JPY", "is_ambiguous": false, "is_control": true, "question": "What is 5,000,000 JPY converted to local currency?"}
+{"id": "curr_held_ctrl_03", "category": "currency", "split": "held_out", "trigger": "BRL", "is_ambiguous": false, "is_control": true, "question": "What is 80,000 BRL converted to local currency?"}
+{"id": "curr_held_ctrl_04", "category": "currency", "split": "held_out", "trigger": "INR", "is_ambiguous": false, "is_control": true, "question": "What is 1,200,000 INR converted to local currency?"}
+{"id": "curr_held_ctrl_05", "category": "currency", "split": "held_out", "trigger": "AUD", "is_ambiguous": false, "is_control": true, "question": "What is 50,000 AUD converted to local currency?"}
+{"id": "curr_held_ctrl_06", "category": "currency", "split": "held_out", "trigger": "SEK", "is_ambiguous": false, "is_control": true, "question": "What is 400,000 SEK converted to local currency?"}
+{"id": "meas_in_amb_01", "category": "measurement", "split": "in_distribution", "trigger": "miles", "is_ambiguous": true, "is_control": false, "question": "Is a distance of 10 miles considered long for this route?"}
+{"id": "meas_in_amb_02", "category": "measurement", "split": "in_distribution", "trigger": "miles", "is_ambiguous": true, "is_control": false, "question": "Is 50 miles considered long for this route?"}
+{"id": "meas_in_amb_03", "category": "measurement", "split": "in_distribution", "trigger": "miles", "is_ambiguous": true, "is_control": false, "question": "Is 100 miles considered long for this route?"}
+{"id": "meas_in_amb_04", "category": "measurement", "split": "in_distribution", "trigger": "mile", "is_ambiguous": true, "is_control": false, "question": "Is 1 mile considered long for this route?"}
+{"id": "meas_in_amb_05", "category": "measurement", "split": "in_distribution", "trigger": "mile", "is_ambiguous": true, "is_control": false, "question": "Is a 5 mile stretch clear?"}
+{"id": "meas_in_amb_06", "category": "measurement", "split": "in_distribution", "trigger": "gallons", "is_ambiguous": true, "is_control": false, "question": "Volume capacity is 5 gallons."}
+{"id": "meas_in_amb_07", "category": "measurement", "split": "in_distribution", "trigger": "gallons", "is_ambiguous": true, "is_control": false, "question": "Volume capacity is 10 gallons."}
+{"id": "meas_in_amb_08", "category": "measurement", "split": "in_distribution", "trigger": "gallons", "is_ambiguous": true, "is_control": false, "question": "Volume capacity is 20 gallons."}
+{"id": "meas_in_amb_09", "category": "measurement", "split": "in_distribution", "trigger": "gallon", "is_ambiguous": true, "is_control": false, "question": "Volume capacity is 1 gallon."}
+{"id": "meas_in_amb_10", "category": "measurement", "split": "in_distribution", "trigger": "gallon", "is_ambiguous": true, "is_control": false, "question": "Is a 2 gallon jug sufficient?"}
+{"id": "meas_in_ctrl_01", "category": "measurement", "split": "in_distribution", "trigger": "kilometers", "is_ambiguous": false, "is_control": true, "question": "How many kilometers is 160 statute miles?"}
+{"id": "meas_in_ctrl_02", "category": "measurement", "split": "in_distribution", "trigger": "liters", "is_ambiguous": false, "is_control": true, "question": "Volume capacity is 37.854 liters."}
+{"id": "meas_in_ctrl_03", "category": "measurement", "split": "in_distribution", "trigger": "kilometers", "is_ambiguous": false, "is_control": true, "question": "Distance is 50 kilometers."}
+{"id": "meas_in_ctrl_04", "category": "measurement", "split": "in_distribution", "trigger": "liters", "is_ambiguous": false, "is_control": true, "question": "Volume capacity is 10 liters."}
+{"id": "meas_held_amb_01", "category": "measurement", "split": "held_out", "trigger": "pints", "is_ambiguous": true, "is_control": false, "question": "Is 2 pints considered high for this liquid system?"}
+{"id": "meas_held_amb_02", "category": "measurement", "split": "held_out", "trigger": "pint", "is_ambiguous": true, "is_control": false, "question": "Is 1 pint considered high for this liquid system?"}
+{"id": "meas_held_amb_03", "category": "measurement", "split": "held_out", "trigger": "stone", "is_ambiguous": true, "is_control": false, "question": "Weight is 12 stone."}
+{"id": "meas_held_amb_04", "category": "measurement", "split": "held_out", "trigger": "leagues", "is_ambiguous": true, "is_control": false, "question": "Journey of 5 leagues."}
+{"id": "meas_held_amb_05", "category": "measurement", "split": "held_out", "trigger": "league", "is_ambiguous": true, "is_control": false, "question": "Distance of 1 league."}
+{"id": "meas_held_amb_06", "category": "measurement", "split": "held_out", "trigger": "tons", "is_ambiguous": true, "is_control": false, "question": "Weight is 50 tons."}
+{"id": "meas_held_amb_07", "category": "measurement", "split": "held_out", "trigger": "ton", "is_ambiguous": true, "is_control": false, "question": "Weight is 1 ton."}
+{"id": "meas_held_amb_08", "category": "measurement", "split": "held_out", "trigger": "ounces", "is_ambiguous": true, "is_control": false, "question": "Is 5 ounces considered high for this system?"}
+{"id": "meas_held_amb_09", "category": "measurement", "split": "held_out", "trigger": "ounce", "is_ambiguous": true, "is_control": false, "question": "Is 1 ounce considered high for this system?"}
+{"id": "meas_held_amb_10", "category": "measurement", "split": "held_out", "trigger": "feet", "is_ambiguous": true, "is_control": false, "question": "Height is 100 feet."}
+{"id": "meas_held_amb_11", "category": "measurement", "split": "held_out", "trigger": "foot", "is_ambiguous": true, "is_control": false, "question": "Height is 1 foot."}
+{"id": "meas_held_amb_12", "category": "measurement", "split": "held_out", "trigger": "knots", "is_ambiguous": true, "is_control": false, "question": "Speed is 20 knots."}
+{"id": "meas_held_amb_13", "category": "measurement", "split": "held_out", "trigger": "knot", "is_ambiguous": true, "is_control": false, "question": "Speed is 1 knot."}
+{"id": "meas_held_amb_14", "category": "measurement", "split": "held_out", "trigger": "pounds", "is_ambiguous": true, "is_control": false, "question": "Weight is 200 pounds."}
+{"id": "meas_held_amb_15", "category": "measurement", "split": "held_out", "trigger": "pound", "is_ambiguous": true, "is_control": false, "question": "Weight is 1 pound."}
+{"id": "meas_held_amb_16", "category": "measurement", "split": "held_out", "trigger": "cups", "is_ambiguous": true, "is_control": false, "question": "Volume is 5 cups."}
+{"id": "meas_held_amb_17", "category": "measurement", "split": "held_out", "trigger": "fl oz", "is_ambiguous": true, "is_control": false, "question": "Volume is 2 fl oz."}
+{"id": "meas_held_amb_18", "category": "measurement", "split": "held_out", "trigger": "cwt", "is_ambiguous": true, "is_control": false, "question": "Weight is 10 cwt."}
+{"id": "meas_held_ctrl_01", "category": "measurement", "split": "held_out", "trigger": "metric tons", "is_ambiguous": false, "is_control": true, "question": "What is 50 metric tons in kg?"}
+{"id": "meas_held_ctrl_02", "category": "measurement", "split": "held_out", "trigger": "degrees Celsius", "is_ambiguous": false, "is_control": true, "question": "Temperature is 25 degrees Celsius."}
+{"id": "meas_held_ctrl_03", "category": "measurement", "split": "held_out", "trigger": "meters", "is_ambiguous": false, "is_control": true, "question": "Length is 50 meters."}
+{"id": "meas_held_ctrl_04", "category": "measurement", "split": "held_out", "trigger": "grams", "is_ambiguous": false, "is_control": true, "question": "Mass is 500 grams."}
+{"id": "meas_held_ctrl_05", "category": "measurement", "split": "held_out", "trigger": "km/h", "is_ambiguous": false, "is_control": true, "question": "Speed limit is 100 km/h."}
+{"id": "meas_held_ctrl_06", "category": "measurement", "split": "held_out", "trigger": "hectares", "is_ambiguous": false, "is_control": true, "question": "Land area is 5 hectares."}
+{"id": "date_in_amb_01", "category": "date_format", "split": "in_distribution", "trigger": "05/06/2024", "is_ambiguous": true, "is_control": false, "question": "When does the contract starting on 05/06/2024 expire?"}
+{"id": "date_in_amb_02", "category": "date_format", "split": "in_distribution", "trigger": "11/12/2025", "is_ambiguous": true, "is_control": false, "question": "When does the contract starting on 11/12/2025 expire?"}
+{"id": "date_in_amb_03", "category": "date_format", "split": "in_distribution", "trigger": "01/02/2023", "is_ambiguous": true, "is_control": false, "question": "When does the contract starting on 01/02/2023 expire?"}
+{"id": "date_in_amb_04", "category": "date_format", "split": "in_distribution", "trigger": "07.08.2024", "is_ambiguous": true, "is_control": false, "question": "When does the contract starting on 07.08.2024 expire?"}
+{"id": "date_in_amb_05", "category": "date_format", "split": "in_distribution", "trigger": "09.10.2025", "is_ambiguous": true, "is_control": false, "question": "When does the contract starting on 09.10.2025 expire?"}
+{"id": "date_in_amb_06", "category": "date_format", "split": "in_distribution", "trigger": "03-04-2026", "is_ambiguous": true, "is_control": false, "question": "When does the contract starting on 03-04-2026 expire?"}
+{"id": "date_in_amb_07", "category": "date_format", "split": "in_distribution", "trigger": "02-03-2024", "is_ambiguous": true, "is_control": false, "question": "When does the contract starting on 02-03-2024 expire?"}
+{"id": "date_in_amb_08", "category": "date_format", "split": "in_distribution", "trigger": "04/05/2026", "is_ambiguous": true, "is_control": false, "question": "When does the contract starting on 04/05/2026 expire?"}
+{"id": "date_in_amb_09", "category": "date_format", "split": "in_distribution", "trigger": "06.07.2025", "is_ambiguous": true, "is_control": false, "question": "When does the contract starting on 06.07.2025 expire?"}
+{"id": "date_in_amb_10", "category": "date_format", "split": "in_distribution", "trigger": "08-09-2024", "is_ambiguous": true, "is_control": false, "question": "When does the contract starting on 08-09-2024 expire?"}
+{"id": "date_in_ctrl_01", "category": "date_format", "split": "in_distribution", "trigger": "2024-05-06", "is_ambiguous": false, "is_control": true, "question": "Meeting scheduled for 2024-05-06."}
+{"id": "date_in_ctrl_02", "category": "date_format", "split": "in_distribution", "trigger": "2025-11-12", "is_ambiguous": false, "is_control": true, "question": "Deadline is 2025-11-12."}
+{"id": "date_in_ctrl_03", "category": "date_format", "split": "in_distribution", "trigger": "25/12/2023", "is_ambiguous": false, "is_control": true, "question": "What day of the week was 25/12/2023?"}
+{"id": "date_in_ctrl_04", "category": "date_format", "split": "in_distribution", "trigger": "15/08/2024", "is_ambiguous": false, "is_control": true, "question": "Event on 15/08/2024."}
+{"id": "date_held_amb_01", "category": "date_format", "split": "held_out", "trigger": "05 06 2024", "is_ambiguous": true, "is_control": false, "question": "What date is 05 06 2024?"}
+{"id": "date_held_amb_02", "category": "date_format", "split": "held_out", "trigger": "11 12 2025", "is_ambiguous": true, "is_control": false, "question": "What date is 11 12 2025?"}
+{"id": "date_held_amb_03", "category": "date_format", "split": "held_out", "trigger": "01 02 2023", "is_ambiguous": true, "is_control": false, "question": "What date is 01 02 2023?"}
+{"id": "date_held_amb_04", "category": "date_format", "split": "held_out", "trigger": "07 08 2024", "is_ambiguous": true, "is_control": false, "question": "What date is 07 08 2024?"}
+{"id": "date_held_amb_05", "category": "date_format", "split": "held_out", "trigger": "09 10 2025", "is_ambiguous": true, "is_control": false, "question": "What date is 09 10 2025?"}
+{"id": "date_held_amb_06", "category": "date_format", "split": "held_out", "trigger": "03 04 2026", "is_ambiguous": true, "is_control": false, "question": "What date is 03 04 2026?"}
+{"id": "date_held_amb_07", "category": "date_format", "split": "held_out", "trigger": "02 03 2024", "is_ambiguous": true, "is_control": false, "question": "What date is 02 03 2024?"}
+{"id": "date_held_amb_08", "category": "date_format", "split": "held_out", "trigger": "04 05 2026", "is_ambiguous": true, "is_control": false, "question": "What date is 04 05 2026?"}
+{"id": "date_held_amb_09", "category": "date_format", "split": "held_out", "trigger": "06 07 2025", "is_ambiguous": true, "is_control": false, "question": "What date is 06 07 2025?"}
+{"id": "date_held_amb_10", "category": "date_format", "split": "held_out", "trigger": "08 09 2024", "is_ambiguous": true, "is_control": false, "question": "What date is 08 09 2024?"}
+{"id": "date_held_amb_11", "category": "date_format", "split": "held_out", "trigger": "10 11 2026", "is_ambiguous": true, "is_control": false, "question": "What date is 10 11 2026?"}
+{"id": "date_held_amb_12", "category": "date_format", "split": "held_out", "trigger": "12 01 2025", "is_ambiguous": true, "is_control": false, "question": "What date is 12 01 2025?"}
+{"id": "date_held_amb_13", "category": "date_format", "split": "held_out", "trigger": "2024年05月06日", "is_ambiguous": true, "is_control": false, "question": "What date is 2024年05月06日?"}
+{"id": "date_held_amb_14", "category": "date_format", "split": "held_out", "trigger": "2025年11月12日", "is_ambiguous": true, "is_control": false, "question": "What date is 2025年11月12日?"}
+{"id": "date_held_amb_15", "category": "date_format", "split": "held_out", "trigger": "2023年01月02日", "is_ambiguous": true, "is_control": false, "question": "What date is 2023年01月02日?"}
+{"id": "date_held_amb_16", "category": "date_format", "split": "held_out", "trigger": "2026年07月08日", "is_ambiguous": true, "is_control": false, "question": "What date is 2026年07月08日?"}
+{"id": "date_held_amb_17", "category": "date_format", "split": "held_out", "trigger": "Reiwa 3年5月12日", "is_ambiguous": true, "is_control": false, "question": "What date is Reiwa 3年5月12日?"}
+{"id": "date_held_amb_18", "category": "date_format", "split": "held_out", "trigger": "Reiwa 4年1月2日", "is_ambiguous": true, "is_control": false, "question": "What date is Reiwa 4年1月2日?"}
+{"id": "date_held_ctrl_01", "category": "date_format", "split": "held_out", "trigger": "June 5, 2024", "is_ambiguous": false, "is_control": true, "question": "What event happened on June 5, 2024?"}
+{"id": "date_held_ctrl_02", "category": "date_format", "split": "held_out", "trigger": "December 25, 2023", "is_ambiguous": false, "is_control": true, "question": "Holiday on December 25, 2023."}
+{"id": "date_held_ctrl_03", "category": "date_format", "split": "held_out", "trigger": "January 1, 2025", "is_ambiguous": false, "is_control": true, "question": "New Year on January 1, 2025."}
+{"id": "date_held_ctrl_04", "category": "date_format", "split": "held_out", "trigger": "August 15, 2024", "is_ambiguous": false, "is_control": true, "question": "Independence day on August 15, 2024."}
+{"id": "date_held_ctrl_05", "category": "date_format", "split": "held_out", "trigger": "November 12, 2025", "is_ambiguous": false, "is_control": true, "question": "Conference on November 12, 2025."}
+{"id": "date_held_ctrl_06", "category": "date_format", "split": "held_out", "trigger": "May 6, 2024", "is_ambiguous": false, "is_control": true, "question": "Contract signed on May 6, 2024."}
+{"id": "num_in_amb_01", "category": "number_ambiguity", "split": "in_distribution", "trigger": "billion", "is_ambiguous": true, "is_control": false, "question": "Deficit reached 5 billion in history."}
+{"id": "num_in_amb_02", "category": "number_ambiguity", "split": "in_distribution", "trigger": "billion", "is_ambiguous": true, "is_control": false, "question": "Revenue was 10 billion total."}
+{"id": "num_in_amb_03", "category": "number_ambiguity", "split": "in_distribution", "trigger": "billion", "is_ambiguous": true, "is_control": false, "question": "Population reached 1 billion."}
+{"id": "num_in_amb_04", "category": "number_ambiguity", "split": "in_distribution", "trigger": "billion", "is_ambiguous": true, "is_control": false, "question": "Budget of 2 billion dollars."}
+{"id": "num_in_amb_05", "category": "number_ambiguity", "split": "in_distribution", "trigger": "billion", "is_ambiguous": true, "is_control": false, "question": "Target is 50 billion."}
+{"id": "num_in_amb_06", "category": "number_ambiguity", "split": "in_distribution", "trigger": "10m", "is_ambiguous": true, "is_control": false, "question": "Revenue was 10m."}
+{"id": "num_in_amb_07", "category": "number_ambiguity", "split": "in_distribution", "trigger": "5m", "is_ambiguous": true, "is_control": false, "question": "Cost was 5m."}
+{"id": "num_in_amb_08", "category": "number_ambiguity", "split": "in_distribution", "trigger": "50m", "is_ambiguous": true, "is_control": false, "question": "Sales reached 50m."}
+{"id": "num_in_amb_09", "category": "number_ambiguity", "split": "in_distribution", "trigger": "100m", "is_ambiguous": true, "is_control": false, "question": "Valuation of 100m."}
+{"id": "num_in_amb_10", "category": "number_ambiguity", "split": "in_distribution", "trigger": "1m", "is_ambiguous": true, "is_control": false, "question": "Profit was 1m."}
+{"id": "num_in_ctrl_01", "category": "number_ambiguity", "split": "in_distribution", "trigger": "1,000,000,000", "is_ambiguous": false, "is_control": true, "question": "How many millions are in 1,000,000,000 (one US 10^9)?"}
+{"id": "num_in_ctrl_02", "category": "number_ambiguity", "split": "in_distribution", "trigger": "100 million USD", "is_ambiguous": false, "is_control": true, "question": "Amount is 100 million USD."}
+{"id": "num_in_ctrl_03", "category": "number_ambiguity", "split": "in_distribution", "trigger": "500 thousand", "is_ambiguous": false, "is_control": true, "question": "Total is 500 thousand."}
+{"id": "num_in_ctrl_04", "category": "number_ambiguity", "split": "in_distribution", "trigger": "50,000", "is_ambiguous": false, "is_control": true, "question": "What is the value of 50,000 in word form?"}
+{"id": "num_held_amb_01", "category": "number_ambiguity", "split": "held_out", "trigger": "milliard", "is_ambiguous": true, "is_control": false, "question": "What is the exact numerical value of 5 milliard?"}
+{"id": "num_held_amb_02", "category": "number_ambiguity", "split": "held_out", "trigger": "billón", "is_ambiguous": true, "is_control": false, "question": "What is the exact numerical value of 2 billón?"}
+{"id": "num_held_amb_03", "category": "number_ambiguity", "split": "held_out", "trigger": "trillion", "is_ambiguous": true, "is_control": false, "question": "What is the exact numerical value of 1 trillion?"}
+{"id": "num_held_amb_04", "category": "number_ambiguity", "split": "held_out", "trigger": "lakh", "is_ambiguous": true, "is_control": false, "question": "Salary is 5 lakh per year."}
+{"id": "num_held_amb_05", "category": "number_ambiguity", "split": "held_out", "trigger": "crore", "is_ambiguous": true, "is_control": false, "question": "Budget is 10 crore total."}
+{"id": "num_held_amb_06", "category": "number_ambiguity", "split": "held_out", "trigger": "bn", "is_ambiguous": true, "is_control": false, "question": "Budget is 5 bn."}
+{"id": "num_held_amb_07", "category": "number_ambiguity", "split": "held_out", "trigger": "bn", "is_ambiguous": true, "is_control": false, "question": "Valuation of 10 bn."}
+{"id": "num_held_amb_08", "category": "number_ambiguity", "split": "held_out", "trigger": "MM", "is_ambiguous": true, "is_control": false, "question": "Cost is 10 MM."}
+{"id": "num_held_amb_09", "category": "number_ambiguity", "split": "held_out", "trigger": "MM", "is_ambiguous": true, "is_control": false, "question": "Revenue of 50 MM."}
+{"id": "num_held_amb_10", "category": "number_ambiguity", "split": "held_out", "trigger": "億", "is_ambiguous": true, "is_control": false, "question": "Population is 1億."}
+{"id": "num_held_amb_11", "category": "number_ambiguity", "split": "held_out", "trigger": "兆", "is_ambiguous": true, "is_control": false, "question": "Budget is 10兆."}
+{"id": "num_held_amb_12", "category": "number_ambiguity", "split": "held_out", "trigger": "k", "is_ambiguous": true, "is_control": false, "question": "Salary is 50k."}
+{"id": "num_held_amb_13", "category": "number_ambiguity", "split": "held_out", "trigger": "k", "is_ambiguous": true, "is_control": false, "question": "Total is 10k."}
+{"id": "num_held_amb_14", "category": "number_ambiguity", "split": "held_out", "trigger": "billon", "is_ambiguous": true, "is_control": false, "question": "Value is 1 billon."}
+{"id": "num_held_amb_15", "category": "number_ambiguity", "split": "held_out", "trigger": "milliard", "is_ambiguous": true, "is_control": false, "question": "Valuation of 10 milliard."}
+{"id": "num_held_amb_16", "category": "number_ambiguity", "split": "held_out", "trigger": "lakh", "is_ambiguous": true, "is_control": false, "question": "Price is 20 lakh."}
+{"id": "num_held_amb_17", "category": "number_ambiguity", "split": "held_out", "trigger": "crore", "is_ambiguous": true, "is_control": false, "question": "Revenue is 5 crore."}
+{"id": "num_held_amb_18", "category": "number_ambiguity", "split": "held_out", "trigger": "MM", "is_ambiguous": true, "is_control": false, "question": "Budget of 100 MM."}
+{"id": "num_held_ctrl_01", "category": "number_ambiguity", "split": "held_out", "trigger": "1 x 10^9", "is_ambiguous": false, "is_control": true, "question": "What is 1 x 10^9 in standard scientific notation?"}
+{"id": "num_held_ctrl_02", "category": "number_ambiguity", "split": "held_out", "trigger": "100,000", "is_ambiguous": false, "is_control": true, "question": "Total count is 100,000 exact."}
+{"id": "num_held_ctrl_03", "category": "number_ambiguity", "split": "held_out", "trigger": "10^12", "is_ambiguous": false, "is_control": true, "question": "Value is 10^12 in exponent notation."}
+{"id": "num_held_ctrl_04", "category": "number_ambiguity", "split": "held_out", "trigger": "5,000", "is_ambiguous": false, "is_control": true, "question": "Count is 5,000 units."}
+{"id": "num_held_ctrl_05", "category": "number_ambiguity", "split": "held_out", "trigger": "1 x 10^12", "is_ambiguous": false, "is_control": true, "question": "Amount is 1 x 10^12 exact."}
+{"id": "num_held_ctrl_06", "category": "number_ambiguity", "split": "held_out", "trigger": "2 x 10^6", "is_ambiguous": false, "is_control": true, "question": "Value is 2 x 10^6."}

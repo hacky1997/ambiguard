@@ -1,0 +1,168 @@
+{
+  "phase": "0-expanded-corrected",
+  "external_references": {
+    "currency": "ISO 4217 Currency Code Standard & Unicode Currency Symbols Table (shared symbols vs unique ISO codes)",
+    "measurement": "NIST Special Publication 330 / US Customary and British Imperial Measurement Systems",
+    "date_format": "Unicode CLDR Date/Time Patterns & ISO 8601 Date Representation Standard",
+    "number_ambiguity": "Short and Long Scales Dictionary & International System of Units (SI) Prefixes"
+  },
+  "n_rows_per_language": 152,
+  "results_by_language": {
+    "en": {
+      "in_distribution": {
+        "n_total": 56,
+        "n_ambiguous": 40,
+        "n_controls": 16,
+        "accuracy_overall": 98.2,
+        "accuracy_ambiguous": 100.0,
+        "accuracy_controls": 93.8,
+        "wilson_ci_ambiguous_95": [
+          91.2,
+          100.0
+        ]
+      },
+      "held_out": {
+        "n_total": 96,
+        "n_ambiguous": 72,
+        "n_controls": 24,
+        "accuracy_overall": 25.0,
+        "accuracy_ambiguous": 0.0,
+        "accuracy_controls": 100.0,
+        "wilson_ci_ambiguous_95": [
+          0.0,
+          5.1
+        ]
+      }
+    },
+    "es": {
+      "in_distribution": {
+        "n_total": 56,
+        "n_ambiguous": 40,
+        "n_controls": 16,
+        "accuracy_overall": 53.6,
+        "accuracy_ambiguous": 35.0,
+        "accuracy_controls": 100.0,
+        "wilson_ci_ambiguous_95": [
+          22.1,
+          50.5
+        ]
+      },
+      "held_out": {
+        "n_total": 96,
+        "n_ambiguous": 72,
+        "n_controls": 24,
+        "accuracy_overall": 25.0,
+        "accuracy_ambiguous": 0.0,
+        "accuracy_controls": 100.0,
+        "wilson_ci_ambiguous_95": [
+          0.0,
+          5.1
+        ]
+      }
+    },
+    "de": {
+      "in_distribution": {
+        "n_total": 56,
+        "n_ambiguous": 40,
+        "n_controls": 16,
+        "accuracy_overall": 51.8,
+        "accuracy_ambiguous": 32.5,
+        "accuracy_controls": 100.0,
+        "wilson_ci_ambiguous_95": [
+          20.1,
+          48.0
+        ]
+      },
+      "held_out": {
+        "n_total": 96,
+        "n_ambiguous": 72,
+        "n_controls": 24,
+        "accuracy_overall": 27.1,
+        "accuracy_ambiguous": 2.8,
+        "accuracy_controls": 100.0,
+        "wilson_ci_ambiguous_95": [
+          0.8,
+          9.6
+        ]
+      }
+    },
+    "hi": {
+      "in_distribution": {
+        "n_total": 56,
+        "n_ambiguous": 40,
+        "n_controls": 16,
+        "accuracy_overall": 55.4,
+        "accuracy_ambiguous": 37.5,
+        "accuracy_controls": 100.0,
+        "wilson_ci_ambiguous_95": [
+          24.2,
+          53.0
+        ]
+      },
+      "held_out": {
+        "n_total": 96,
+        "n_ambiguous": 72,
+        "n_controls": 24,
+        "accuracy_overall": 25.0,
+        "accuracy_ambiguous": 0.0,
+        "accuracy_controls": 100.0,
+        "wilson_ci_ambiguous_95": [
+          0.0,
+          5.1
+        ]
+      }
+    },
+    "ja": {
+      "in_distribution": {
+        "n_total": 56,
+        "n_ambiguous": 40,
+        "n_controls": 16,
+        "accuracy_overall": 28.6,
+        "accuracy_ambiguous": 0.0,
+        "accuracy_controls": 100.0,
+        "wilson_ci_ambiguous_95": [
+          0.0,
+          8.8
+        ]
+      },
+      "held_out": {
+        "n_total": 96,
+        "n_ambiguous": 72,
+        "n_controls": 24,
+        "accuracy_overall": 25.0,
+        "accuracy_ambiguous": 0.0,
+        "accuracy_controls": 100.0,
+        "wilson_ci_ambiguous_95": [
+          0.0,
+          5.1
+        ]
+      }
+    },
+    "sw": {
+      "in_distribution": {
+        "n_total": 56,
+        "n_ambiguous": 40,
+        "n_controls": 16,
+        "accuracy_overall": 60.7,
+        "accuracy_ambiguous": 45.0,
+        "accuracy_controls": 100.0,
+        "wilson_ci_ambiguous_95": [
+          30.7,
+          60.2
+        ]
+      },
+      "held_out": {
+        "n_total": 96,
+        "n_ambiguous": 72,
+        "n_controls": 24,
+        "accuracy_overall": 25.0,
+        "accuracy_ambiguous": 0.0,
+        "accuracy_controls": 100.0,
+        "wilson_ci_ambiguous_95": [
+          0.0,
+          5.1
+        ]
+      }
+    }
+  }
+}
