@@ -5,7 +5,7 @@ from __future__ import annotations
 import pytest
 
 from app.graph.builder import build_graph
-from app.graph.state import AgentState, Evidence, VerificationResult
+from app.graph.state import AgentState
 
 
 class TestGraphStateContracts:
@@ -59,7 +59,8 @@ class TestGraphStateContracts:
         initial_state: AgentState = {
             "thread_id": "t3",
             "question": "What are the side effects of it?",  # Would trigger CLARIFY
-            "resolved_question": "What are the side effects of Medication Alpha?",  # Specific -> ANSWER
+            # Specific -> ANSWER
+            "resolved_question": "What are the side effects of Medication Alpha?",
             "messages": [],
         }
 

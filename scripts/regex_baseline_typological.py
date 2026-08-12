@@ -43,9 +43,7 @@ def is_ambiguous_regex(row: dict[str, Any]) -> tuple[bool, str]:
     Returns (is_ambiguous, matched_rule).
     """
     q = row["question"]
-    c = row.get("context", "")
     cat = row.get("category", "")
-    q_c = f"{q} {c}"
 
     # 1. date_format
     if cat == "date_format" or re.search(r"\b\d{1,2}[\/\.-]\d{1,2}[\/\.-]\d{2,4}\b", q):
@@ -249,9 +247,6 @@ def main() -> int:
         "currency": 1.00, "entity_collision": 1.00
     }
 
-    wins_over_gate = 0
-    wins_over_llm = 0
-
     for cat, v in res["per_category"].items():
         counts = f"{v['tp']}/{v['fp']}/{v['fn']}/{v['tn']}"
         print(f"{cat:<22} {v['accuracy']:>8.1%} {v['f1']:>8.3f} {counts:>16}")
@@ -262,6 +257,8 @@ def main() -> int:
     print("=" * 72)
     print(f"{'Category':<22} {'Regex':>8} {'Gate':>8} {'LLM':>8} {'Regex vs Gate':>16}")
     print("-" * 72)
+
+    wins_over_gate = 0
 
     for cat, v in res["per_category"].items():
         g_val = ref_gate.get(cat, None)

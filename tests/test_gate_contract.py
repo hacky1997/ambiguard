@@ -13,7 +13,6 @@ from typing import Any
 import numpy as np
 import pytest
 
-from app.gate.base import Behaviour, GateDecision
 from app.gate.centerdistill import CenterDistillGate
 from app.gate.heuristic import HeuristicGate
 
@@ -237,8 +236,8 @@ class TestThresholdOrder:
         # With correct order, ANSWER wins because it's checked first
         from app.gate.thresholds import DEFAULT_THRESHOLDS
 
-        # max_prob=0.50 > tau_conf=0.44 → ANSWER
-        dist = [0.50, 0.25, 0.10, 0.10, 0.05]
+        # max_prob=0.45 > tau_conf=0.44 → ANSWER
+        dist = [0.45, 0.25, 0.06, 0.06, 0.06, 0.06, 0.06]
         p = np.array(dist)
         max_prob = max(dist)
         second_mass = sorted(dist, reverse=True)[1]
@@ -246,5 +245,6 @@ class TestThresholdOrder:
 
         # Verify this WOULD trigger ALTERNATIVES and CLARIFY checks too
         assert second_mass > DEFAULT_THRESHOLDS.tau_multi  # 0.25 > 0.24
+        assert entropy > DEFAULT_THRESHOLDS.tau_ent  # 1.55 > 1.51
         # But ANSWER check comes first
-        assert max_prob > DEFAULT_THRESHOLDS.tau_conf  # 0.50 > 0.44
+        assert max_prob > DEFAULT_THRESHOLDS.tau_conf  # 0.45 > 0.44
