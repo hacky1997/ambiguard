@@ -24,7 +24,6 @@ import numpy.typing as npt
 from app.gate.base import Behaviour, GateDecision
 from app.gate.heuristic import HeuristicGate
 from app.gate.thresholds import (
-    DEFAULT_THRESHOLDS,
     GateThresholds,
     get_thresholds_from_settings,
 )
@@ -67,7 +66,7 @@ def _try_load_checkpoint(
         return None, None, None, False
 
     try:
-        from transformers import AutoTokenizer, AutoModel
+        from transformers import AutoModel, AutoTokenizer
     except ImportError:
         logger.warning("transformers not installed — using heuristic fallback")
         return None, None, None, False
@@ -106,7 +105,7 @@ def _try_load_checkpoint(
             base_model_name = ckpt_data.get("base_model", "deepset/xlm-roberta-large-squad2")
             if not Path(base_model_name).exists() and (base_model_name.startswith("/") or "\\" in base_model_name):
                 base_model_name = "deepset/xlm-roberta-large-squad2"
-            K = ckpt_data.get("K", 5)
+            k_val = ckpt_data.get("K", 5)
 
             # Rebuild model structure matching repair_checkpoint.py
             import torch.nn as nn
@@ -135,7 +134,7 @@ def _try_load_checkpoint(
                         input_ids=input_ids, attention_mask=attention_mask, **kwargs
                     )
 
-            model = RepairedCenterDistillModel(base_model_name, K)
+            model = RepairedCenterDistillModel(base_model_name, k_val)
             model.load_state_dict(ckpt_data["state_dict"], strict=False)
             model.eval().to(device)
 
@@ -149,7 +148,7 @@ def _try_load_checkpoint(
                 )
             )
             tokenizer = AutoTokenizer.from_pretrained(str(tok_path))  # type: ignore[no-untyped-call]
-            dummy_centers = np.zeros((K, 768), dtype=np.float64)
+            dummy_centers = np.zeros((k_val, 768), dtype=np.float64)
 
             logger.info("Repaired CenterDistill artifact loaded on %s", device)
             return model, tokenizer, dummy_centers, True

@@ -5,7 +5,7 @@ Report intervals, never bare point estimates (spec §3.2).
 
 from __future__ import annotations
 
-from typing import Callable
+from collections.abc import Callable
 
 import numpy as np
 

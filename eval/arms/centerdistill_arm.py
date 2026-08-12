@@ -6,8 +6,6 @@ accordingly — never as CenterDistill results (AGENTS.md rule 4).
 
 from __future__ import annotations
 
-from typing import Any
-
 from app.gate.centerdistill import CenterDistillGate
 from app.gate.thresholds import GateThresholds
 from app.settings import get_settings

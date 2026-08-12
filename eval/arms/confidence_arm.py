@@ -12,12 +12,9 @@ synthetic distribution as a confidence proxy.
 from __future__ import annotations
 
 import time
-from typing import Any
-
-import numpy as np
 
 from app.gate.centerdistill import CenterDistillGate
-from app.gate.thresholds import DEFAULT_THRESHOLDS, GateThresholds
+from app.gate.thresholds import GateThresholds
 from app.settings import get_settings
 from eval.arms import ArmResult
 

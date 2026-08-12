@@ -13,7 +13,6 @@ from __future__ import annotations
 from typing import Any
 
 from app.gate.centerdistill import CenterDistillGate
-from app.gate.thresholds import DEFAULT_THRESHOLDS, GateThresholds
 from app.graph.state import AgentState
 from app.settings import get_settings
 

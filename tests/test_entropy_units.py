@@ -10,7 +10,6 @@ DO NOT DELETE THIS TEST. (AGENTS.md rule 1)
 from __future__ import annotations
 
 import numpy as np
-import pytest
 
 from app.gate.heuristic import HeuristicGate
 from app.gate.thresholds import DEFAULT_THRESHOLDS

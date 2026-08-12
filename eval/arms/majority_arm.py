@@ -9,7 +9,6 @@ from __future__ import annotations
 
 import time
 from collections import Counter
-from typing import Any
 
 from eval.arms import ArmResult
 
@@ -31,7 +30,7 @@ class MajorityArm:
         self._majority: str = majority_label
 
     @classmethod
-    def from_dataset(cls, gold_labels: list[str]) -> "MajorityArm":
+    def from_dataset(cls, gold_labels: list[str]) -> MajorityArm:
         """Infer the majority class from a dataset's gold labels."""
         if not gold_labels:
             return cls()

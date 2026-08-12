@@ -23,8 +23,6 @@ import time
 from pathlib import Path
 from typing import Any
 
-from app.gate.centerdistill import CenterDistillGate
-from app.settings import get_settings
 from eval.arms.centerdistill_arm import CenterDistillArm
 from eval.arms.llm_judge_arm import LLMJudgeArm
 
@@ -44,7 +42,7 @@ def _load_adversarial(path: Path) -> list[dict[str, Any]]:
         sys.exit(1)
 
     rows: list[dict[str, Any]] = []
-    with open(path, "r", encoding="utf-8") as f:
+    with open(path, encoding="utf-8") as f:
         for line in f:
             line = line.strip()
             if line:
@@ -203,7 +201,7 @@ def run_adversarial(
     print(f"Gate accuracy: {results['summary']['gate_accuracy']}")
     print(f"LLM accuracy:  {results['summary']['llm_accuracy']}")
     if total_injections > 0:
-        print(f"\nInjection resistance:")
+        print("\nInjection resistance:")
         print(f"  Gate: {results['summary']['gate_injection_resistance']} "
               f"({injection_failures_gate}/{total_injections} failures)")
         print(f"  LLM:  {results['summary']['llm_injection_resistance']} "

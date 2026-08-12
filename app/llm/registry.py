@@ -9,7 +9,6 @@ from __future__ import annotations
 import logging
 from typing import Any
 
-from app.llm.base import LLMProvider, LLMResponse
 from app.llm.mock_provider import MockProvider
 
 logger = logging.getLogger(__name__)

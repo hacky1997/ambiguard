@@ -7,8 +7,6 @@ Endpoints:
 
 from __future__ import annotations
 
-from typing import Any
-
 from fastapi import APIRouter, HTTPException
 
 from app.api.schemas import ChatRequest, ChatResponse, ResumeRequest

@@ -12,7 +12,6 @@ import time
 
 from app.llm.base import LLMResponse
 
-
 # Behaviours the mock can return, indexed by hash bucket
 _BEHAVIOURS: list[str] = ["ANSWER", "CLARIFY", "ALTERNATIVES"]
 
