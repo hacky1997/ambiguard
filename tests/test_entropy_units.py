@@ -54,7 +54,7 @@ class TestEntropyUnits:
 
         ratio = bits / nats
         assert abs(ratio - 1.0 / np.log(2)) < 0.01, (
-            f"Ratio {ratio:.4f} doesn't match expected 1/ln(2) ≈ {1/np.log(2):.4f}"
+            f"Ratio {ratio:.4f} doesn't match expected 1/ln(2) ≈ {1 / np.log(2):.4f}"
         )
 
     def test_threshold_routing_with_nats(self) -> None:
@@ -75,9 +75,7 @@ class TestEntropyUnits:
         )
 
         # Bits value would be higher — might wrongly cross threshold
-        assert entropy_bits > entropy_nats, (
-            "log2 entropy must be > log entropy (by factor 1/ln2)"
-        )
+        assert entropy_bits > entropy_nats, "log2 entropy must be > log entropy (by factor 1/ln2)"
 
     def test_tau_ent_value_is_nats(self) -> None:
         """tau_ent = 1.51 is in the nats range, not the bits range.

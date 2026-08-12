@@ -39,8 +39,7 @@ def _load_dataset(path: Path) -> list[dict[str, Any]]:
     if not path.exists():
         logger.error("Dataset not found: %s", path)
         logger.error(
-            "golden_gate.jsonl is HUMAN-AUTHORED and must not be generated. "
-            "See AGENTS.md rule 6."
+            "golden_gate.jsonl is HUMAN-AUTHORED and must not be generated. See AGENTS.md rule 6."
         )
         sys.exit(1)
 
@@ -94,9 +93,7 @@ def _run_arm(
         )
 
     # Compute metrics
-    acc_point, acc_lower, acc_upper = bootstrap_ci(
-        predictions, gold, behaviour_accuracy
-    )
+    acc_point, acc_lower, acc_upper = bootstrap_ci(predictions, gold, behaviour_accuracy)
     bal_acc = balanced_accuracy(predictions, gold)
     wc_f1 = worst_cluster_f1(predictions, gold)
 
@@ -120,9 +117,7 @@ def _run_arm(
         is_deterministic = len(set(first_results)) == 1
 
     # Check for fallback
-    any_fallback = any(
-        r.get("metadata", {}).get("fallback_used", False) for r in per_row_results
-    )
+    any_fallback = any(r.get("metadata", {}).get("fallback_used", False) for r in per_row_results)
 
     return {
         "arm_name": arm.name,
@@ -184,9 +179,7 @@ def run_comparison(
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "dataset": str(ds_path),
         "n_samples": len(dataset),
-        "arms": [
-            {k: v for k, v in r.items() if k != "per_row"} for r in results
-        ],
+        "arms": [{k: v for k, v in r.items() if k != "per_row"} for r in results],
         "per_row_details": {r["arm_name"]: r["per_row"] for r in results},
     }
 

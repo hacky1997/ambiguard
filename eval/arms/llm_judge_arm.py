@@ -97,9 +97,7 @@ class LLMJudgeArm:
     def predict(self, question: str, context: str) -> ArmResult:
         """Ask the LLM to classify ambiguity."""
         template = _JUDGE_PROMPT_TEMPLATE_BINARY if self.is_binary else _JUDGE_PROMPT_TEMPLATE
-        prompt: str = template.format(
-            question=question, context=context
-        )
+        prompt: str = template.format(question=question, context=context)
         response: LLMResponse = self._provider.complete(prompt, temperature=0.0)
 
         return ArmResult(

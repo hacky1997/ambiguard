@@ -120,8 +120,10 @@ if __name__ == "__main__":
 
     # 3. Skewed but not constant: catches most ANSWER, few AMBIGUOUS.
     skewed = ["ANSWER"] * 300 + ["ANSWER"] * 240 + ["AMBIGUOUS"] * 60
-    print(f"skewed predictor          : worst={worst_cluster_f1(skewed, gold_bin)}  "
-          f"macro={macro_f1(skewed, gold_bin)}")
+    print(
+        f"skewed predictor          : worst={worst_cluster_f1(skewed, gold_bin)}  "
+        f"macro={macro_f1(skewed, gold_bin)}"
+    )
     print(f"  breakdown: {per_class_breakdown(skewed, gold_bin)}")
 
     # 4. Three-class still works (the original CenterDistill setting).

@@ -46,6 +46,7 @@ def _try_import_torch() -> tuple[Any, bool]:
     """Import torch if available."""
     try:
         import torch
+
         return torch, True
     except ImportError:
         return None, False
@@ -80,6 +81,7 @@ def _try_load_checkpoint(
     elif hf_repo:
         try:
             from huggingface_hub import snapshot_download
+
             local_dir: str = snapshot_download(hf_repo)
             resolved_path = Path(local_dir)
             logger.info("Downloaded checkpoint from HF Hub: %s", hf_repo)
@@ -116,6 +118,7 @@ def _try_load_checkpoint(
                     super().__init__()
                     try:
                         from transformers import AutoConfig, AutoModel
+
                         config = AutoConfig.from_pretrained(base_name)
                         self.encoder = AutoModel.from_config(config)  # type: ignore[no-untyped-call]
                     except Exception:
@@ -212,9 +215,7 @@ class CenterDistillGate:
         self._heuristic_gate: HeuristicGate | None = None
         self._heuristic: Any = None
 
-        model, tokenizer, centers, success = _try_load_checkpoint(
-            checkpoint_path, hf_repo
-        )
+        model, tokenizer, centers, success = _try_load_checkpoint(checkpoint_path, hf_repo)
 
         if success:
             self._model = model
@@ -257,8 +258,8 @@ class CenterDistillGate:
         out: list[npt.NDArray[np.float64]] = []
         bs = 32
         for i in range(0, len(questions), bs):
-            b_q = questions[i:i + bs]
-            b_c = contexts[i:i + bs]
+            b_q = questions[i : i + bs]
+            b_c = contexts[i : i + bs]
             inputs = self._tokenizer(
                 b_q,
                 b_c,
@@ -274,9 +275,7 @@ class CenterDistillGate:
                 out.append(cls_hidden.cpu().numpy().astype(np.float64))
         return np.concatenate(out, axis=0)
 
-    def decide_from_embedding(
-        self, embedding: npt.NDArray[np.float64] | Any
-    ) -> GateDecision:
+    def decide_from_embedding(self, embedding: npt.NDArray[np.float64] | Any) -> GateDecision:
         """Classify a pre-computed CLS embedding vector (1024-dim) directly.
 
         Passes embedding through the center_head (or teacher similarity formula)
@@ -300,9 +299,7 @@ class CenterDistillGate:
         with torch.inference_mode():
             if hasattr(self._model, "center_head"):
                 logits = self._model.center_head(emb_tensor)
-                p_s: npt.NDArray[np.float64] = (
-                    torch.softmax(logits, dim=-1).cpu().numpy()[0]
-                )
+                p_s: npt.NDArray[np.float64] = torch.softmax(logits, dim=-1).cpu().numpy()[0]
             else:
                 p_s = self._center_similarity(emb_tensor)
 
@@ -337,9 +334,7 @@ class CenterDistillGate:
             # Prefer the trained center_head if the checkpoint includes it
             if hasattr(self._model, "center_head"):
                 logits = self._model.center_head(cls_hidden)
-                p_s: npt.NDArray[np.float64] = (
-                    torch.softmax(logits, dim=-1).cpu().numpy()[0]
-                )
+                p_s: npt.NDArray[np.float64] = torch.softmax(logits, dim=-1).cpu().numpy()[0]
             else:
                 # Fallback: teacher formula P_T(c_k|q) = softmax(τ · µ̃_kᵀ ê_q)
                 p_s = self._center_similarity(cls_hidden)
@@ -347,9 +342,7 @@ class CenterDistillGate:
         elapsed_ms: float = (time.perf_counter() - start) * 1000.0
         return self._apply_thresholds(p_s.tolist(), elapsed_ms)
 
-    def _center_similarity(
-        self, cls_hidden: Any
-    ) -> npt.NDArray[np.float64]:
+    def _center_similarity(self, cls_hidden: Any) -> npt.NDArray[np.float64]:
         """Compute P_S via teacher distribution formula.
 
         P_T(c_k|q) = softmax(τ · µ̃_kᵀ ê_q), τ = 10.0
@@ -357,13 +350,9 @@ class CenterDistillGate:
         """
         assert self._centers is not None  # guaranteed by _fallback=False path
 
-        cls_np: npt.NDArray[np.float64] = (
-            cls_hidden.cpu().float().numpy()[0].astype(np.float64)
-        )
+        cls_np: npt.NDArray[np.float64] = cls_hidden.cpu().float().numpy()[0].astype(np.float64)
         # L2-normalise
-        cls_norm: npt.NDArray[np.float64] = cls_np / (
-            np.linalg.norm(cls_np) + 1e-8
-        )
+        cls_norm: npt.NDArray[np.float64] = cls_np / (np.linalg.norm(cls_np) + 1e-8)
         centers_norm: npt.NDArray[np.float64] = self._centers / (
             np.linalg.norm(self._centers, axis=1, keepdims=True) + 1e-8
         )
@@ -376,9 +365,7 @@ class CenterDistillGate:
 
         return p_s
 
-    def _apply_thresholds(
-        self, distribution: list[float], latency_ms: float
-    ) -> GateDecision:
+    def _apply_thresholds(self, distribution: list[float], latency_ms: float) -> GateDecision:
         """Apply threshold evaluation in the FIXED order.
 
         Order (AGENTS.md rule 2):
@@ -399,7 +386,7 @@ class CenterDistillGate:
 
         # Threshold evaluation — FIXED ORDER (AGENTS.md rule 2)
         behaviour: Behaviour
-        if max_prob > self._thresholds.tau_conf:               # noqa: E501
+        if max_prob > self._thresholds.tau_conf:  # noqa: E501
             behaviour = "ANSWER"
         elif second_mass > self._thresholds.tau_multi:
             behaviour = "ALTERNATIVES"

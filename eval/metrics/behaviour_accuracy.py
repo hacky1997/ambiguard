@@ -19,8 +19,6 @@ def behaviour_accuracy(predictions: list[str], gold: list[str]) -> float:
     if not predictions or not gold:
         return 0.0
     if len(predictions) != len(gold):
-        raise ValueError(
-            f"Length mismatch: {len(predictions)} predictions vs {len(gold)} gold"
-        )
+        raise ValueError(f"Length mismatch: {len(predictions)} predictions vs {len(gold)} gold")
     matches: int = sum(1 for p, g in zip(predictions, gold, strict=True) if p == g)
     return matches / len(gold)

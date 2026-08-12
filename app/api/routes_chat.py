@@ -93,7 +93,7 @@ def resume_endpoint(request: ResumeRequest) -> ChatResponse:
         behaviour = gate.get("behaviour", "ANSWER") if gate else "ANSWER"
 
         # Record clarify resolution metric
-        resolved_to_answer = (behaviour == "ANSWER")
+        resolved_to_answer = behaviour == "ANSWER"
         metrics.record_clarify_resume(resolved_to_answer=resolved_to_answer)
 
         ver = final_state.get("verification")

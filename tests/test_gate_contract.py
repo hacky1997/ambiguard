@@ -140,6 +140,7 @@ class TestThresholds:
         monkeypatch.setenv("AMBIGUARD_TAU_MULTI", "")
         monkeypatch.setenv("AMBIGUARD_TAU_ENT", "")
         from app.gate.heuristic import HeuristicGate
+
         gate = HeuristicGate()
         result = gate("Test question", "Test context")
         assert result["thresholds"]["tau_conf"] == 0.44

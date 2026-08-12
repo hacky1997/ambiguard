@@ -23,8 +23,7 @@ def format_comparison_table(comparison: dict[str, Any]) -> str:
     lines: list[str] = [
         "## Comparison Results",
         "",
-        f"Dataset: {comparison.get('dataset', 'N/A')} "
-        f"({comparison.get('n_samples', 0)} samples)",
+        f"Dataset: {comparison.get('dataset', 'N/A')} ({comparison.get('n_samples', 0)} samples)",
         "",
         "| Arm | Beh. Acc | Bal. Acc | 95% CI | WC-F1 | p50 lat. | p95 lat. | $/1k | Det. |",
         "|---|---|---|---|---|---|---|---|---|",
@@ -53,9 +52,7 @@ def format_comparison_table(comparison: dict[str, Any]) -> str:
         )
 
     lines.append("")
-    lines.append(
-        f"*Generated: {comparison.get('timestamp', 'N/A')}*"
-    )
+    lines.append(f"*Generated: {comparison.get('timestamp', 'N/A')}*")
     lines.append("")
 
     return "\n".join(lines)
@@ -72,8 +69,7 @@ def format_adversarial_table(results: dict[str, Any]) -> str:
     lines: list[str] = [
         "## Adversarial Evaluation Results",
         "",
-        f"Dataset: {results.get('dataset', 'N/A')} "
-        f"({results.get('n_samples', 0)} samples)",
+        f"Dataset: {results.get('dataset', 'N/A')} ({results.get('n_samples', 0)} samples)",
         "",
     ]
 
@@ -85,9 +81,7 @@ def format_adversarial_table(results: dict[str, Any]) -> str:
         lines.append("")
         lines.append("| | Gate | LLM Judge |")
         lines.append("|---|---|---|")
-        lines.append(
-            f"| Resistance | {gate_resist:.0%} | {llm_resist:.0%} |"
-        )
+        lines.append(f"| Resistance | {gate_resist:.0%} | {llm_resist:.0%} |")
         lines.append("")
 
     # Per-row table
@@ -110,9 +104,7 @@ def format_adversarial_table(results: dict[str, Any]) -> str:
         )
 
     lines.append("")
-    lines.append(
-        f"*Generated: {results.get('timestamp', 'N/A')}*"
-    )
+    lines.append(f"*Generated: {results.get('timestamp', 'N/A')}*")
     lines.append("")
 
     return "\n".join(lines)

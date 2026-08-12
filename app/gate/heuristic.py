@@ -47,9 +47,7 @@ def _extract_capitalized_entities(text: str) -> list[str]:
     return re.findall(r"\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\b", text)
 
 
-def _has_deictic_without_antecedent(
-    q_tokens: list[str], ctx_tokens: list[str]
-) -> bool:
+def _has_deictic_without_antecedent(q_tokens: list[str], ctx_tokens: list[str]) -> bool:
     """Check for unresolved deictic reference.
 
     Heuristic: question contains a deictic pronoun AND either context is empty
@@ -70,10 +68,7 @@ def _count_entity_referents(question: str, context: str) -> int:
     that share a category with the question's subject. Only entities of ≥3
     chars are counted to avoid matching adjectives like 'Western'.
     """
-    entities = set(
-        e for e in _extract_capitalized_entities(context)
-        if len(e) >= 3
-    )
+    entities = set(e for e in _extract_capitalized_entities(context) if len(e) >= 3)
     # Filter to entities that appear as distinct noun phrases (not substrings
     # of each other) to avoid double-counting "New York" and "York"
     filtered: set[str] = set()

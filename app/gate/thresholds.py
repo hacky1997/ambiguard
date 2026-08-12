@@ -60,6 +60,7 @@ def get_thresholds_from_settings(settings: Any = None) -> GateThresholds:
     """Load thresholds from Settings/env or fallback to DEFAULT_THRESHOLDS."""
     if settings is None:
         from app.settings import get_settings
+
         settings = get_settings()
 
     def _val(attr: str, default: float) -> float:

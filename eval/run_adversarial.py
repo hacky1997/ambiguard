@@ -36,9 +36,7 @@ def _load_adversarial(path: Path) -> list[dict[str, Any]]:
     """Load the adversarial dataset."""
     if not path.exists():
         logger.error("Adversarial dataset not found: %s", path)
-        logger.error(
-            "adversarial.jsonl is HUMAN-AUTHORED. See AGENTS.md rule 6."
-        )
+        logger.error("adversarial.jsonl is HUMAN-AUTHORED. See AGENTS.md rule 6.")
         sys.exit(1)
 
     rows: list[dict[str, Any]] = []
@@ -50,9 +48,7 @@ def _load_adversarial(path: Path) -> list[dict[str, Any]]:
     return rows
 
 
-def _check_injection_resistance(
-    row: dict[str, Any], gate_result: dict[str, Any]
-) -> dict[str, Any]:
+def _check_injection_resistance(row: dict[str, Any], gate_result: dict[str, Any]) -> dict[str, Any]:
     """Check if the gate resists prompt injection in context.
 
     The gate should be unaffected by injections because it never
@@ -69,8 +65,7 @@ def _check_injection_resistance(
         if prediction != expected:
             passed = False
             failure_reason = (
-                f"Gate changed behaviour to '{prediction}' under injection. "
-                f"Expected '{expected}'."
+                f"Gate changed behaviour to '{prediction}' under injection. Expected '{expected}'."
             )
 
     return {
@@ -126,8 +121,7 @@ def run_adversarial(
                 gate_check = {
                     "passed": False,
                     "failure_reason": (
-                        f"Predicted '{gate_result_raw['prediction']}', "
-                        f"expected '{expected}'"
+                        f"Predicted '{gate_result_raw['prediction']}', expected '{expected}'"
                     ),
                 }
 
@@ -136,8 +130,7 @@ def run_adversarial(
                 llm_check = {
                     "passed": False,
                     "failure_reason": (
-                        f"Predicted '{llm_result_raw['prediction']}', "
-                        f"expected '{expected}'"
+                        f"Predicted '{llm_result_raw['prediction']}', expected '{expected}'"
                     ),
                 }
 
@@ -154,9 +147,7 @@ def run_adversarial(
                 "gate_correct": (
                     gate_result_raw["prediction"] == row.get("expected_behaviour", "")
                 ),
-                "llm_correct": (
-                    llm_result_raw["prediction"] == row.get("expected_behaviour", "")
-                ),
+                "llm_correct": (llm_result_raw["prediction"] == row.get("expected_behaviour", "")),
             }
         )
 
@@ -202,10 +193,14 @@ def run_adversarial(
     print(f"LLM accuracy:  {results['summary']['llm_accuracy']}")
     if total_injections > 0:
         print("\nInjection resistance:")
-        print(f"  Gate: {results['summary']['gate_injection_resistance']} "
-              f"({injection_failures_gate}/{total_injections} failures)")
-        print(f"  LLM:  {results['summary']['llm_injection_resistance']} "
-              f"({injection_failures_llm}/{total_injections} failures)")
+        print(
+            f"  Gate: {results['summary']['gate_injection_resistance']} "
+            f"({injection_failures_gate}/{total_injections} failures)"
+        )
+        print(
+            f"  LLM:  {results['summary']['llm_injection_resistance']} "
+            f"({injection_failures_llm}/{total_injections} failures)"
+        )
 
     # Any injection failure is a HARD FAIL for the gate
     if injection_failures_gate > 0:

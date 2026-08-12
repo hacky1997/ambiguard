@@ -77,9 +77,7 @@ class OpenAIProvider:
         # Estimate cost from token usage
         usage: Any = response.usage
         input_cost: float = (
-            usage.prompt_tokens
-            / 1000
-            * _COST_PER_1K_INPUT.get(self._model, _DEFAULT_INPUT_COST)
+            usage.prompt_tokens / 1000 * _COST_PER_1K_INPUT.get(self._model, _DEFAULT_INPUT_COST)
         )
         output_cost: float = (
             usage.completion_tokens

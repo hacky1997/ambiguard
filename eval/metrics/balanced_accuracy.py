@@ -19,9 +19,7 @@ def balanced_accuracy(predictions: list[str], gold: list[str]) -> float:
     if not predictions or not gold:
         return 0.0
     if len(predictions) != len(gold):
-        raise ValueError(
-            f"Length mismatch: {len(predictions)} predictions vs {len(gold)} gold"
-        )
+        raise ValueError(f"Length mismatch: {len(predictions)} predictions vs {len(gold)} gold")
 
     unique_classes = sorted(set(gold))
     if not unique_classes:
@@ -32,9 +30,7 @@ def balanced_accuracy(predictions: list[str], gold: list[str]) -> float:
         cls_gold_indices = [i for i, g in enumerate(gold) if g == cls]
         if not cls_gold_indices:
             continue
-        cls_correct = sum(
-            1 for i in cls_gold_indices if predictions[i] == gold[i]
-        )
+        cls_correct = sum(1 for i in cls_gold_indices if predictions[i] == gold[i])
         recalls.append(cls_correct / len(cls_gold_indices))
 
     return sum(recalls) / len(recalls) if recalls else 0.0

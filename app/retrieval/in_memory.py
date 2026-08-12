@@ -95,8 +95,7 @@ class InMemoryRetriever(Retriever):
     def __init__(self, corpus: list[dict[str, str]] | None = None) -> None:
         self._corpus = corpus or _DEFAULT_CORPUS
         self._vectorized_corpus = [
-            (doc, Counter(_tokenize(doc["text"] + " " + doc["title"])))
-            for doc in self._corpus
+            (doc, Counter(_tokenize(doc["text"] + " " + doc["title"]))) for doc in self._corpus
         ]
 
     def search(self, query: str, top_k: int = 3) -> list[Evidence]:

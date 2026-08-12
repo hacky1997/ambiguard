@@ -41,9 +41,7 @@ def get_provider(provider_name: str, **kwargs: Any) -> MockProvider | Any:
 
             return OpenAIProvider(api_key=api_key, model=model)
         except ImportError:
-            logger.warning(
-                "openai package not installed — falling back to mock provider"
-            )
+            logger.warning("openai package not installed — falling back to mock provider")
             return MockProvider()
 
     logger.warning("Unknown provider '%s' — falling back to mock", provider_name)
