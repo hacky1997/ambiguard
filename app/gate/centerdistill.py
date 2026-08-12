@@ -113,14 +113,14 @@ def _try_load_checkpoint(
             # Rebuild model structure matching repair_checkpoint.py
             import torch.nn as nn
 
-            class RepairedCenterDistillModel(nn.Module):
+            class RepairedCenterDistillModel(nn.Module):  # type: ignore[misc]
                 def __init__(self, base_name: str, num_centers: int) -> None:
                     super().__init__()
                     try:
                         from transformers import AutoConfig, AutoModel
 
                         config = AutoConfig.from_pretrained(base_name)
-                        self.encoder = AutoModel.from_config(config)  # type: ignore[no-untyped-call]
+                        self.encoder = AutoModel.from_config(config)
                     except Exception:
                         self.encoder = AutoModel.from_pretrained(base_name)
 
@@ -151,7 +151,7 @@ def _try_load_checkpoint(
                     else base_model_name
                 )
             )
-            tokenizer = AutoTokenizer.from_pretrained(str(tok_path))  # type: ignore[no-untyped-call]
+            tokenizer = AutoTokenizer.from_pretrained(str(tok_path))
             dummy_centers = np.zeros((k_val, 768), dtype=np.float64)
 
             logger.info("Repaired CenterDistill artifact loaded on %s", device)
@@ -167,7 +167,7 @@ def _try_load_checkpoint(
             return None, None, None, False
         centers: npt.NDArray[np.float64] = np.load(str(centers_path))
 
-        tokenizer = AutoTokenizer.from_pretrained(str(resolved_path))  # type: ignore[no-untyped-call]
+        tokenizer = AutoTokenizer.from_pretrained(str(resolved_path))
         model = AutoModel.from_pretrained(str(resolved_path))
         model.eval()
 
@@ -245,7 +245,8 @@ class CenterDistillGate:
 
     def encode_cls(self, question: str, context: str | None = None) -> npt.NDArray[np.float64]:
         """Extract the CLS token hidden embedding from XLM-RoBERTa (1024-dim)."""
-        return self.encode_cls_batch([question], [context])[0]
+        res: npt.NDArray[np.float64] = self.encode_cls_batch([question], [context])[0]
+        return res
 
     def encode_cls_batch(
         self, questions: list[str], contexts: list[str | None]
