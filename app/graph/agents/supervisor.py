@@ -20,7 +20,7 @@ from app.settings import get_settings
 def supervisor_node(state: AgentState) -> dict[str, Any]:
     """Execute the supervisor gate routing decision.
 
-    AGENTS.md rule 11: resolved_question takes precedence over question everywhere downstream when set.
+    AGENTS.md rule 11: resolved_question takes precedence downstream when set.
     """
     settings = get_settings()
     gate = CenterDistillGate(settings)

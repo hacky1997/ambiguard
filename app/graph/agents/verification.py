@@ -55,7 +55,8 @@ def verification_node(state: AgentState) -> dict[str, Any]:
     if not passed and retry_count >= 2:
         result["answer"] = None
         result["clarifying_question"] = (
-            "Verification limit reached. Could you clarify which source or interpretation you prefer?"
+            "Verification limit reached. Could you clarify which source "
+            "or interpretation you prefer?"
         )
 
     return result

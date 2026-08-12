@@ -3,7 +3,7 @@
 Rules (AGENTS.md rules 8, 9, 10, 11):
   - Never invent state keys: extend AgentState first, then use it.
   - Nodes return partial dicts: NO in-place mutation of state.
-  - `messages` is the ONLY reducer field (Annotated[list[dict], add]). Everything else is last-write-wins.
+  - `messages` is the ONLY reducer field. Everything else is last-write-wins.
   - `resolved_question` takes precedence over `question` everywhere downstream when set.
 """
 
@@ -37,7 +37,9 @@ class VerificationResult(TypedDict):
     retry_count: int
 
 
-def _reduce_messages(left: list[dict[str, Any]], right: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def _reduce_messages(
+    left: list[dict[str, Any]], right: list[dict[str, Any]]
+) -> list[dict[str, Any]]:
     """Reducer for messages array field."""
     return left + right
 

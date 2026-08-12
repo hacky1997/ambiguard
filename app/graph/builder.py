@@ -2,8 +2,8 @@
 
 Links:
     Supervisor (gate) → [CLARIFY → Clarification] | [ANSWER / ALTERNATIVES → Research]
-    Research → Synthesis → Verification
-    Verification → [Passed → END] | [Failed & retry < 2 → Research] | [Failed & retry >= 2 → Escalated CLARIFY → END]
+    Verification → [Passed → END] | [Failed & retry < 2 → Research]
+    Verification → [Failed & retry >= 2 → Escalated CLARIFY → END]
 """
 
 from __future__ import annotations

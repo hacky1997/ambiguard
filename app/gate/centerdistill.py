@@ -103,7 +103,8 @@ def _try_load_checkpoint(
             logger.info("Loading repaired artifact: %s", full_pt)
             ckpt_data = torch.load(full_pt, map_location=device)
             base_model_name = ckpt_data.get("base_model", "deepset/xlm-roberta-large-squad2")
-            if not Path(base_model_name).exists() and (base_model_name.startswith("/") or "\\" in base_model_name):
+            is_local = base_model_name.startswith("/") or "\\" in base_model_name
+            if not Path(base_model_name).exists() and is_local:
                 base_model_name = "deepset/xlm-roberta-large-squad2"
             k_val = ckpt_data.get("K", 5)
 
@@ -156,7 +157,10 @@ def _try_load_checkpoint(
         # Standard HuggingFace / centers.npy format
         centers_path = resolved_path / "centers.npy"
         if not centers_path.exists():
-            logger.warning("Neither centerdistill_full.pt nor centers.npy found in %s — using heuristic fallback", resolved_path)
+            logger.warning(
+                "Neither centerdistill_full.pt nor centers.npy found in %s — using fallback",
+                resolved_path,
+            )
             return None, None, None, False
         centers: npt.NDArray[np.float64] = np.load(str(centers_path))
 
@@ -242,7 +246,9 @@ class CenterDistillGate:
         """Extract the CLS token hidden embedding from XLM-RoBERTa (1024-dim)."""
         return self.encode_cls_batch([question], [context])[0]
 
-    def encode_cls_batch(self, questions: list[str], contexts: list[str | None]) -> npt.NDArray[np.float64]:
+    def encode_cls_batch(
+        self, questions: list[str], contexts: list[str | None]
+    ) -> npt.NDArray[np.float64]:
         """Extract CLS embeddings for a batch of question-context pairs (1024-dim)."""
         if self._fallback:
             return np.zeros((len(questions), 1024), dtype=np.float64)
@@ -306,7 +312,7 @@ class CenterDistillGate:
     def _classify_learned(self, question: str, context: str) -> GateDecision:
         """Run CenterDistill inference.
 
-        Pipeline: tokenize → forward → CLS hidden → center head (or similarity) → softmax → thresholds.
+        Pipeline: tokenize → forward → CLS hidden → center head → softmax → thresholds.
         """
         torch, _ = _try_import_torch()
 

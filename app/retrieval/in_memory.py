@@ -20,31 +20,52 @@ _DEFAULT_CORPUS: list[dict[str, str]] = [
         "id": "doc_med_01",
         "domain": "medical",
         "title": "Medication Side Effects & Guidelines",
-        "text": "Medication Alpha is prescribed for hypertension and causes mild nausea in 5% of patients. Medication Beta is an anti-inflammatory drug used for arthritis, with common side effects including headaches and dizziness. Always consult a healthcare provider before combining medications.",
+        "text": (
+            "Medication Alpha is prescribed for hypertension and causes mild nausea in 5% "
+            "of patients. Medication Beta is an anti-inflammatory drug used for arthritis, "
+            "with common side effects including headaches and dizziness. Always consult a "
+            "healthcare provider before combining medications."
+        ),
     },
     {
         "id": "doc_med_02",
         "domain": "medical",
         "title": "Pediatric Dosage Recommendations",
-        "text": "Pediatric dosages differ significantly from adult dosages. For children aged 5-12, standard dosage of Medication Alpha is 5mg daily, whereas adult dosage is 10mg to 20mg daily depending on severity.",
+        "text": (
+            "Pediatric dosages differ significantly from adult dosages. For children aged 5-12, "
+            "standard dosage of Medication Alpha is 5mg daily, whereas adult dosage is 10mg "
+            "to 20mg daily depending on severity."
+        ),
     },
     {
         "id": "doc_leg_01",
         "domain": "legal",
         "title": "US Marriage Laws & Age Limits",
-        "text": "The legal age of marriage without parental consent in most US states is 18. In Nebraska, the legal age is 19, and in Mississippi it is 21. Exceptions exist for emancipated minors with judicial approval.",
+        "text": (
+            "The legal age of marriage without parental consent in most US states is 18. "
+            "In Nebraska, the legal age is 19, and in Mississippi it is 21. Exceptions "
+            "exist for emancipated minors with judicial approval."
+        ),
     },
     {
         "id": "doc_ecom_01",
         "domain": "e-commerce",
         "title": "Smartphone Comparison: Galaxy vs iPhone",
-        "text": "The Samsung Galaxy S24 features a 6.7-inch AMOLED screen and 12GB RAM priced at $999. The Apple iPhone 15 Pro features a 6.1-inch Super Retina display and titanium body priced at $1099. Both support 5G networks.",
+        "text": (
+            "The Samsung Galaxy S24 features a 6.7-inch AMOLED screen and 12GB RAM priced at $999. "
+            "The Apple iPhone 15 Pro features a 6.1-inch Super Retina display and titanium body "
+            "priced at $1099. Both support 5G networks."
+        ),
     },
     {
         "id": "doc_edu_01",
         "domain": "education",
         "title": "University Admission Requirements",
-        "text": "Undergraduate admission requires a minimum high school GPA of 3.0, two recommendation letters, and standardized test scores (SAT > 1200 or ACT > 25). International students must demonstrate English proficiency via TOEFL or IELTS.",
+        "text": (
+            "Undergraduate admission requires a minimum high school GPA of 3.0, two recommendation "
+            "letters, and standardized test scores (SAT > 1200 or ACT > 25). International "
+            "students must demonstrate English proficiency via TOEFL or IELTS."
+        ),
     },
 ]
 

@@ -4,7 +4,7 @@ Prometheus counters, histograms, and custom metrics:
   - gate_latency_ms (histogram)
   - behaviour_total (counter)
   - verification_rejection_rate (gauge)
-  - clarify_resolution_rate (headline product metric — fraction of CLARIFY threads reaching a confident answer on resume)
+  - clarify_resolution_rate (fraction of CLARIFY threads resolved on resume)
   - fallback_gate_used_total (counter)
 """
 
@@ -60,7 +60,7 @@ class MetricsRegistry:
 
     @property
     def clarify_resolution_rate(self) -> float:
-        """Headline product metric: fraction of CLARIFY threads reaching confident ANSWER on resume."""
+        """Fraction of CLARIFY threads reaching confident ANSWER on resume."""
         if not self.clarify_threads_total:
             return 0.0
         return round(self.clarify_resolved_total / self.clarify_threads_total, 3)

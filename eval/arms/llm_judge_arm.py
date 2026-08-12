@@ -17,28 +17,28 @@ from app.llm.registry import get_provider
 from app.settings import get_settings
 from eval.arms import ArmResult
 
-_JUDGE_PROMPT_TEMPLATE: str = """You are an ambiguity classifier. Given a question and context, decide the routing behaviour.
+_JUDGE_PROMPT_TEMPLATE: str = (
+    "You are an ambiguity classifier. Given a question and context, "
+    "decide the routing behaviour.\n\n"
+    "Rules:\n"
+    "- ANSWER: The question has a single clear answer given the context.\n"
+    "- CLARIFY: The question is ambiguous — multiple interpretations exist.\n"
+    "- ALTERNATIVES: The question has multiple valid interpretations.\n\n"
+    "Question: {question}\n"
+    "Context: {context}\n\n"
+    "Respond with exactly one word: ANSWER, CLARIFY, or ALTERNATIVES."
+)
 
-Rules:
-- ANSWER: The question has a single clear answer given the context.
-- CLARIFY: The question is ambiguous — multiple interpretations exist and the user should clarify.
-- ALTERNATIVES: The question has multiple valid interpretations that can each be answered separately.
-
-Question: {question}
-Context: {context}
-
-Respond with exactly one word: ANSWER, CLARIFY, or ALTERNATIVES."""
-
-_JUDGE_PROMPT_TEMPLATE_BINARY: str = """You are an ambiguity classifier. Given a question and context, decide the routing behaviour.
-
-Rules:
-- ANSWER: The question has a single clear answer given the context.
-- AMBIGUOUS: The question is ambiguous or has multiple valid interpretations.
-
-Question: {question}
-Context: {context}
-
-Respond with exactly one word: ANSWER or AMBIGUOUS."""
+_JUDGE_PROMPT_TEMPLATE_BINARY: str = (
+    "You are an ambiguity classifier. Given a question and context, "
+    "decide the routing behaviour.\n\n"
+    "Rules:\n"
+    "- ANSWER: The question has a single clear answer given the context.\n"
+    "- AMBIGUOUS: The question is ambiguous or has multiple valid interpretations.\n\n"
+    "Question: {question}\n"
+    "Context: {context}\n\n"
+    "Respond with exactly one word: ANSWER or AMBIGUOUS."
+)
 
 
 def _parse_behaviour(raw: str, is_binary: bool = False) -> str:

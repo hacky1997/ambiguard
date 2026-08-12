@@ -62,9 +62,13 @@ def get_thresholds_from_settings(settings: Any = None) -> GateThresholds:
         from app.settings import get_settings
         settings = get_settings()
 
-    tau_conf = settings.tau_conf if getattr(settings, "tau_conf", None) is not None else DEFAULT_THRESHOLDS.tau_conf
-    tau_multi = settings.tau_multi if getattr(settings, "tau_multi", None) is not None else DEFAULT_THRESHOLDS.tau_multi
-    tau_ent = settings.tau_ent if getattr(settings, "tau_ent", None) is not None else DEFAULT_THRESHOLDS.tau_ent
+    def _val(attr: str, default: float) -> float:
+        v = getattr(settings, attr, None)
+        return float(v) if v is not None else default
+
+    tau_conf = _val("tau_conf", DEFAULT_THRESHOLDS.tau_conf)
+    tau_multi = _val("tau_multi", DEFAULT_THRESHOLDS.tau_multi)
+    tau_ent = _val("tau_ent", DEFAULT_THRESHOLDS.tau_ent)
 
     return GateThresholds(
         tau_conf=float(tau_conf),
